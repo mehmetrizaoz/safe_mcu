@@ -1,0 +1,10 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/aselsan/Desktop/IMX7/cortex_m4/freeRtos/freertos-colibri-imx7/platform/devices/MCIMX7D/startup/gcc/startup_MCIMX7D_M4.S
+

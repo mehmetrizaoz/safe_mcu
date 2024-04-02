@@ -1,0 +1,3 @@
+/home/aselsan/Desktop/GPT_BACKUP/freertos-colibri-imx7/examples/imx7_colibri_m4/demo_apps/rpmsg/str_echo_freertos/armgcc/release/CMakeFiles/rebuild_cache.dir
+/home/aselsan/Desktop/GPT_BACKUP/freertos-colibri-imx7/examples/imx7_colibri_m4/demo_apps/rpmsg/str_echo_freertos/armgcc/release/CMakeFiles/edit_cache.dir
+/home/aselsan/Desktop/GPT_BACKUP/freertos-colibri-imx7/examples/imx7_colibri_m4/demo_apps/rpmsg/str_echo_freertos/armgcc/release/CMakeFiles/str_echo_freertos.dir

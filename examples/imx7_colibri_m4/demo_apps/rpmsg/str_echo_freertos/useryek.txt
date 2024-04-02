@@ -1,0 +1,75 @@
+--show m4 compiler
+export ARMGCC_DIR=/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3
+
+--build m4 code
+cd /home/aselsan/Desktop/IMX7/cortex_m4/freeRtos/freertos-colibri-imx7/examples/imx7_colibri_m4/demo_apps/rpmsg/str_echo_freertos/armgcc
+
+./clean.sh
+./build_all.sh
+--akb'de kernele kadar gel
+
+--uboot--
+scp /home/aselsan/Desktop/GPT_BACKUP/freertos-colibri-imx7/examples/imx7_colibri_m4/demo_apps/rpmsg/str_echo_freertos/armgcc/debug/str_echo_freertos.elf root@10.42.0.2:/boot
+
+--uboot--
+load mmc 0 ${loadaddr} str_echo_freertos.elf && bootaux ${loadaddr}
+boot
+root
+
+--kernel--
+modprobe imx_rpmsg_tty
+ls -l /dev | grep RPMSG
+
+echo "data from a7 to m4" > /dev/ttyRPMSG0
+echo -en '\x31' > /dev/ttyRPMSG0
+
+echo -en '\x55\x02\x04\x01\x02\x03\x04\x0f\x10' > /dev/ttyRPMSG0
+echo -en '\x55\x02\x04\x01\x02\x03\x04\x0f\x10\x55\x02\x04\x01\x02\x03\x04\x0f\x10' > /dev/ttyRPMSG0
+
+55;2;2;1;6;9;10
+55;2;2;2;6;a;10
+
+cat /dev/ttyRPMSG0
+hexdump -C -n15 /dev/ttyRPMSG0
+
+
+--uboot--
+printenv bootcmd
+setenv bootcmd 'setenv setupargs console=ttymxc0,115200n8 consoleblank=0; setenv bootm_boot_mode sec && part uuid mmc 0:2 uuid && setenv emmcargs ip=off root=PARTUUID=${uuid} ro rootfstype=ext4 rootwait && setenv bootargs  ${emmcargs} ${setupargs} && load mmc 0:1 ${kernel_addr_r} /zImage && load mmc 0:1 ${fdt_addr_r} /imx7d-aselmhd-v1.dtb && load mmc 0 ${loadaddr} str_echo_freertos.elf && bootaux ${loadaddr} && bootz ${kernel_addr_r} - ${fdt_addr_r}'
+saveenv
+
+setenv bootcmd 'setenv setupargs console=ttyS0,115200n8 consoleblank=0; setenv bootm_boot_mode sec && part uuid mmc 0:2 uuid && setenv emmcargs ip=off root=PARTUUID=${uuid} ro rootfstype=ext4 rootwait && setenv bootargs  ${emmcargs} ${setupargs} && load mmc 0:1 ${kernel_addr_r} /zImage && load mmc 0:1 ${fdt_addr_r} /imx7d-aselmhd-v1.dtb && bootz ${kernel_addr_r} - ${fdt_addr_r}'
+
+
+0123456789A0123456789A0123456789
+
+GOOD PACKAGE 1 byte data:
+55;2;4;1;22;3;4;2e;10
+
+GOOD PACKAGE 2 bytes data:
+55;2;5;1;22;3;31;31;8d;10
+55;2;9;1;22;3;5;5;5;5;5;5;4d;10
+
+ACK: 		
+55;2;2;31;6;39;10
+55;2;2;1;6;9;10
+
+GOOD PACKAGE n bytes
+55;2;f;2;22;3;5;5;5;5;5;5;5;5;5;5;5;5;72;10
+55;2;a;1;22;3;5;5;5;5;5;5;5;53;10
+
+SEQUENTIAL PACKAGES:
+55;2;4;1;22;3;4;2e;10;55;2;9;2;22;3;5;5;5;5;5;5;4e;10
+55;2;4;2;22;3;4;2f;10;55;2;f;5;22;3;5;5;5;5;5;5;5;5;5;5;5;5;75;10
+
+SEQUENTIAL PACKAGES with noise:
+55;2;5;1;22;3;30;31;8c;10;33;55;2;4;8;22;3;4;35;10
+33;55;2;5;1;22;3;30;31;8c;10;11;55;2;4;8;22;3;4;35;10
+55;2;5;1;22;3;30;31;8c;10;11;55;2;4;8;22;3;4;35;10;33
+
+tplink-wifi driver manual
+https://community.tp-link.com/en/home/stories/detail/323.?page=1
+
+
+TEST SUITE:
+
