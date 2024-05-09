@@ -37,6 +37,7 @@
 
 #include "device_imx.h"
 #include "pin_mux.h"
+#include "debug_console_imx.h"
 
 void configure_flexcan_pins(CAN_Type* base)
 {
@@ -83,6 +84,7 @@ void configure_i2c_pins(I2C_Type* base)
     switch((uint32_t)base)
     {
         case I2C1_BASE:
+            PRINTF("...........I2C1_BASE\r\n");
             // I2C1 iomux configuration
             IOMUXC_SW_MUX_CTL_PAD_I2C1_SCL = IOMUXC_SW_MUX_CTL_PAD_I2C1_SCL_MUX_MODE(0) |
                                              IOMUXC_SW_MUX_CTL_PAD_I2C1_SCL_SION_MASK;
@@ -123,6 +125,7 @@ void configure_i2c_pins(I2C_Type* base)
                                              IOMUXC_SW_PAD_CTL_PAD_I2C2_SDA_HYS_MASK;
             break;
         case I2C3_BASE:
+            PRINTF("...........I2C3_BASE\r\n");
             // I2C3 iomux configuration
             IOMUXC_SW_MUX_CTL_PAD_I2C3_SCL = IOMUXC_SW_MUX_CTL_PAD_I2C3_SCL_MUX_MODE(0) |
                                              IOMUXC_SW_MUX_CTL_PAD_I2C3_SCL_SION_MASK;
@@ -161,6 +164,13 @@ void configure_i2c_pins(I2C_Type* base)
                                                     IOMUXC_SW_PAD_CTL_PAD_ENET1_RGMII_TD3_PS(1)    |
                                                     IOMUXC_SW_PAD_CTL_PAD_ENET1_RGMII_TD3_DSE(0)   |
                                                     IOMUXC_SW_PAD_CTL_PAD_ENET1_RGMII_TD3_HYS_MASK;
+            PRINTF("...........I2C4_BASE\r\n");
+            PRINTF("IOMUXC_SW_MUX_CTL_PAD_ENET1_RGMII_TD2:%.8x\r\n", IOMUXC_SW_MUX_CTL_PAD_ENET1_RGMII_TD2);
+            PRINTF("IOMUXC_SW_MUX_CTL_PAD_ENET1_RGMII_TD3:%.8x\r\n", IOMUXC_SW_MUX_CTL_PAD_ENET1_RGMII_TD3);
+            PRINTF("IOMUXC_I2C4_SCL_SELECT_INPUT:%.8x\r\n", IOMUXC_I2C4_SCL_SELECT_INPUT);
+            PRINTF("IOMUXC_I2C4_SDA_SELECT_INPUT:%.8x\r\n", IOMUXC_I2C4_SDA_SELECT_INPUT);
+            PRINTF("IOMUXC_SW_PAD_CTL_PAD_ENET1_RGMII_TD2:%.8x\r\n", IOMUXC_SW_PAD_CTL_PAD_ENET1_RGMII_TD2);
+            PRINTF("IOMUXC_SW_PAD_CTL_PAD_ENET1_RGMII_TD3:%.8x\r\n", IOMUXC_SW_PAD_CTL_PAD_ENET1_RGMII_TD3);                                                    
             break;
         default:
             break;

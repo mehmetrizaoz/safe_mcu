@@ -73,6 +73,8 @@ CMakeFiles/str_echo_freertos.dir/home/aselsan/Desktop/GPT_BACKUP/freertos-colibr
  ../../FreeRTOSConfig.h
  /home/aselsan/Desktop/GPT_BACKUP/freertos-colibri-imx7/examples/imx7_colibri_m4/demo_apps/rpmsg/str_echo_freertos/comm_skb.c
  /home/aselsan/Desktop/GPT_BACKUP/freertos-colibri-imx7/examples/imx7_colibri_m4/demo_apps/rpmsg/str_echo_freertos/comm_skb.h
+ /home/aselsan/Desktop/GPT_BACKUP/freertos-colibri-imx7/examples/imx7_colibri_m4/demo_apps/rpmsg/str_echo_freertos/gpio.h
+ /home/aselsan/Desktop/GPT_BACKUP/freertos-colibri-imx7/examples/imx7_colibri_m4/demo_apps/rpmsg/str_echo_freertos/i2c.h
 CMakeFiles/str_echo_freertos.dir/home/aselsan/Desktop/GPT_BACKUP/freertos-colibri-imx7/examples/imx7_colibri_m4/demo_apps/rpmsg/str_echo_freertos/gpio.c.obj
  ../../../../../../../platform/CMSIS/Include/core_cm4.h
  ../../../../../../../platform/CMSIS/Include/core_cmFunc.h
@@ -93,6 +95,7 @@ CMakeFiles/str_echo_freertos.dir/home/aselsan/Desktop/GPT_BACKUP/freertos-colibr
  /home/aselsan/Desktop/GPT_BACKUP/freertos-colibri-imx7/examples/imx7_colibri_m4/demo_apps/rpmsg/str_echo_freertos/comm_skb.h
  /home/aselsan/Desktop/GPT_BACKUP/freertos-colibri-imx7/examples/imx7_colibri_m4/demo_apps/rpmsg/str_echo_freertos/gpio.c
  /home/aselsan/Desktop/GPT_BACKUP/freertos-colibri-imx7/examples/imx7_colibri_m4/demo_apps/rpmsg/str_echo_freertos/gpio.h
+ /home/aselsan/Desktop/GPT_BACKUP/freertos-colibri-imx7/examples/imx7_colibri_m4/demo_apps/rpmsg/str_echo_freertos/timer.h
 CMakeFiles/str_echo_freertos.dir/home/aselsan/Desktop/GPT_BACKUP/freertos-colibri-imx7/examples/imx7_colibri_m4/demo_apps/rpmsg/str_echo_freertos/hardware_init.c.obj
  ../../../../../../../platform/CMSIS/Include/core_cm4.h
  ../../../../../../../platform/CMSIS/Include/core_cmFunc.h
@@ -102,6 +105,7 @@ CMakeFiles/str_echo_freertos.dir/home/aselsan/Desktop/GPT_BACKUP/freertos-colibr
  ../../../../../../../platform/devices/MCIMX7D/startup/system_MCIMX7D_M4.h
  ../../../../../../../platform/devices/device_imx.h
  ../../../../../../../platform/drivers/inc/ccm_imx7d.h
+ ../../../../../../../platform/drivers/inc/gpio_imx.h
  ../../../../../../../platform/drivers/inc/gpt.h
  ../../../../../../../platform/drivers/inc/rdc.h
  ../../../../../../../platform/drivers/inc/rdc_defs_imx7d.h
@@ -109,8 +113,38 @@ CMakeFiles/str_echo_freertos.dir/home/aselsan/Desktop/GPT_BACKUP/freertos-colibr
  ../../../../../../../platform/utilities/inc/debug_console_imx.h
  ../../../../../board.h
  ../../../../../clock_freq.h
+ ../../../../../gpio_pins.h
  ../../../../../pin_mux.h
  /home/aselsan/Desktop/GPT_BACKUP/freertos-colibri-imx7/examples/imx7_colibri_m4/demo_apps/rpmsg/str_echo_freertos/hardware_init.c
+CMakeFiles/str_echo_freertos.dir/home/aselsan/Desktop/GPT_BACKUP/freertos-colibri-imx7/examples/imx7_colibri_m4/demo_apps/rpmsg/str_echo_freertos/i2c.c.obj
+ ../../../../../../../platform/CMSIS/Include/core_cm4.h
+ ../../../../../../../platform/CMSIS/Include/core_cmFunc.h
+ ../../../../../../../platform/CMSIS/Include/core_cmInstr.h
+ ../../../../../../../platform/CMSIS/Include/core_cmSimd.h
+ ../../../../../../../platform/devices/MCIMX7D/include/MCIMX7D_M4.h
+ ../../../../../../../platform/devices/MCIMX7D/startup/system_MCIMX7D_M4.h
+ ../../../../../../../platform/devices/device_imx.h
+ ../../../../../../../platform/drivers/inc/ccm_imx7d.h
+ ../../../../../../../platform/drivers/inc/gpio_imx.h
+ ../../../../../../../platform/drivers/inc/i2c_imx.h
+ ../../../../../../../platform/drivers/inc/rdc.h
+ ../../../../../../../platform/drivers/inc/rdc_defs_imx7d.h
+ ../../../../../../../platform/utilities/inc/debug_console_imx.h
+ ../../../../../../../rtos/FreeRTOS/Source/include/FreeRTOS.h
+ ../../../../../../../rtos/FreeRTOS/Source/include/deprecated_definitions.h
+ ../../../../../../../rtos/FreeRTOS/Source/include/mpu_wrappers.h
+ ../../../../../../../rtos/FreeRTOS/Source/include/portable.h
+ ../../../../../../../rtos/FreeRTOS/Source/include/projdefs.h
+ ../../../../../../../rtos/FreeRTOS/Source/include/queue.h
+ ../../../../../../../rtos/FreeRTOS/Source/include/semphr.h
+ ../../../../../../../rtos/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h
+ ../../../../../board.h
+ ../../../../../clock_freq.h
+ ../../../../../gpio_pins.h
+ ../../../../../pin_mux.h
+ ../../FreeRTOSConfig.h
+ /home/aselsan/Desktop/GPT_BACKUP/freertos-colibri-imx7/examples/imx7_colibri_m4/demo_apps/rpmsg/str_echo_freertos/i2c.c
+ /home/aselsan/Desktop/GPT_BACKUP/freertos-colibri-imx7/examples/imx7_colibri_m4/demo_apps/rpmsg/str_echo_freertos/i2c.h
 CMakeFiles/str_echo_freertos.dir/home/aselsan/Desktop/GPT_BACKUP/freertos-colibri-imx7/examples/imx7_colibri_m4/demo_apps/rpmsg/str_echo_freertos/str_echo_freertos.c.obj
  ../../../../../../../middleware/multicore/open-amp/common/hil/hil.h
  ../../../../../../../middleware/multicore/open-amp/common/llist/llist.h
@@ -154,6 +188,7 @@ CMakeFiles/str_echo_freertos.dir/home/aselsan/Desktop/GPT_BACKUP/freertos-colibr
  ../../FreeRTOSConfig.h
  /home/aselsan/Desktop/GPT_BACKUP/freertos-colibri-imx7/examples/imx7_colibri_m4/demo_apps/rpmsg/str_echo_freertos/comm_skb.h
  /home/aselsan/Desktop/GPT_BACKUP/freertos-colibri-imx7/examples/imx7_colibri_m4/demo_apps/rpmsg/str_echo_freertos/gpio.h
+ /home/aselsan/Desktop/GPT_BACKUP/freertos-colibri-imx7/examples/imx7_colibri_m4/demo_apps/rpmsg/str_echo_freertos/i2c.h
  /home/aselsan/Desktop/GPT_BACKUP/freertos-colibri-imx7/examples/imx7_colibri_m4/demo_apps/rpmsg/str_echo_freertos/str_echo_freertos.c
  /home/aselsan/Desktop/GPT_BACKUP/freertos-colibri-imx7/examples/imx7_colibri_m4/demo_apps/rpmsg/str_echo_freertos/timer.h
  /home/aselsan/Desktop/GPT_BACKUP/freertos-colibri-imx7/examples/imx7_colibri_m4/demo_apps/rpmsg/str_echo_freertos/watchdog.h
@@ -219,6 +254,7 @@ CMakeFiles/str_echo_freertos.dir/home/aselsan/Desktop/GPT_BACKUP/freertos-colibr
  ../../../../../../../platform/devices/MCIMX7D/include/MCIMX7D_M4.h
  ../../../../../../../platform/devices/MCIMX7D/startup/system_MCIMX7D_M4.h
  ../../../../../../../platform/devices/device_imx.h
+ ../../../../../../../platform/utilities/inc/debug_console_imx.h
  /home/aselsan/Desktop/GPT_BACKUP/freertos-colibri-imx7/examples/imx7_colibri_m4/pin_mux.c
  /home/aselsan/Desktop/GPT_BACKUP/freertos-colibri-imx7/examples/imx7_colibri_m4/pin_mux.h
 CMakeFiles/str_echo_freertos.dir/home/aselsan/Desktop/GPT_BACKUP/freertos-colibri-imx7/middleware/multicore/open-amp/common/hil/hil.c.obj
@@ -439,6 +475,16 @@ CMakeFiles/str_echo_freertos.dir/home/aselsan/Desktop/GPT_BACKUP/freertos-colibr
  ../../../../../../../platform/drivers/inc/gpt.h
  ../../../../../../../platform/utilities/inc/debug_console_imx.h
  /home/aselsan/Desktop/GPT_BACKUP/freertos-colibri-imx7/platform/drivers/src/gpt.c
+CMakeFiles/str_echo_freertos.dir/home/aselsan/Desktop/GPT_BACKUP/freertos-colibri-imx7/platform/drivers/src/i2c_imx.c.obj
+ ../../../../../../../platform/CMSIS/Include/core_cm4.h
+ ../../../../../../../platform/CMSIS/Include/core_cmFunc.h
+ ../../../../../../../platform/CMSIS/Include/core_cmInstr.h
+ ../../../../../../../platform/CMSIS/Include/core_cmSimd.h
+ ../../../../../../../platform/devices/MCIMX7D/include/MCIMX7D_M4.h
+ ../../../../../../../platform/devices/MCIMX7D/startup/system_MCIMX7D_M4.h
+ ../../../../../../../platform/devices/device_imx.h
+ ../../../../../../../platform/drivers/inc/i2c_imx.h
+ /home/aselsan/Desktop/GPT_BACKUP/freertos-colibri-imx7/platform/drivers/src/i2c_imx.c
 CMakeFiles/str_echo_freertos.dir/home/aselsan/Desktop/GPT_BACKUP/freertos-colibri-imx7/platform/drivers/src/mu_imx.c.obj
  ../../../../../../../platform/CMSIS/Include/core_cm4.h
  ../../../../../../../platform/CMSIS/Include/core_cmFunc.h

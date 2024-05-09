@@ -9,10 +9,17 @@ cd /home/aselsan/Desktop/IMX7/cortex_m4/freeRtos/freertos-colibri-imx7/examples/
 --akb'de kernele kadar gel
 
 --uboot--
+pc'de
 scp /home/aselsan/Desktop/GPT_BACKUP/freertos-colibri-imx7/examples/imx7_colibri_m4/demo_apps/rpmsg/str_echo_freertos/armgcc/debug/str_echo_freertos.elf root@10.42.0.2:/boot
+scp /home/aselsan/Desktop/GPT_BACKUP/freertos-colibri-imx7/examples/imx7_colibri_m4/driver_examples/i2c_imx/i2c_polling_sensor_imx7d/armgcc/debug/i2c_polling_sensor_imx7d.elf root@10.42.0.2:/boot
+kartta
+sync
+reboot
 
 --uboot--
 load mmc 0 ${loadaddr} str_echo_freertos.elf && bootaux ${loadaddr}
+load mmc 0 ${loadaddr} i2c_polling_sensor_imx7d.elf && bootaux ${loadaddr}
+
 boot
 root
 
@@ -32,10 +39,10 @@ echo -en '\x55\x02\x04\x01\x02\x03\x04\x0f\x10\x55\x02\x04\x01\x02\x03\x04\x0f\x
 cat /dev/ttyRPMSG0
 hexdump -C -n15 /dev/ttyRPMSG0
 
-
 --uboot--
 printenv bootcmd
 setenv bootcmd 'setenv setupargs console=ttymxc0,115200n8 consoleblank=0; setenv bootm_boot_mode sec && part uuid mmc 0:2 uuid && setenv emmcargs ip=off root=PARTUUID=${uuid} ro rootfstype=ext4 rootwait && setenv bootargs  ${emmcargs} ${setupargs} && load mmc 0:1 ${kernel_addr_r} /zImage && load mmc 0:1 ${fdt_addr_r} /imx7d-aselmhd-v1.dtb && load mmc 0 ${loadaddr} str_echo_freertos.elf && bootaux ${loadaddr} && bootz ${kernel_addr_r} - ${fdt_addr_r}'
+setenv bootcmd 'setenv setupargs console=ttyS0,115200n8 consoleblank=0; setenv bootm_boot_mode sec && part uuid mmc 0:2 uuid && setenv emmcargs ip=off root=PARTUUID=${uuid} ro rootfstype=ext4 rootwait && setenv bootargs  ${emmcargs} ${setupargs} && load mmc 0:1 ${kernel_addr_r} /zImage && load mmc 0:1 ${fdt_addr_r} /imx7d-aselmhd-v1.dtb && load mmc 0 ${loadaddr} str_echo_freertos.elf && bootaux ${loadaddr} && bootz ${kernel_addr_r} - ${fdt_addr_r}'
 saveenv
 
 setenv bootcmd 'setenv setupargs console=ttyS0,115200n8 consoleblank=0; setenv bootm_boot_mode sec && part uuid mmc 0:2 uuid && setenv emmcargs ip=off root=PARTUUID=${uuid} ro rootfstype=ext4 rootwait && setenv bootargs  ${emmcargs} ${setupargs} && load mmc 0:1 ${kernel_addr_r} /zImage && load mmc 0:1 ${fdt_addr_r} /imx7d-aselmhd-v1.dtb && bootz ${kernel_addr_r} - ${fdt_addr_r}'
@@ -70,6 +77,196 @@ SEQUENTIAL PACKAGES with noise:
 tplink-wifi driver manual
 https://community.tp-link.com/en/home/stories/detail/323.?page=1
 
+--------------------------------------------------------
+Test Case 1:
+skb -> m4 -> a7 (data)
+skb <- m4 (ack)
+--------------------------------------------------------
+--skb -> m4 -> a7 (data)
 
-TEST SUITE:
+--konsol'da dinle
+hexdump -C -n20 /dev/ttyRPMSG0
 
+--skb'den
+55;2;f;2;22;3;5;5;5;5;5;5;5;5;5;5;5;5;72;10
+--yolla
+
+--a7 konsola
+55 02 0f 02 22 05 05 05  05 05 05 05 05 05 05 
+--geldiğini gör
+
+--skb uart portuna
+55 02 03 02 06 0B 10 
+--(ack) geldiğini gör
+
+--------------------------------------------------------
+Test Case 2:
+skb <- m4 <- a7 (data)
+skb -> m4 (ack)
+--------------------------------------------------------
+--skb <- m4 <- a7 (data)
+--konsoldan
+echo -en '\x55\x02\x04\x01\x02\x03\x04\x0f\x10' > /dev/ttyRPMSG0
+--gönder
+
+--skb'ye
+55 02 04 01 02 03 04 0F 10
+--geldiğini gör
+
+--skb -> m4 (ack)
+55;2;3;1;6;a;10
+--yolla
+
+--ack geldiğini gör
+
+--------------------------------------------------------
+Test Case 3:
+skb <- m4 <- a7 (data)
+timeout
+--------------------------------------------------------
+--skb <- m4 <- a7 (data)
+--konsoldan
+echo -en '\x55\x02\x04\x01\x02\x03\x04\x0f\x10' > /dev/ttyRPMSG0
+--gönder
+
+--skb'ye
+55 02 04 01 02 03 04 0F 10
+--geldiğini gör
+
+--bekle timeout geldiğini gör
+
+
+
+--------------------------------------------------------
+Test Case 4:
+--------------------------------------------------------
+konsoldan
+echo -en '\x55\x02\x04\x01\x02\x03\x04\x0f\x10' > /dev/ttyRPMSG0
+gönder
+
+skb'den
+55;2;2;2;6;a;10
+
+yolla
+not ack geldiğini gör
+
+skb'den
+55;2;2;1;6;9;10
+yolla
+
+ack geldiğini gör
+
+--------------------------------------------------------
+Test Case 5:
+--------------------------------------------------------
+
+echo -en '\x55\x02\x04\x01\x02\x03\x04\x0f\x10\x55\x02\x04\x02\x02\x03\x04\x10\x10' > /dev/ttyRPMSG0
+55;2;2;1;6;9;10
+55;2;2;2;6;a;10
+
+
+
+
+
+
+
+
+
+--LED's
+
+--a7'ye gelenleri dinle
+hexdump -C -n8 /dev/ttyRPMSG0
+--skb'den yolla
+55;2;4;1;22;10;0;37;10
+55;2;4;1;22;10;1;38;10 1
+55;2;4;1;22;10;2;39;10 2
+55;2;4;1;22;10;3;3a;10 1-2
+55;2;4;1;22;10;4;3b;10 3
+55;2;4;1;22;10;7;3e;10 1-2-3
+55;2;4;1;22;10;8;3f;10 4
+55;2;4;1;22;10;10;47;10 5
+55;2;4;1;22;10;20;57;10 6
+
+--a7'den yolla
+echo -en '\x55\x02\x04\x01\x25\x10\x01\x3b\x10' > /dev/ttyRPMSG0 1
+55;2;3;1;6;a;10  ack (for pid=1)
+echo -en '\x55\x02\x04\x01\x25\x10\x00\x3x\x10' > /dev/ttyRPMSG0
+55;2;3;2;6;b;10  ack (for pid=2)
+
+
+--press sw10
+55 02 05 01 25 41 00 02 6E 10 
+55;2;3;1;6;a;10  ack (for pid=1)
+--release sw10
+55 02 05 02 25 41 00 00 6D 10
+55;2;3;2;6;b;10  ack (for pid=2)
+
+--press sw11
+55 02 05 03 25 41 00 04 72 10
+55;2;3;3;6;c;10  ack (for pid=3)
+--release sw11
+...
+55;2;3;4;6;d;10  ack (for pid=4)
+
+--press sw8
+55 02 05 05 25 41 00 01 71 10
+55;2;3;5;6;e;10  ack (for pid=5)
+--release sw8
+...
+55;2;3;6;6;f;10  ack (for pid=6)
+
+--press sw9
+55 02 05 07 25 41 80 00 F2 10
+55;2;3;7;6;10;10  ack (for pid=7)
+--release sw9
+...
+55;2;3;8;6;11;10  ack (for pid=8)
+
+--press sw6
+55 02 05 09 25 41 08 00 7C 10
+55;2;3;9;6;12;10  ack (for pid=9)
+--release sw6
+...
+55;2;3;a;6;13;10  ack (for pid=a)
+
+--press sw7
+55 02 05 0B 25 41 40 00 B6 10
+55;2;3;b;6;14;10  ack (for pid=b)
+--release sw7
+...
+55;2;3;c;6;15;10  ack (for pid=c)
+
+--press sw4
+55 02 05 0D 25 41 10 00 88 10
+55;2;3;d;6;16;10  ack (for pid=d)
+--release sw4
+...
+55;2;3;e;6;17;10  ack (for pid=e)
+
+--press sw5
+55 02 05 0F 25 41 20 00 9A 10
+55;2;3;f;6;18;10  ack (for pid=f)
+--release sw5
+...
+55;2;3;10;6;19;10  ack (for pid=10)
+
+--press sw1
+55 02 05 11 25 41 02 00 7E 10
+55;2;3;11;6;1a;10  ack (for pid=11)
+--release sw1
+...
+55;2;3;12;6;1b;10  ack (for pid=12)
+
+--press sw2
+55 02 05 13 25 41 04 00 82 10
+55;2;3;13;6;1c;10  ack (for pid=13)
+--release sw2
+...
+55;2;3;14;6;1d;10  ack (for pid=14)
+
+--press sw3
+55 02 05 15 25 41 01 00 81 10
+55;2;3;15;6;1e;10  ack (for pid=15)
+--release sw3
+...
+55;2;3;16;6;1f;10  ack (for pid=16)

@@ -53,19 +53,24 @@ extern "C" {
 
 /*! @brief GPIO pin configuration */
 extern gpio_config_t gpioLedCtrl;
+extern gpio_config_t gpioI2c2En;
 extern gpio_config_t gpioLed_1;
 extern gpio_config_t gpioKeyFunc1;
-extern gpio_config_t gpioKeyFunc2;
+// extern gpio_config_t gpioKeyFunc2;
+extern gpio_config_t gpio_rotary_encoder_button;
+extern gpio_config_t gpio_rotary_encoder_input_a;
+extern gpio_config_t gpio_rotary_encoder_input_b;
+extern gpio_config_t gpio_rotary_encoder_read_enable_output;
 
-extern gpio_config_t gpioSwitch1;
-extern gpio_config_t gpioLed1;
-extern gpio_config_t gpioSwitch2;
-extern gpio_config_t gpioLed2;
+// extern gpio_config_t gpioSwitch1;
+// extern gpio_config_t gpioLed1;
+// extern gpio_config_t gpioSwitch2;
+// extern gpio_config_t gpioLed2;
 
-extern gpio_init_config_t Switch1;
-extern gpio_init_config_t Led1;
-extern gpio_init_config_t Switch2;
-extern gpio_init_config_t Led2;
+// extern gpio_init_config_t Switch1;
+// extern gpio_init_config_t Led1;
+// extern gpio_init_config_t Switch2;
+// extern gpio_init_config_t Led2;
 
 /*! @brief Configure specific GPIO pin */
 void configure_gpio_pin(gpio_config_t *config);

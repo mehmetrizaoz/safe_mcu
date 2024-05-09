@@ -1,157 +1,276 @@
-/*
- * Copyright (c) 2015, Freescale Semiconductor, Inc.
- * All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without modification,
- * are permitted provided that the following conditions are met:
- *
- * o Redistributions of source code must retain the above copyright notice, this list
- *   of conditions and the following disclaimer.
- *
- * o Redistributions in binary form must reproduce the above copyright notice, this
- *   list of conditions and the following disclaimer in the documentation and/or
- *   other materials provided with the distribution.
- *
- * o Neither the name of Freescale Semiconductor, Inc. nor the names of its
- *   contributors may be used to endorse or promote products derived from this
- *   software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
- * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR
- * ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
- * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
- * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON
- * ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
- * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
-
 #include <stdint.h>
 #include <stdbool.h>
 #include "board.h"
 #include "debug_console_imx.h"
 #include "i2c_imx.h"
+#include "gpio_imx.h"
+#include "gpio_pins.h"
 
+typedef struct _led
+{
+    uint8_t port;
+    uint8_t pin;
+}led;
+
+led led1 = {.pin = 0x20, .port = 1};
+led led2 = {.pin = 0x40, .port = 1};
+led led3 = {.pin = 0x80, .port = 1};
+led led4 = {.pin = 0x01, .port = 2};
+led led5 = {.pin = 0x02, .port = 2};
+led led6 = {.pin = 0x04, .port = 2};
+
+bool encoder_input_a;
+bool encoder_input_b;
 static uint8_t txBuffer[5];
 static uint8_t rxBuffer[7];
 static uint8_t cmdBuffer[5];
+uint8_t port1_leds = 0;
+uint8_t port2_leds = 0;
 
-static void report_abs(void);
 static bool I2C_MasterSendDataPolling(I2C_Type *base,
                                       const uint8_t *cmdBuff,
                                       uint32_t cmdSize,
                                       const uint8_t *txBuff,
                                       uint32_t txSize);
+
 static bool I2C_MasterReceiveDataPolling(I2C_Type *base,
                                          const uint8_t *cmdBuff,
                                          uint32_t cmdSize,
                                          uint8_t *rxBuff,
                                          uint32_t rxSize);
+uint8_t b0, b1;
+void read_buttons(void){
+    cmdBuffer[0] = BOARD_I2C_TCA6424_1_ADDR << 1;
+    cmdBuffer[1] = 0x80; //with auto increment
+    cmdBuffer[2] = (BOARD_I2C_TCA6424_1_ADDR << 1) + 1;
+    I2C_MasterReceiveDataPolling(BOARD_I2C_BASEADDR, cmdBuffer, 3, rxBuffer, 3);    
+    // PRINTF("\tbuttons:%08b %08b\r\n", rxBuffer[0], rxBuffer[1] & 0x07);
 
-int main(void)
-{
-    uint8_t i;
+    if(b0 != rxBuffer[0] || b1 != rxBuffer[1]){
+        PRINTF("expander buttons:%08b %08b\r\n", rxBuffer[0], rxBuffer[1] & 0x07);
+        b0 = rxBuffer[0];
+        b1 = rxBuffer[1];        
+    }
 
-    /* Setup I2C init structure. */
+    for(long i=0; i<50000; i++);
+}
+
+uint8_t p2, p1, p0;
+void read_rotary_switch(void){
+    cmdBuffer[0] = BOARD_I2C_TCA6424_2_ADDR << 1;
+    cmdBuffer[1] = 0x80; //with auto increment
+    cmdBuffer[2] = (BOARD_I2C_TCA6424_2_ADDR << 1) + 1;
+    I2C_MasterReceiveDataPolling(BOARD_I2C_BASEADDR, cmdBuffer, 3, rxBuffer, 3);    
+    
+    if(p0 != rxBuffer[0] || p1 != rxBuffer[1] || p2 != rxBuffer[2]){
+        PRINTF("rotary switch:\t%08b %08b %08b\r\n", rxBuffer[0], rxBuffer[1], rxBuffer[2]); //expander
+        p0 = rxBuffer[0];
+        p1 = rxBuffer[1];
+        p2 = rxBuffer[2];
+    }
+
+    // for(long i=0; i<20000000; i++);
+    for(long i=0; i<100000; i++);
+}
+
+uint8_t eb;
+void read_rotary_encoder(){
+    if(eb != GPIO_ReadPinInput(BOARD_GPIO_ENCODER_BTN->base, BOARD_GPIO_ENCODER_BTN->pin)){
+        PRINTF("encoder button :%d\r\n", GPIO_ReadPinInput(BOARD_GPIO_ENCODER_BTN->base, BOARD_GPIO_ENCODER_BTN->pin));
+        eb = GPIO_ReadPinInput(BOARD_GPIO_ENCODER_BTN->base, BOARD_GPIO_ENCODER_BTN->pin);
+    }
+
+    if(GPIO_ReadPinInput(BOARD_GPIO_ENCODER_INPUT_A->base, BOARD_GPIO_ENCODER_INPUT_A->pin) == gpioPinSet){
+        if(encoder_input_a == false){
+            if(GPIO_ReadPinInput(BOARD_GPIO_ENCODER_INPUT_B->base, BOARD_GPIO_ENCODER_INPUT_B->pin) == gpioPinClear){
+                PRINTF("3 TURNED LEFT\r\n");
+            }
+            else{
+                PRINTF("4 TURNED RIGHT\r\n");
+            }
+        }
+        encoder_input_a = true;
+    }
+    else{        
+        if (encoder_input_a == true){
+            if(GPIO_ReadPinInput(BOARD_GPIO_ENCODER_INPUT_B->base, BOARD_GPIO_ENCODER_INPUT_B->pin) == gpioPinSet){
+                PRINTF("1 TURNED LEFT\r\n");
+            }
+            else{
+                PRINTF("2 TURNED RIGHT\r\n");
+            }
+        }
+        encoder_input_a = false;
+    }
+
+    if(GPIO_ReadPinInput(BOARD_GPIO_ENCODER_INPUT_B->base, BOARD_GPIO_ENCODER_INPUT_B->pin) == gpioPinSet){
+        if(encoder_input_b == false){
+            if(GPIO_ReadPinInput(BOARD_GPIO_ENCODER_INPUT_A->base, BOARD_GPIO_ENCODER_INPUT_A->pin) == gpioPinSet){
+                PRINTF("7 TURNED LEFT\r\n");
+            }
+            else{
+                PRINTF("8 TURNED RIGHT\r\n");
+            }
+        }
+        encoder_input_b = true;
+    }
+    else{        
+        if (encoder_input_b == true){
+            if(GPIO_ReadPinInput(BOARD_GPIO_ENCODER_INPUT_A->base, BOARD_GPIO_ENCODER_INPUT_A->pin) == gpioPinClear){
+                PRINTF("5 TURNED LEFT\r\n");
+            }
+            else{
+                PRINTF("6 TURNED RIGHT\r\n");
+            }
+        }
+        encoder_input_b = false;
+    }
+}
+
+uint8_t mmm = 0;
+void setPin(led led, bool value){
+    uint8_t port_leds;
+//-----------------------------------------------------    
+    cmdBuffer[0] = BOARD_I2C_TCA6424_1_ADDR << 1;
+    cmdBuffer[1] = 0x8C; //with auto increment
+    cmdBuffer[2] = (BOARD_I2C_TCA6424_1_ADDR << 1) + 1;
+    I2C_MasterReceiveDataPolling(BOARD_I2C_BASEADDR, cmdBuffer, 3, rxBuffer, 3);
+    if(rxBuffer[0] == 0xff && rxBuffer[1] == 0x1f && rxBuffer[2] == 0xc0){
+        PRINTF(".");
+        if(mmm == 1){
+            PRINTF("aaa");
+        }
+    }
+    else{
+        mmm = 1;
+        PRINTF("%.2x %.2x %.2x\r\n", rxBuffer[0], rxBuffer[1], rxBuffer[2]);
+        cmdBuffer[0] = BOARD_I2C_TCA6424_1_ADDR << 1;
+        cmdBuffer[1] = 0x8C;
+        cmdBuffer[2] = 0xFF; //0-7 input
+        cmdBuffer[3] = 0x1F; //0-4 pins input, 5-7 pins output
+        cmdBuffer[4] = 0xC0; //0-5 output, 6-7 input
+        I2C_MasterSendDataPolling(BOARD_I2C_BASEADDR, cmdBuffer, 5, txBuffer, 0);        
+    }  
+//-----------------------------------------------------
+    if(led.port == 1){
+        port_leds = port1_leds;
+    }
+    else{
+        port_leds = port2_leds;
+    }
+    PRINTF("port: %d pin: %d value: %08b \r\n", led.port, led.pin, port_leds);
+
+    cmdBuffer[0] = BOARD_I2C_TCA6424_1_ADDR << 1;
+    cmdBuffer[1] = 0x04 + led.port;
+    if(value == true){
+        cmdBuffer[2] = port_leds | led.pin;
+    }
+    else{        
+        cmdBuffer[2] = port_leds & (~led.pin);
+    }
+    
+    port_leds = cmdBuffer[2];
+    I2C_MasterSendDataPolling(BOARD_I2C_BASEADDR, cmdBuffer, 3, txBuffer, 0);
+
+    if(led.port == 1){
+        port1_leds = port_leds;
+    }
+    else{
+        port2_leds = port_leds;
+    }
+
+    for(long i=0; i<20000000; i++);
+}
+
+void init_tca6424(){
     i2c_init_config_t i2cInitConfig = {
         .baudRate     = 400000u,
         .slaveAddress = 0x00
-    };
-
-    /* Initialize board specified hardware. */
-    hardware_init();
-
-    /* Get current module clock frequency. */
+    };   
+    
     i2cInitConfig.clockRate = get_i2c_clock_freq(BOARD_I2C_BASEADDR);
-
-    PRINTF("\n\r++++++++++++++++ I2C Send/Receive polling Example ++++++++++++++++\n\r");
-    PRINTF("This example will configure on board accelerometer through I2C Bus\n\r");
-    PRINTF("and read 10 samples back to see if the accelerometer is configured successfully. \n\r");
-
-    PRINTF("[1].Initialize the I2C module with initialize structure. \n\r");
     I2C_Init(BOARD_I2C_BASEADDR, &i2cInitConfig);
+    I2C_Enable(BOARD_I2C_BASEADDR);    
+    GPIO_WritePinOutput(BOARD_GPIO_I2C2_EN->base, BOARD_GPIO_I2C2_EN->pin, gpioPinSet);
+    for(long i=0; i<5000; i++);
 
-    /* Finally, enable the I2C module */
-    I2C_Enable(BOARD_I2C_BASEADDR);
+    cmdBuffer[0] = BOARD_I2C_TCA6424_1_ADDR << 1;
+    cmdBuffer[1] = 0x8C;
+    cmdBuffer[2] = 0xFF; //0-7 input
+    cmdBuffer[3] = 0x1F; //0-4 pins input, 5-7 pins output
+    cmdBuffer[4] = 0xC0; //0-5 output, 6-7 input
+    I2C_MasterSendDataPolling(BOARD_I2C_BASEADDR, cmdBuffer, 5, txBuffer, 0);
+    for(long i=0; i<5000; i++);
 
-    PRINTF("[2].Set on-board Acc sensor range to 2G\n\r");
-    // Place FXOS8700 into standby
-    cmdBuffer[0] = BOARD_I2C_FXOS8700_ADDR << 1;
-    cmdBuffer[1] = 0x2A;
-    txBuffer[0]  = 0x00;
-    I2C_MasterSendDataPolling(BOARD_I2C_BASEADDR, cmdBuffer, 2, txBuffer, 1);
+    cmdBuffer[0] = BOARD_I2C_TCA6424_1_ADDR << 1;
+    cmdBuffer[1] = 0x84;
+    cmdBuffer[2] = 0x00;//
+    cmdBuffer[3] = 0x00;
+    cmdBuffer[4] = 0x00;
+    I2C_MasterSendDataPolling(BOARD_I2C_BASEADDR, cmdBuffer, 5, txBuffer, 0);
+    for(long i=0; i<5000; i++);
 
-    // Disable FXOS8700's magnetometer only
-    cmdBuffer[0] = BOARD_I2C_FXOS8700_ADDR << 1;
-    cmdBuffer[1] = 0x5B;
-    txBuffer[0]  = 0x00;
-    I2C_MasterSendDataPolling(BOARD_I2C_BASEADDR, cmdBuffer, 2, txBuffer, 1);
-
-    cmdBuffer[0] = BOARD_I2C_FXOS8700_ADDR << 1;
-    cmdBuffer[1] = 0x5C;
-    txBuffer[0]  = 0x00;
-    I2C_MasterSendDataPolling(BOARD_I2C_BASEADDR, cmdBuffer, 2, txBuffer, 1);
-
-    // Set accelerometer range to 2G
-    cmdBuffer[0] = BOARD_I2C_FXOS8700_ADDR << 1;
-    cmdBuffer[1] = 0x0E;
-    txBuffer[0]  = 0x00;
-    I2C_MasterSendDataPolling(BOARD_I2C_BASEADDR, cmdBuffer, 2, txBuffer, 1);
-
-    // Set accelerometer for high resolution (maximum over sampling)
-    cmdBuffer[0] = BOARD_I2C_FXOS8700_ADDR << 1;
-    cmdBuffer[1] = 0x2B;
-    txBuffer[0]  = 0x02;
-    I2C_MasterSendDataPolling(BOARD_I2C_BASEADDR, cmdBuffer, 2, txBuffer, 1);
-
-    PRINTF("[3].Set on-board Acc sensor working at active mode\n\r");
-    cmdBuffer[0] = BOARD_I2C_FXOS8700_ADDR << 1;
-    cmdBuffer[1] = 0x2A;
-    txBuffer[0]  = 0x09;
-    I2C_MasterSendDataPolling(BOARD_I2C_BASEADDR, cmdBuffer, 2, txBuffer, 1);
-
-    PRINTF("[4].Acc sensor WHO_AM_I check... ");
-    cmdBuffer[0] = BOARD_I2C_FXOS8700_ADDR << 1;
-    cmdBuffer[1] = 0x0D;
-    cmdBuffer[2] = (BOARD_I2C_FXOS8700_ADDR << 1) + 1;
-    I2C_MasterReceiveDataPolling(BOARD_I2C_BASEADDR, cmdBuffer, 3, rxBuffer, 1);
-    if (0xC7 == rxBuffer[0])
-        PRINTF("OK\n\r");
-    else
-        PRINTF("ERROR\n\r");
-
-    PRINTF("[5].Acquire 10 samples from Acc sensor\n\r");
-    for (i = 0; i < 10; i++)
-        report_abs();
-
-    PRINTF("\n\rExample finished!!!\n\r");
-    while (true)
-        __WFI();
+    cmdBuffer[0] = BOARD_I2C_TCA6424_2_ADDR << 1;
+    cmdBuffer[1] = 0x8C;
+    cmdBuffer[2] = 0xFF; //all ports input
+    cmdBuffer[3] = 0xFF; 
+    cmdBuffer[4] = 0xFF;
+    I2C_MasterSendDataPolling(BOARD_I2C_BASEADDR, cmdBuffer, 5, txBuffer, 0);
+    for(long i=0; i<5000; i++);
 }
 
-static void report_abs(void)
-{
-    int16_t x, y, z;
-    float Ax, Ay, Az;
+void init_rotary_encoder(){
+    gpio_init_config_t rotary_encoder_pin = {
+        .pin = BOARD_GPIO_ENCODER_BTN->pin,
+        .direction = gpioDigitalInput,
+        .interruptMode = gpioNoIntmode
+    };
+    GPIO_Init(BOARD_GPIO_ENCODER_BTN->base, &rotary_encoder_pin); 
 
-    cmdBuffer[0] = BOARD_I2C_FXOS8700_ADDR << 1;
-    cmdBuffer[1] = 0x01;
-    cmdBuffer[2] = (BOARD_I2C_FXOS8700_ADDR << 1) + 1;
-    I2C_MasterReceiveDataPolling(BOARD_I2C_BASEADDR, cmdBuffer, 3, rxBuffer, 6);
+    gpio_init_config_t rotary_encoder_enable_pin = {
+        .pin = BOARD_GPIO_ENCODER_READ_ENABLE->pin,
+        .direction = gpioDigitalOutput,
+        .interruptMode = gpioNoIntmode
+    };
+    GPIO_Init(BOARD_GPIO_ENCODER_READ_ENABLE->base, &rotary_encoder_enable_pin);
+    GPIO_WritePinOutput(BOARD_GPIO_ENCODER_READ_ENABLE->base, BOARD_GPIO_ENCODER_READ_ENABLE->pin, gpioPinSet);
 
-    x = ((rxBuffer[0] << 8) & 0xff00) | rxBuffer[1];
-    y = ((rxBuffer[2] << 8) & 0xff00) | rxBuffer[3];
-    z = ((rxBuffer[4] << 8) & 0xff00) | rxBuffer[5];
-    x = (int16_t)(x) >> 2;
-    y = (int16_t)(y) >> 2;
-    z = (int16_t)(z) >> 2;
+    gpio_init_config_t encoder_input_b = {
+        .pin = BOARD_GPIO_ENCODER_INPUT_B->pin,
+        .direction = gpioDigitalInput,
+        .interruptMode = gpioNoIntmode
+    };
+    GPIO_Init(BOARD_GPIO_ENCODER_INPUT_B->base, &encoder_input_b); 
 
-    Ax = x / (4.0 * 1024);     //For full scale range 2g mode.
-    Ay = y / (4.0 * 1024);
-    Az = z / (4.0 * 1024);
-    PRINTF("2G MODE: X=%6.3fg Y=%6.3fg Z=%6.3fg\n\r",Ax, Ay, Az);
+    gpio_init_config_t encoder_input_a = {
+        .pin = BOARD_GPIO_ENCODER_INPUT_A->pin,
+        .direction = gpioDigitalInput,
+        .interruptMode = gpioNoIntmode
+    };
+    GPIO_Init(BOARD_GPIO_ENCODER_INPUT_A->base, &encoder_input_a);  
+}
+
+int main(void){
+    hardware_init();
+    init_tca6424();
+    init_rotary_encoder();
+    while(1){
+        setPin(led1, true);
+        setPin(led2, true);
+        setPin(led3, true);
+        setPin(led4, true);
+        setPin(led5, true);
+        setPin(led6, true);
+        setPin(led1, false);
+        setPin(led2, false);        
+        setPin(led3, false);                  
+        setPin(led4, false);        
+        setPin(led5, false);        
+        setPin(led6, false);
+        read_buttons();
+        read_rotary_switch();
+        read_rotary_encoder();
+    }
 }
 
 static bool I2C_MasterSendDataPolling(I2C_Type *base,
@@ -181,8 +300,7 @@ static bool I2C_MasterSendDataPolling(I2C_Type *base,
         txSize--;
     }
 
-    while (1)
-    {
+    while (1){
         /* Wait I2C transmission status flag assert.  */
         while (!I2C_GetStatusFlag(base, i2cStatusInterrupt));
 
@@ -198,6 +316,7 @@ static bool I2C_MasterSendDataPolling(I2C_Type *base,
 
             /* Switch back to Rx direction. */
             I2C_SetDirMode(base, i2cDirectionReceive);
+            // PRINTF("...\r\n");
             return true;
         }
         else
@@ -337,7 +456,3 @@ static bool I2C_MasterReceiveDataPolling(I2C_Type *base,
         }
     }
 }
-
-/*******************************************************************************
- * EOF
- ******************************************************************************/

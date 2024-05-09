@@ -76,6 +76,8 @@ ADD_EXECUTABLE(${ProjectName}
     "${BspRootDirPath}/platform/drivers/src/uart_imx.c"
     "${BspRootDirPath}/platform/utilities/src/debug_console_imx.c"
     "${BspRootDirPath}/platform/utilities/src/print_scan.c"
+    "${BspRootDirPath}/platform/drivers/src/gpio_imx.c"
+    "${ProjDirPath}/../../../../gpio_pins.c"
     "${ProjDirPath}/../../../../board.c"
     "${ProjDirPath}/../../../../clock_freq.c"
     "${ProjDirPath}/../../../../gpio_pins.c"

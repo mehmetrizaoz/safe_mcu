@@ -83,10 +83,17 @@
 /* GPIO information for this board */
 #define BOARD_GPIO_KEY_CCM_CCGR               ccmCcgrGateGpio2
 #define BOARD_GPIO_LED_RDC_PDAP               rdcPdapGpio1
-#define BOARD_GPIO_LEDCTRL_CONFIG                 (&gpioLedCtrl)
+#define BOARD_GPIO_LEDCTRL_CONFIG             (&gpioLedCtrl)
+#define BOARD_GPIO_ENCODER_BTN                (&gpio_rotary_encoder_button)
+#define BOARD_GPIO_I2C2_EN                    (&gpioI2c2En)
 #define BOARD_GPIO_LED1_CONFIG                (&gpioLed_1)
 #define BOARD_GPIO_KEY_RDC_PDAP               rdcPdapGpio2
 #define BOARD_GPIO_KEY_CONFIG                 (&gpioKeyFunc1)
+
+#define BOARD_GPIO_ENCODER_INPUT_A                 (&gpio_rotary_encoder_input_a)
+#define BOARD_GPIO_ENCODER_INPUT_B                 (&gpio_rotary_encoder_input_b)
+#define BOARD_GPIO_ENCODER_READ_ENABLE             (&gpio_rotary_encoder_read_enable_output)
+
 #define BOARD_GPIO_KEY_IRQ_NUM                GPIO2_INT31_16_IRQn
 #define BOARD_GPIO_KEY_HANDLER                GPIO2_INT31_16_Handler
 
@@ -156,14 +163,15 @@
 #define BOARD_MU_RDC_PDAP                     rdcPdapMuB
 
 /* I2C information for this board */
-#define BOARD_I2C_RDC_PDAP                    rdcPdapI2c4
-#define BOARD_I2C_CCM_ROOT                    ccmRootI2c4
-#define BOARD_I2C_CCM_CCGR                    ccmCcgrGateI2c4
-#define BOARD_I2C_BASEADDR                    I2C4
-#define BOARD_I2C_IRQ_NUM                     I2C4_IRQn
-#define BOARD_I2C_HANDLER                     I2C4_Handler
+#define BOARD_I2C_RDC_PDAP                    rdcPdapI2c2
+#define BOARD_I2C_CCM_ROOT                    ccmRootI2c2
+#define BOARD_I2C_CCM_CCGR                    ccmCcgrGateI2c2
+#define BOARD_I2C_BASEADDR                    I2C2
+#define BOARD_I2C_IRQ_NUM                     I2C2_IRQn
+#define BOARD_I2C_HANDLER                     I2C2_Handler
 #define BOARD_I2C_FXAS21002_ADDR              (0x20)
-#define BOARD_I2C_FXOS8700_ADDR               (0x1E)
+#define BOARD_I2C_TCA6424_1_ADDR              (0x22)
+#define BOARD_I2C_TCA6424_2_ADDR              (0x23)
 
 /* FlexCAN information for this board */
 #define BOARD_FLEXCAN_RDC_PDAP                rdcPdapFlexCan1

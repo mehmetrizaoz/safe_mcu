@@ -1,0 +1,3 @@
+/home/aselsan/Desktop/GPT_BACKUP/freertos-colibri-imx7/examples/imx7_colibri_m4/driver_examples/i2c_imx/i2c_polling_sensor_imx7d/armgcc/release/CMakeFiles/rebuild_cache.dir
+/home/aselsan/Desktop/GPT_BACKUP/freertos-colibri-imx7/examples/imx7_colibri_m4/driver_examples/i2c_imx/i2c_polling_sensor_imx7d/armgcc/release/CMakeFiles/edit_cache.dir
+/home/aselsan/Desktop/GPT_BACKUP/freertos-colibri-imx7/examples/imx7_colibri_m4/driver_examples/i2c_imx/i2c_polling_sensor_imx7d/armgcc/release/CMakeFiles/i2c_polling_sensor_imx7d.dir

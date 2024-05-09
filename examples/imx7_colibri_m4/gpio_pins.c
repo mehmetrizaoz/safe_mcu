@@ -33,11 +33,60 @@
 #include "board.h"
 #include "gpio_imx.h"
 
+gpio_config_t gpio_rotary_encoder_input_a = {
+    "ENC_BTN",                          /* name */
+    (volatile uint32_t *)(0x303300b0),  /* muxReg */
+    5,                                  /* muxConfig */
+    (volatile uint32_t *)(0x30330320),  /* padReg */
+    0,                                  /* padConfig */
+    (volatile uint32_t *)(0x30210000),  /* base */
+    31                                   /* pin */
+};
+
+gpio_config_t gpio_rotary_encoder_input_b = {
+    "ENC_BTN",                          /* name */
+    (volatile uint32_t *)(0x303300ac),  /* muxReg */
+    5,                                  /* muxConfig */
+    (volatile uint32_t *)(0x3033031c),  /* padReg */
+    0,                                  /* padConfig */
+    (volatile uint32_t *)(0x30210000),  /* base */
+    30                                   /* pin */
+};
+
+gpio_config_t gpio_rotary_encoder_read_enable_output = {
+    "ENC_BTN",                          /* name */
+    (volatile uint32_t *)(0x30330084),  /* muxReg */
+    5,                                  /* muxConfig */
+    (volatile uint32_t *)(0x303302f4),  /* padReg */
+    0,                                  /* padConfig */
+    (volatile uint32_t *)(0x30210000),  /* base */
+    20                                  /* pin */
+};
+
+gpio_config_t gpio_rotary_encoder_button = {
+    "ENC_BTN",                          /* name */
+    (volatile uint32_t *)(0x3033004c),  /* muxReg */
+    5,                                  /* muxConfig */
+    (volatile uint32_t *)(0x303302bc),  /* padReg */
+    0,                                  /* padConfig */
+    (volatile uint32_t *)(0x30210000),  /* base */
+    6                                   /* pin */
+};
+
+gpio_config_t gpioI2c2En = {
+    "EXT_IO0 I2CEN",                    /* name */
+    (volatile uint32_t *)(0x3033003c),  /* muxReg */
+    5,                                  /* muxConfig */
+    (volatile uint32_t *)(0x303302ac),  /* padReg */
+    0,                                  /* padConfig */
+    (volatile uint32_t *)(0x30210000),  /* base */
+    2                                   /* pin */
+};
 
 gpio_config_t gpioLedCtrl = {
-    "EXT_IO0 LEDCTRL",                      /* name */
+    "EXT_IO0 LEDCTRL",                  /* name */
     (volatile uint32_t *)(0x30330234),  /* muxReg */
-    0,                                  /* muxConfig */
+    5,                                  /* muxConfig */
     (volatile uint32_t *)(0x303304a4),  /* padReg */
     0,                                  /* padConfig */
     (volatile uint32_t *)(0x30260000),  /* base */
@@ -47,144 +96,21 @@ gpio_config_t gpioLedCtrl = {
 gpio_config_t gpioLed_1 = {
     "EXT_IO0 LED1",                      /* name */
     (volatile uint32_t *)(0x30330184),  /* muxReg */
-    0,                                  /* muxConfig */
+    5,                                  /* muxConfig */
     (volatile uint32_t *)(0x303303f4),  /* padReg */
     0,                                  /* padConfig */
     (volatile uint32_t *)(0x30230000),  /* base */
     23                                   /* pin */
 };
 
-
-
-// gpio_config_t gpioLed = {
-//     "EXT_IO0 LED",                      /* name */
-//     &IOMUXC_LPSR_SW_MUX_CTL_PAD_GPIO1_IO02,  /* muxReg */
-//     0,                                  /* muxConfig */
-//     &IOMUXC_LPSR_SW_PAD_CTL_PAD_GPIO1_IO02,  /* padReg */
-//     0,                                  /* padConfig */
-//     GPIO1,                              /* base */
-//     2                                   /* pin */
-// };
-
 gpio_config_t gpioKeyFunc1 = {
     "EXT_IO1",                          /* name */
     (volatile uint32_t *)(0x30330054),  /* muxReg */
-    0,                                  /* muxConfig */
+    5,                                  /* muxConfig */
     (volatile uint32_t *)(0x303302c4),  /* padReg */
     0x010000000,                        /* padConfig */
     (volatile uint32_t *)(0x30210000),  /* base */
     8                                   /* pin */
-};
-
-// gpio_config_t gpioKeyFunc1 = {
-//     "EXT_IO1",                                      /* name */
-//     &IOMUXC_SW_MUX_CTL_PAD_EPDC_GDRL,               /* muxReg */
-//     5,                                              /* muxConfig */
-//     &IOMUXC_SW_PAD_CTL_PAD_EPDC_GDRL,               /* padReg */
-//     IOMUXC_SW_PAD_CTL_PAD_EPDC_GDRL_PS(2) |        /* padConfig */
-//         IOMUXC_SW_PAD_CTL_PAD_EPDC_GDRL_PE_MASK |
-// 	IOMUXC_SW_PAD_CTL_PAD_EPDC_GDRL_HYS_MASK,
-//     GPIO2,                                          /* base */
-//     26                                              /* pin */
-// };
-
-gpio_config_t gpioKeyFunc2 = {
-    "EXT_IO2",                                       /* name */
-    &IOMUXC_SW_MUX_CTL_PAD_EPDC_SDCE2,               /* muxReg */
-    5,                                              /* muxConfig */
-    &IOMUXC_SW_PAD_CTL_PAD_EPDC_SDCE2,                  /* padReg */
-    IOMUXC_SW_PAD_CTL_PAD_EPDC_SDCE2_PS(2) |        /* padConfig */
-        IOMUXC_SW_PAD_CTL_PAD_EPDC_SDCE2_PE_MASK |
-	IOMUXC_SW_PAD_CTL_PAD_EPDC_SDCE2_HYS_MASK,
-    GPIO2,                                          /* base */
-    22                                              /* pin */
-};
-
-
-/* Switch 1
- * SODIMM                BALL NAME                GPIO                ALT
- *    133                EPDC_GDRL           GPIO02_26                  5
- */
-gpio_config_t gpioSwitch1 = {
-    "SODIMM 133",                                      /* name */
-    &IOMUXC_SW_MUX_CTL_PAD_EPDC_GDRL,               /* muxReg */
-    5,                                              /* muxConfig */
-    &IOMUXC_SW_PAD_CTL_PAD_EPDC_GDRL,               /* padReg */
-    IOMUXC_SW_PAD_CTL_PAD_EPDC_GDRL_PS(2)  |        /* padConfig */
-    	IOMUXC_SW_PAD_CTL_PAD_EPDC_GDRL_PE_MASK |
-    IOMUXC_SW_PAD_CTL_PAD_EPDC_GDRL_HYS_MASK,
-    GPIO2,                                          /* base */
-    26                                              /* pin */
-};
-gpio_init_config_t Switch1 = {
-    .pin           = 26, //pin number
-    .direction     = gpioDigitalInput,
-    .interruptMode = gpioNoIntmode
-};
-
-/* LED 1
- * SODIMM                BALL NAME                GPIO                ALT
- *    127               EPDC_SDCE2           GPIO02_22                  5
- */
-gpio_config_t gpioLed1 = {
-    "SODIMM 127",                                       /* name */
-    &IOMUXC_SW_MUX_CTL_PAD_EPDC_SDCE2,               /* muxReg */
-    5,                                              /* muxConfig */
-    &IOMUXC_SW_PAD_CTL_PAD_EPDC_SDCE2,                  /* padReg */
-    IOMUXC_SW_PAD_CTL_PAD_EPDC_SDCE2_PS(2) |        /* padConfig */
-        IOMUXC_SW_PAD_CTL_PAD_EPDC_SDCE2_PE_MASK |
-	IOMUXC_SW_PAD_CTL_PAD_EPDC_SDCE2_HYS_MASK,
-    GPIO2,                                          /* base */
-    22                                              /* pin */
-};
-gpio_init_config_t Led1 = {
-    .pin           = 22, //pin number
-    .direction     = gpioDigitalOutput,
-    .interruptMode = gpioNoIntmode
-};
-
-
-/* Switch 2
- * SODIMM                BALL NAME                GPIO                ALT
- *    107                 EPDC_DATA15           GPIO02_15                  5
- */
-gpio_config_t gpioSwitch2 = {
-    "SODIMM 107",                                      /* name */
-    &IOMUXC_SW_MUX_CTL_PAD_EPDC_DATA15,               /* muxReg */
-    5,                                              /* muxConfig */
-    &IOMUXC_SW_PAD_CTL_PAD_EPDC_DATA15,               /* padReg */
-    IOMUXC_SW_PAD_CTL_PAD_EPDC_DATA15_PS(2)  |        /* padConfig */
-    	IOMUXC_SW_PAD_CTL_PAD_EPDC_DATA15_PE_MASK |
-    IOMUXC_SW_PAD_CTL_PAD_EPDC_DATA15_HYS_MASK,
-    GPIO2,                                          /* base */
-    15                                              /* pin */
-};
-gpio_init_config_t Switch2 = {
-    .pin           = 15, //pin number
-    .direction     = gpioDigitalInput,
-    .interruptMode = gpioNoIntmode
-};
-
-/* LED 2
- * SODIMM                BALL NAME                GPIO                ALT
- *    105                 EPDC_DATA10           GPIO02_10                  5
- */
-gpio_config_t gpioLed2 = {
-    "SODIMM 105",                                       /* name */
-    &IOMUXC_SW_MUX_CTL_PAD_EPDC_DATA10,               /* muxReg */
-    5,                                              /* muxConfig */
-    &IOMUXC_SW_PAD_CTL_PAD_EPDC_DATA10,                  /* padReg */
-    IOMUXC_SW_PAD_CTL_PAD_EPDC_DATA10_PS(2) |        /* padConfig */
-        IOMUXC_SW_PAD_CTL_PAD_EPDC_DATA10_PE_MASK |
-	IOMUXC_SW_PAD_CTL_PAD_EPDC_DATA10_HYS_MASK,
-    GPIO2,                                          /* base */
-    10                                              /* pin */
-};
-
-gpio_init_config_t Led2 = {
-    .pin           = 10, //pin number
-    .direction     = gpioDigitalOutput,
-    .interruptMode = gpioNoIntmode
 };
 
 void configure_gpio_pin(gpio_config_t *config)

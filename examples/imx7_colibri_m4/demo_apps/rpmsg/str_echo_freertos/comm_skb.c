@@ -6,6 +6,8 @@
 #include "comm_skb.h"
 #include <stdlib.h> 
 #include "semphr.h"
+#include "i2c.h"
+#include "gpio.h"
 
 struct remote_device *rdev = NULL;
 struct rpmsg_channel *app_chnl = NULL;
@@ -21,9 +23,9 @@ QueueHandle_t ack_queue_of_skb_received_data;
 QueueHandle_t ack_queue_received_from_skb;
 QueueHandle_t data_queue_receied_from_a7;
 
-uint8_t skb_ack_timeout = 0;
+uint32_t skb_ack_timeout = 0;
 bool waiting_skb_ack = false;
-uint8_t sent_skb_packet_packet_id;
+uint8_t sent_skb_packet_packet_id = 1;
 bool wrong_ack_received_from_skb = false;
 
 void pointPreviousPlace(uint8_t *ptr, uint8_t shift){
@@ -119,15 +121,15 @@ bool get_packet_from_a7_rx_buffer(uint8_t *packet_length, uint8_t **start_addres
     }
 
     *a7_packet_data = a7Data; //eop
-    a7_packet_data++;
+    // a7_packet_data++;
+    // a7_packet_data -= *packet_length + SIZE_SOF_SOT_DL_CRC_EOP;
 
-    a7_packet_data -= *packet_length + SIZE_SOF_SOT_DL_CRC_EOP;    
     *packet_length += SIZE_SOF_SOT_DL_CRC_EOP;
     
     return true;    
 }
 
-void send_data_to_skb(void *pvParameters){
+void task_send_data_to_skb(void *pvParameters){
     uint8_t skb_received_ack_packet_id;    
     int8_t ackBuf[7] = {SOF, SOT, 3, 0, ACK, 0, EOP};
     int result; //todo: check results    
@@ -137,7 +139,7 @@ void send_data_to_skb(void *pvParameters){
     uint8_t *a7_package_address;
 
     result = rpmsg_rtos_init(0 /*REMOTE_CPU_ID*/, &rdev, RPMSG_MASTER, &app_chnl);
-    PRINTF("Name service handshake is done, M4 has setup a rpmsg channel [%d ---> %d]\r\n", app_chnl->src, app_chnl->dst);
+    // PRINTF("Name service handshake is done, M4 has setup a rpmsg channel [%d ---> %d]\r\n", app_chnl->src, app_chnl->dst);
     for (;;){
         xSemaphoreTake(xSemaphore, portMAX_DELAY);
         //send ack packets (that were prepared for received skb data packages) to skb
@@ -149,7 +151,7 @@ void send_data_to_skb(void *pvParameters){
             }
         }
 
-        if(skb_ack_timeout == 10){
+        if(skb_ack_timeout > TIMEOUT){ //todo: timeout duration is wrong
             PRINTF("timeout\r\n");
             skb_ack_timeout = 0;
             waiting_skb_ack = false;
@@ -159,26 +161,90 @@ void send_data_to_skb(void *pvParameters){
                 //poll ack packages that were received from skb are in the queue
                 if(xQueueReceive(ack_queue_received_from_skb, &skb_received_ack_packet_id, pdMS_TO_TICKS(1) == pdTRUE)){
                     if(skb_received_ack_packet_id != sent_skb_packet_packet_id){
-                        wrong_ack_received_from_skb = true; //todo: consider flasg's usage
+                        wrong_ack_received_from_skb = true; //todo: consider flag's usage
                         PRINTF("wrong ack received\r\n");                       
                     }
                     else{
                         PRINTF("ack received\r\n");
                         skb_ack_timeout = 0;
-                        waiting_skb_ack = false;  
+                        waiting_skb_ack = false;
+                        sent_skb_packet_packet_id++;
                     }                
                 }   
                 else{
-                    PRINTF(".");
+                    // PRINTF("%d seconds left\r\n", TIMEOUT - skb_ack_timeout);
                     skb_ack_timeout++;
                 }             
             }
             else{
-                if(get_packet_from_a7_rx_buffer(&a7_package_length, &a7_package_address)){
+                if(switch_event == true){
+                    //create switch pressed packet
+                    debug_putchar(SOF);//sof
+                    debug_putchar(SOT);//sot
+                    debug_putchar(DATA_LENGTH_OPCODE_SWITCH_EVENT);//datalength
+                    debug_putchar(sent_skb_packet_packet_id);//packet_id
+                    debug_putchar(M4_SENSOR_ID);//sid (m4)
+                    debug_putchar(OPCODE_SWITCH_EVENT);//opcode
+                    debug_putchar(port0_switches);//data0
+                    debug_putchar(port1_switches);//data1
+                    debug_putchar(DATA_LENGTH_OPCODE_SWITCH_EVENT +
+                                  sent_skb_packet_packet_id + 
+                                  M4_SENSOR_ID + 
+                                  OPCODE_SWITCH_EVENT + 
+                                  port0_switches +
+                                  port1_switches);//crc
+                    debug_putchar(EOP);//eop                    
+                    switch_event = false;
+                    waiting_skb_ack = true;
+                }
+                else if(rotary_encoder_event != 0){                    
+                    debug_putchar(SOF);//sof
+                    debug_putchar(SOT);//sot
+                    debug_putchar(DATA_LENGTH_OPCODE_ROTARY_ENCODER_EVENT);//datalength
+                    debug_putchar(sent_skb_packet_packet_id);//packet_id
+                    debug_putchar(M4_SENSOR_ID);//sid (m4)
+                    debug_putchar(OPCODE_ROTARY_ENCODER_EVENT);//opcode
+                    debug_putchar(rotary_encoder_event);//data0
+                    debug_putchar(DATA_LENGTH_OPCODE_ROTARY_ENCODER_EVENT + 
+                                  sent_skb_packet_packet_id +
+                                  M4_SENSOR_ID +
+                                  OPCODE_ROTARY_ENCODER_EVENT +
+                                  rotary_encoder_event);//crc
+                    debug_putchar(EOP);//eop             
+                    waiting_skb_ack = true;
+                    rotary_encoder_event = 0;
+                }
+                else if(rotary_switch_event == true){
+                    debug_putchar(SOF);//sof
+                    debug_putchar(SOT);//sot
+                    debug_putchar(DATA_LENGTH_OPCODE_ROTARY_SWITCH_EVENT);//datalength
+                    debug_putchar(sent_skb_packet_packet_id);//packet_id
+                    debug_putchar(M4_SENSOR_ID);//sid (m4)
+                    debug_putchar(OPCODE_ROTARY_SWITCH_EVENT);//opcode
+                    debug_putchar(rotary_switch_p0);//data0
+                    debug_putchar(rotary_switch_p1);//data1
+                    debug_putchar(rotary_switch_p2);//data2
+                    debug_putchar(DATA_LENGTH_OPCODE_ROTARY_SWITCH_EVENT +
+                                  sent_skb_packet_packet_id +
+                                  M4_SENSOR_ID +
+                                  OPCODE_ROTARY_SWITCH_EVENT + 
+                                  rotary_switch_p0 + 
+                                  rotary_switch_p1 +
+                                  rotary_switch_p2);//crc
+                    debug_putchar(EOP);//eop                     
+                    waiting_skb_ack = true;
+                    rotary_switch_event = false;
+                }
+                else if(get_packet_from_a7_rx_buffer(&a7_package_length, &a7_package_address)){
+                    process_a7_packet(*(a7_package_address + 5), *(a7_package_address + 6));
+                    
+                    //override packet id, ignore value that came from a7
+                    *(a7_package_address + PACKET_ID_OFFSET) = sent_skb_packet_packet_id;
+                    
                     for(int i=0; i<a7_package_length; i++){
-                        debug_putchar( *(a7_package_address + i));
+                        debug_putchar( *(a7_package_address + i));                                          
                     }
-                    sent_skb_packet_packet_id = *(a7_package_address + PACKET_ID_OFFSET);
+
                     waiting_skb_ack = true;
                     vPortFree(a7_package_address); 
                 }
@@ -194,11 +260,11 @@ void send_data_to_skb(void *pvParameters){
         }
         result = rpmsg_rtos_recv_nocopy_free(app_chnl->rp_ept, a7_rx_buf);
         xSemaphoreGive(xSemaphore);
-        vTaskDelay(1000);
+        vTaskDelay(1);
     }
 }
 
-void fill_skb_rx_buf(void *pvParameters){
+void task_fill_skb_rx_buf(void *pvParameters){
     for (;;){
         xSemaphoreTake(xSemaphore, portMAX_DELAY);
         if (UART_GetStatusFlag((UART_Type*)BOARD_DEBUG_UART_BASEADDR, uartStatusRxDataReady)){
@@ -217,7 +283,7 @@ void fill_skb_rx_buf(void *pvParameters){
     }
 }
 
-void parse_skb_rx_buf(void *pvParameters){
+void task_parse_skb_rx_buf(void *pvParameters){
     int result;
     void *tx_buf;
     unsigned long size;
@@ -268,7 +334,7 @@ void parse_skb_rx_buf(void *pvParameters){
                                     PRINTF("\r\nchecksum:%d\r\n", checksum);
                                     #endif
 
-                                    //direct skb packet to a7
+                                    //forward skb packet to a7
                                     tx_buf = rpmsg_rtos_alloc_tx_buffer(app_chnl->rp_ept, &size);
                                     len = 0;
                                     *((char *)(tx_buf + len++)) = SOF;
@@ -277,19 +343,18 @@ void parse_skb_rx_buf(void *pvParameters){
                                     *((char *)(tx_buf + len++)) = packet_id;
                                     *((char *)(tx_buf + len++)) = sensor_id;
                                     for(int i=0; i<data_length-SIZE_PID_SID_OPCOD; i++){
-                                        *((char *)(tx_buf + len++)) = data_ptr[i];                                  
+                                        *((char *)(tx_buf + len++)) = data_ptr[i];             
                                     }
                                     *((char *)(tx_buf + len++)) = checksum;
                                     *((char *)(tx_buf + len++)) = EOP;
                                     *((char *)(tx_buf + len++)) = LF;
                                     
+                                    //mehmet
                                     result = rpmsg_rtos_send_nocopy(app_chnl->rp_ept, tx_buf, len, MESSAGE_ADRESS);
-
-                                    //todo: fill ack queue that will be sent to skb
-                                    xQueueSendToBack(ack_queue_of_skb_received_data, &packet_id, 0);
-
-                                    //todo: process skb packet
                                     
+                                    //fill ack queue that will be sent to skb
+                                    xQueueSendToBack(ack_queue_of_skb_received_data, &packet_id, 0);
+                                    process_skb_packet(opcode, data_ptr[0]);     
                                 }
                                 else{
                                     #if DEBUG_COMM_SKB == 1
@@ -369,5 +434,43 @@ void parse_skb_rx_buf(void *pvParameters){
         }
         xSemaphoreGive(xSemaphore);
         vTaskDelay(5);
+    }
+}
+
+//todo: update input parameters, use packet start address and packet length
+void process_skb_packet(const uint8_t opcode, const uint8_t data){
+uint8_t tmp;
+    if(opcode == OPCODE_UPDATE_LEDS){
+        tmp = data;
+        setPin(led1, tmp & 0x01);
+        tmp = data;
+        setPin(led2, tmp & 0x02);
+        tmp = data;
+        setPin(led3, tmp & 0x04);
+        tmp = data;
+        setPin(led4, tmp & 0x08);
+        tmp = data;
+        setPin(led5, tmp & 0x10);
+        tmp = data;
+        setPin(led6, tmp & 0x20);    
+    }
+}
+
+//todo: update input parameters, use packet start address and packet length
+void process_a7_packet(const uint8_t opcode, const uint8_t data){
+uint8_t tmp;
+    if(opcode == OPCODE_UPDATE_LEDS){
+        tmp = data;
+        setPin(led1, tmp & 0x01);
+        tmp = data;
+        setPin(led2, tmp & 0x02);
+        tmp = data;
+        setPin(led3, tmp & 0x04);
+        tmp = data;
+        setPin(led4, tmp & 0x08);
+        tmp = data;
+        setPin(led5, tmp & 0x10);
+        tmp = data;
+        setPin(led6, tmp & 0x20);    
     }
 }

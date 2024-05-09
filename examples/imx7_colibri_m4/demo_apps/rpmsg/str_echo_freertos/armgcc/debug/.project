@@ -267,6 +267,11 @@
 			<location>/home/aselsan/Desktop/GPT_BACKUP/freertos-colibri-imx7/platform/utilities/src/debug_console_imx.c</location>
 		</link>
 		<link>
+			<name>[Targets]/[exe] str_echo_freertos/Source Files/i2c_imx.c</name>
+			<type>1</type>
+			<location>/home/aselsan/Desktop/GPT_BACKUP/freertos-colibri-imx7/platform/drivers/src/i2c_imx.c</location>
+		</link>
+		<link>
 			<name>[Targets]/[exe] str_echo_freertos/Source Files/print_scan.c</name>
 			<type>1</type>
 			<location>/home/aselsan/Desktop/GPT_BACKUP/freertos-colibri-imx7/platform/utilities/src/print_scan.c</location>
@@ -355,6 +360,11 @@
 			<name>[Targets]/[exe] str_echo_freertos/Source Files/gpio.c</name>
 			<type>1</type>
 			<location>/home/aselsan/Desktop/GPT_BACKUP/freertos-colibri-imx7/examples/imx7_colibri_m4/demo_apps/rpmsg/str_echo_freertos/gpio.c</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] str_echo_freertos/Source Files/i2c.c</name>
+			<type>1</type>
+			<location>/home/aselsan/Desktop/GPT_BACKUP/freertos-colibri-imx7/examples/imx7_colibri_m4/demo_apps/rpmsg/str_echo_freertos/i2c.c</location>
 		</link>
 		<link>
 			<name>[Targets]/[exe] str_echo_freertos/Source Files/comm_skb.c</name>

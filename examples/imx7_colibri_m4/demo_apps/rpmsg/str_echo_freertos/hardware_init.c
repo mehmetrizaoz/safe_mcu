@@ -3,29 +3,18 @@
 #include "gpt.h"
 #include "clock_freq.h"
 #include "uart_imx.h"
+#include "gpio_imx.h"
+#include "gpio_pins.h"
 
 void hardware_init(void)
 {
-    /* Board specific RDC settings */
     BOARD_RdcInit();
+    BOARD_ClockInit(); 
 
-    /* Board specific clock settings */
-    BOARD_ClockInit(); //*****************
-
-    /* initialize debug uart */
     RDC_SetPdapAccess(RDC, BOARD_DEBUG_UART_RDC_PDAP, 0xFF, false, false);
-    /* Select board debug clock derived from OSC clock(24M) */
     CCM_UpdateRoot(CCM, BOARD_DEBUG_UART_CCM_ROOT, ccmRootmuxUartOsc24m, 0, 0);
-    /* Enable debug uart clock */
     CCM_EnableRoot(CCM, BOARD_DEBUG_UART_CCM_ROOT);
-    /*
-     * IC Limitation
-     * M4 stop will cause A7 UART lose functionality
-     * So we need UART clock all the time
-     */
     CCM_ControlGate(CCM, BOARD_DEBUG_UART_CCM_CCGR, ccmClockNeededAll);
-
-    /* Config debug uart pins */
     configure_uart_pins(BOARD_DEBUG_UART_BASEADDR);
     DbgConsole_Init(BOARD_DEBUG_UART_BASEADDR, get_uart_clock_freq(BOARD_DEBUG_UART_BASEADDR), 115200, uartModemModeDte);
 
@@ -43,33 +32,26 @@ void hardware_init(void)
     // PRINTF("uart6_ubir: %.8x\r\n", GPIO_DR_REG(((GPIO_Type *)0x30a800a4)));
     // PRINTF("uart6_ubmr: %.8x\r\n", GPIO_DR_REG(((GPIO_Type *)0x30a800a8)));
     // PRINTF("uart6_ubrc: %.8x\r\n", GPIO_DR_REG(((GPIO_Type *)0x30a800ac)));
-    // PRINTF("uart6_unems: %.8x\r\n", GPIO_DR_REG(((GPIO_Type *)0x30a800b0)));
+    // PRINTF("uart6_unems: %.8x\r\n", GPIO_DR_R./b EG(((GPIO_Type *)0x30a800b0)));
     // PRINTF("uart6_uts: %.8x\r\n", GPIO_DR_REG(((GPIO_Type *)0x30a800b4)));
     // PRINTF("uart6_umrc: %.8x\r\n", GPIO_DR_REG(((GPIO_Type *)0x30a800b8)));
 
-    /* grasp board WDOG exclusively */
     RDC_SetPdapAccess(RDC, BOARD_WDOG_RDC_PDAP, 3 << (BOARD_DOMAIN_ID * 2), false, false);
-
-    /* RDC MU*/
     RDC_SetPdapAccess(RDC, BOARD_MU_RDC_PDAP, 3 << (BOARD_DOMAIN_ID * 2), false, false);
-
-    /* Enable clock gate for MU*/
     CCM_ControlGate(CCM, BOARD_MU_CCM_CCGR, ccmClockNeededRun);
-   /* In this demo, we need to grasp board GPT exclusively */
 
-    RDC_SetPdapAccess(RDC, BOARD_GPTA_RDC_PDAP, 0xFF, false, false);
-    // RDC_SetPdapAccess(RDC, BOARD_GPTA_RDC_PDAP, 3 << (BOARD_DOMAIN_ID * 2), false, false);
+    RDC_SetPdapAccess(RDC, BOARD_I2C_RDC_PDAP, 3 << (BOARD_DOMAIN_ID * 2), false, false);
+    CCM_UpdateRoot(CCM, BOARD_I2C_CCM_ROOT, ccmRootmuxI2cOsc24m, 0, 0);
+    CCM_EnableRoot(CCM, BOARD_I2C_CCM_ROOT);
+    CCM_ControlGate(CCM, BOARD_I2C_CCM_CCGR, ccmClockNeededRunWait);
+    configure_i2c_pins(BOARD_I2C_BASEADDR);
 
-    /* Enable PLL PFD0 for GPTA */
-    CCM_ControlGate(CCM, ccmPllGateSys, ccmClockNeededAll);
-    CCM_ControlGate(CCM, ccmPllGatePfd0, ccmClockNeededAll);
-
-    /* Select GPTA clock derived from PLL PFD0 */
-    CCM_UpdateRoot(CCM, BOARD_GPTA_CCM_ROOT, ccmRootmuxGptSysPllPfd0, 0, 0);
-    
-    /* Enable clock used by GPTA */
-    CCM_EnableRoot(CCM, BOARD_GPTA_CCM_ROOT);
-    CCM_ControlGate(CCM, BOARD_GPTA_CCM_CCGR, ccmClockNeededAll);      
+    gpio_init_config_t ledCtrlInitConfig = {
+        .pin = BOARD_GPIO_I2C2_EN->pin,
+        .direction = gpioDigitalOutput,
+        .interruptMode = gpioNoIntmode
+    };
+    GPIO_Init(BOARD_GPIO_I2C2_EN->base, &ledCtrlInitConfig); 
 }
 
 /*******************************************************************************

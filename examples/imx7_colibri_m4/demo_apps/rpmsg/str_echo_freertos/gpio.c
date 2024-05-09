@@ -1,12 +1,16 @@
 #include "gpio.h"
 #include "gpio_pins.h"
-#include "board.h"
 #include "debug_console_imx.h"
 #include "comm_skb.h"
+#include "timer.h"
 
 static bool on = false;
+uint8_t encoder_button = 1;
+bool encoder_input_a = 1;
+bool encoder_input_b = 0;
+uint8_t rotary_encoder_event = 0;
 
-void GPIO_Ctrl_InitLedPin(void){   
+void init_gpio(void){   
     gpio_init_config_t ledCtrlInitConfig = {
         .pin = BOARD_GPIO_LEDCTRL_CONFIG->pin,
         .direction = gpioDigitalOutput,
@@ -33,16 +37,105 @@ void GPIO_Ctrl_InitLedPin(void){
     // PRINTF("keyInitConfig.muxReg %.8x\r\n", BOARD_GPIO_KEY_CONFIG->muxReg);
     // PRINTF("keyInitConfig.padReg %.8x\r\n", BOARD_GPIO_KEY_CONFIG->padReg);
     GPIO_Init(BOARD_GPIO_KEY_CONFIG->base, &keyInitConfig);
+
+    //button card encoder pins
+    gpio_init_config_t rotary_encoder_pin = {
+        .pin = BOARD_GPIO_ENCODER_BTN->pin,
+        .direction = gpioDigitalInput,
+        .interruptMode = gpioNoIntmode
+    };
+    GPIO_Init(BOARD_GPIO_ENCODER_BTN->base, &rotary_encoder_pin); 
+
+    gpio_init_config_t rotary_encoder_enable_pin = {
+        .pin = BOARD_GPIO_ENCODER_READ_ENABLE->pin,
+        .direction = gpioDigitalOutput,
+        .interruptMode = gpioNoIntmode
+    };
+    GPIO_Init(BOARD_GPIO_ENCODER_READ_ENABLE->base, &rotary_encoder_enable_pin);
+    GPIO_WritePinOutput(BOARD_GPIO_ENCODER_READ_ENABLE->base, BOARD_GPIO_ENCODER_READ_ENABLE->pin, gpioPinSet);
+
+    gpio_init_config_t encoder_input_b = {
+        .pin = BOARD_GPIO_ENCODER_INPUT_B->pin,
+        .direction = gpioDigitalInput,
+        .interruptMode = gpioNoIntmode
+    };
+    GPIO_Init(BOARD_GPIO_ENCODER_INPUT_B->base, &encoder_input_b); 
+
+    gpio_init_config_t encoder_input_a = {
+        .pin = BOARD_GPIO_ENCODER_INPUT_A->pin,
+        .direction = gpioDigitalInput,
+        .interruptMode = gpioNoIntmode
+    };
+    GPIO_Init(BOARD_GPIO_ENCODER_INPUT_A->base, &encoder_input_a); 
 }
 
-void ledToggle(void *pvParameters){
+void read_rotary_encoder(){
+    // PRINTF("%d", GPIO_ReadPinInput(BOARD_GPIO_ENCODER_BTN->base, BOARD_GPIO_ENCODER_BTN->pin));
+    // PRINTF("%d", GPIO_ReadPinInput(BOARD_GPIO_ENCODER_INPUT_A->base, BOARD_GPIO_ENCODER_INPUT_A->pin));
+    // PRINTF("%d\r\n", GPIO_ReadPinInput(BOARD_GPIO_ENCODER_INPUT_B->base, BOARD_GPIO_ENCODER_INPUT_B->pin));
+
+    if(encoder_button != GPIO_ReadPinInput(BOARD_GPIO_ENCODER_BTN->base, BOARD_GPIO_ENCODER_BTN->pin)){
+        encoder_button = GPIO_ReadPinInput(BOARD_GPIO_ENCODER_BTN->base, BOARD_GPIO_ENCODER_BTN->pin);
+        if(encoder_button == 0 /*pressed*/){
+            rotary_encoder_event = ROTARY_ENCODER_PRESS;
+        }
+    }
+
+    if(GPIO_ReadPinInput(BOARD_GPIO_ENCODER_INPUT_A->base, BOARD_GPIO_ENCODER_INPUT_A->pin) == gpioPinSet){
+        if(encoder_input_a == false){
+            if(GPIO_ReadPinInput(BOARD_GPIO_ENCODER_INPUT_B->base, BOARD_GPIO_ENCODER_INPUT_B->pin) == gpioPinClear){
+                rotary_encoder_event = ROTARY_ENCODER_LEFT;              
+            }
+            else{
+                rotary_encoder_event = ROTARY_ENCODER_RIGHT;
+            }
+        }
+        encoder_input_a = true;
+    }
+    else{        
+        if (encoder_input_a == true){
+            if(GPIO_ReadPinInput(BOARD_GPIO_ENCODER_INPUT_B->base, BOARD_GPIO_ENCODER_INPUT_B->pin) == gpioPinSet){
+                rotary_encoder_event = ROTARY_ENCODER_LEFT;
+            }
+            else{
+                rotary_encoder_event = ROTARY_ENCODER_RIGHT;
+            }
+        }
+        encoder_input_a = false;
+    }
+
+    if(GPIO_ReadPinInput(BOARD_GPIO_ENCODER_INPUT_B->base, BOARD_GPIO_ENCODER_INPUT_B->pin) == gpioPinSet){
+        if(encoder_input_b == false){
+            if(GPIO_ReadPinInput(BOARD_GPIO_ENCODER_INPUT_A->base, BOARD_GPIO_ENCODER_INPUT_A->pin) == gpioPinSet){
+                rotary_encoder_event = ROTARY_ENCODER_LEFT;
+            }
+            else{
+                rotary_encoder_event = ROTARY_ENCODER_RIGHT;
+            }
+        }
+        encoder_input_b = true;
+    }
+    else{        
+        if (encoder_input_b == true){
+            if(GPIO_ReadPinInput(BOARD_GPIO_ENCODER_INPUT_A->base, BOARD_GPIO_ENCODER_INPUT_A->pin) == gpioPinClear){
+                rotary_encoder_event = ROTARY_ENCODER_LEFT;
+            }
+            else{
+                rotary_encoder_event = ROTARY_ENCODER_RIGHT;
+            }
+        }
+        encoder_input_b = false;
+    }
+}
+
+void task_ledToggle(void *pvParameters){
     uint32_t i, j, debounce;
-
-#if ENABLE_GPT3==1    
-    static uint8_t flag = 0;
-#endif
-
     for (;;){
+        read_rotary_encoder();
+        //todo: send encoder changes to a7
+        //todo: send encoder changes to skb
+        vTaskDelay(20);
+        /*
         do{
             debounce = 0;
             while (0 == GPIO_ReadPinInput(BOARD_GPIO_KEY_CONFIG->base, BOARD_GPIO_KEY_CONFIG->pin));
@@ -85,7 +178,7 @@ void ledToggle(void *pvParameters){
         
         GPIO_WritePinOutput(BOARD_GPIO_LEDCTRL_CONFIG->base, BOARD_GPIO_LEDCTRL_CONFIG->pin, gpioPinClear);
         GPIO_WritePinOutput(BOARD_GPIO_LED1_CONFIG->base, BOARD_GPIO_LED1_CONFIG->pin, on ? gpioPinSet : gpioPinClear);
-        on = !on;
+        on = !on;*/
 
         // PRINTF("data_count:%d\r\n", data_count);
         // PRINTF("skb_rec_buf_rptr:%d\r\n", skb_rec_buf_rptr);
@@ -100,13 +193,5 @@ void ledToggle(void *pvParameters){
         // }        
 
         // PRINTF("\r\n");
-
-#if ENABLE_GPT3==1
-        if (flag == 0){
-            PRINTF("timer initialize\r\n");
-            Hw_Timer_Init();
-            flag = 1;
-        }
-#endif
     }
 }

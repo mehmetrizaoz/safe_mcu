@@ -99,6 +99,7 @@ ADD_EXECUTABLE(${ProjectName}
     "${BspRootDirPath}/platform/drivers/src/gpt.c"
     "${BspRootDirPath}/platform/drivers/src/gpio_imx.c"
     "${BspRootDirPath}/platform/utilities/src/debug_console_imx.c"
+    "${BspRootDirPath}/platform/drivers/src/i2c_imx.c"
     "${BspRootDirPath}/platform/utilities/src/print_scan.c"
     "${BspRootDirPath}/rtos/FreeRTOS/Source/croutine.c"
     "${BspRootDirPath}/rtos/FreeRTOS/Source/event_groups.c"
@@ -118,6 +119,7 @@ ADD_EXECUTABLE(${ProjectName}
     "${ProjDirPath}/../watchdog.c"
     "${ProjDirPath}/../timer.c"
     "${ProjDirPath}/../gpio.c"
+    "${ProjDirPath}/../i2c.c"
     "${ProjDirPath}/../comm_skb.c"
 )
 

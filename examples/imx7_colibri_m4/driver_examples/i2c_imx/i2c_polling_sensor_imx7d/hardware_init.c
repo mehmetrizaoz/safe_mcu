@@ -30,6 +30,9 @@
 
 #include "board.h"
 #include "pin_mux.h"
+#include "board.h"
+#include "gpio_imx.h"
+#include "gpio_pins.h"
 
 void hardware_init(void)
 {
@@ -54,6 +57,14 @@ void hardware_init(void)
 
     /* I2C Pin setting */
     configure_i2c_pins(BOARD_I2C_BASEADDR);
+
+
+    gpio_init_config_t ledCtrlInitConfig = {
+        .pin = BOARD_GPIO_I2C2_EN->pin,
+        .direction = gpioDigitalOutput,
+        .interruptMode = gpioNoIntmode
+    };
+    GPIO_Init(BOARD_GPIO_I2C2_EN->base, &ledCtrlInitConfig);  
 }
 
 /*******************************************************************************
