@@ -17,10 +17,13 @@ extern led led6;
 
 extern uint8_t port0_switches;
 extern uint8_t port1_switches;
-extern bool switch_event;
-extern bool rotary_switch_event;
-extern uint8_t rotary_switch_p2, rotary_switch_p1, rotary_switch_p0;
 
+extern bool switch_event_for_skb;
+extern bool rotary_switch_event_for_skb;
+extern bool switch_event_for_a7;
+extern bool rotary_switch_event_for_a7;
+
+extern uint8_t rotary_switch_p2, rotary_switch_p1, rotary_switch_p0;
 
 extern void read_switches(void);
 extern void read_rotary_switch(void);

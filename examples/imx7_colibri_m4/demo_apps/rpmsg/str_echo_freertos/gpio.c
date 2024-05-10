@@ -8,7 +8,8 @@ static bool on = false;
 uint8_t encoder_button = 1;
 bool encoder_input_a = 1;
 bool encoder_input_b = 0;
-uint8_t rotary_encoder_event = 0;
+uint8_t rotary_encoder_event_for_skb = 0;
+uint8_t rotary_encoder_event_for_a7 = 0;
 
 void init_gpio(void){   
     gpio_init_config_t ledCtrlInitConfig = {
@@ -77,17 +78,20 @@ void read_rotary_encoder(){
     if(encoder_button != GPIO_ReadPinInput(BOARD_GPIO_ENCODER_BTN->base, BOARD_GPIO_ENCODER_BTN->pin)){
         encoder_button = GPIO_ReadPinInput(BOARD_GPIO_ENCODER_BTN->base, BOARD_GPIO_ENCODER_BTN->pin);
         if(encoder_button == 0 /*pressed*/){
-            rotary_encoder_event = ROTARY_ENCODER_PRESS;
+            rotary_encoder_event_for_skb = ROTARY_ENCODER_PRESS;
+            rotary_encoder_event_for_a7 = ROTARY_ENCODER_PRESS;
         }
     }
 
     if(GPIO_ReadPinInput(BOARD_GPIO_ENCODER_INPUT_A->base, BOARD_GPIO_ENCODER_INPUT_A->pin) == gpioPinSet){
         if(encoder_input_a == false){
             if(GPIO_ReadPinInput(BOARD_GPIO_ENCODER_INPUT_B->base, BOARD_GPIO_ENCODER_INPUT_B->pin) == gpioPinClear){
-                rotary_encoder_event = ROTARY_ENCODER_LEFT;              
+                rotary_encoder_event_for_skb = ROTARY_ENCODER_LEFT;
+                rotary_encoder_event_for_a7 = ROTARY_ENCODER_LEFT;
             }
             else{
-                rotary_encoder_event = ROTARY_ENCODER_RIGHT;
+                rotary_encoder_event_for_skb = ROTARY_ENCODER_RIGHT;
+                rotary_encoder_event_for_a7 = ROTARY_ENCODER_RIGHT;
             }
         }
         encoder_input_a = true;
@@ -95,10 +99,12 @@ void read_rotary_encoder(){
     else{        
         if (encoder_input_a == true){
             if(GPIO_ReadPinInput(BOARD_GPIO_ENCODER_INPUT_B->base, BOARD_GPIO_ENCODER_INPUT_B->pin) == gpioPinSet){
-                rotary_encoder_event = ROTARY_ENCODER_LEFT;
+                rotary_encoder_event_for_skb = ROTARY_ENCODER_LEFT;
+                rotary_encoder_event_for_a7 = ROTARY_ENCODER_LEFT;
             }
             else{
-                rotary_encoder_event = ROTARY_ENCODER_RIGHT;
+                rotary_encoder_event_for_skb = ROTARY_ENCODER_RIGHT;
+                rotary_encoder_event_for_a7 = ROTARY_ENCODER_RIGHT;
             }
         }
         encoder_input_a = false;
@@ -107,10 +113,12 @@ void read_rotary_encoder(){
     if(GPIO_ReadPinInput(BOARD_GPIO_ENCODER_INPUT_B->base, BOARD_GPIO_ENCODER_INPUT_B->pin) == gpioPinSet){
         if(encoder_input_b == false){
             if(GPIO_ReadPinInput(BOARD_GPIO_ENCODER_INPUT_A->base, BOARD_GPIO_ENCODER_INPUT_A->pin) == gpioPinSet){
-                rotary_encoder_event = ROTARY_ENCODER_LEFT;
+                rotary_encoder_event_for_skb = ROTARY_ENCODER_LEFT;
+                rotary_encoder_event_for_a7 = ROTARY_ENCODER_LEFT;
             }
             else{
-                rotary_encoder_event = ROTARY_ENCODER_RIGHT;
+                rotary_encoder_event_for_skb = ROTARY_ENCODER_RIGHT;
+                rotary_encoder_event_for_a7 = ROTARY_ENCODER_RIGHT;
             }
         }
         encoder_input_b = true;
@@ -118,10 +126,12 @@ void read_rotary_encoder(){
     else{        
         if (encoder_input_b == true){
             if(GPIO_ReadPinInput(BOARD_GPIO_ENCODER_INPUT_A->base, BOARD_GPIO_ENCODER_INPUT_A->pin) == gpioPinClear){
-                rotary_encoder_event = ROTARY_ENCODER_LEFT;
+                rotary_encoder_event_for_skb = ROTARY_ENCODER_LEFT;
+                rotary_encoder_event_for_a7 = ROTARY_ENCODER_LEFT;
             }
             else{
-                rotary_encoder_event = ROTARY_ENCODER_RIGHT;
+                rotary_encoder_event_for_skb = ROTARY_ENCODER_RIGHT;
+                rotary_encoder_event_for_a7 = ROTARY_ENCODER_RIGHT;
             }
         }
         encoder_input_b = false;

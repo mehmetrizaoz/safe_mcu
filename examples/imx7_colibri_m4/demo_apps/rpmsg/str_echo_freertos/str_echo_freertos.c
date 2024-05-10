@@ -49,7 +49,7 @@ int main(void){
     xTaskCreate(task_parse_skb_rx_buf, "GET_SKB_PACKAGES", APP_TASK_STACK_SIZE, NULL, tskIDLE_PRIORITY+1, NULL);
     xTaskCreate(task_send_data_to_skb, "SEND_SKB_PACKAGES", APP_TASK_STACK_SIZE, NULL, tskIDLE_PRIORITY+1, NULL);
 
-    // PRINTF("Boot.. \n\r");
+    PRINTF("Boot.. \n\r");
     vTaskStartScheduler();
     while (true);
 }

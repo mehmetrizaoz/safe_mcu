@@ -14,8 +14,12 @@ led led6 = {.pin = 0x04, .port = 2};
 uint8_t port1_leds = 0;
 uint8_t port2_leds = 0;
 
-bool switch_event = false;
-bool rotary_switch_event = false;
+bool switch_event_for_skb = false;
+bool rotary_switch_event_for_skb = false;
+bool switch_event_for_a7 = false;
+bool rotary_switch_event_for_a7 = false;
+
+
 uint8_t rotary_switch_p2, rotary_switch_p1, rotary_switch_p0;
 
 uint8_t port0_switches = 0;
@@ -43,7 +47,7 @@ void task_button_card_process(void *pvParameters){
     for (;;){
         read_switches();
         read_rotary_switch();
-        vTaskDelay(50);
+        vTaskDelay(100);
     }
 }
 
@@ -102,7 +106,8 @@ void read_rotary_switch(void){
         rotary_switch_p0 = rxBuffer[0] | 0x01;
         rotary_switch_p1 = rxBuffer[1];
         rotary_switch_p2 = rxBuffer[2];
-        rotary_switch_event = true;
+        rotary_switch_event_for_skb = true;
+        rotary_switch_event_for_a7 = true;
         // PRINTF("rotary switch:\t%08b %08b %08b\r\n", rotary_switch_p0, rotary_switch_p1, rotary_switch_p2); //expander
     }    
     for(long i=0; i<1000; i++);
@@ -119,7 +124,8 @@ void read_switches(void){
         port0_switches = rxBuffer[0];
         port1_switches = rxBuffer[1] & 0x07;
         if(port1_switches != 0 || port0_switches != 0){
-            switch_event = true;
+            switch_event_for_skb = true;
+            switch_event_for_a7 = true;
         }
         // PRINTF("sw's:%08b %08b\r\n", port0_switches, port1_switches);
     }

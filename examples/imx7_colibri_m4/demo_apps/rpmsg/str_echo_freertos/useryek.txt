@@ -188,11 +188,10 @@ hexdump -C -n8 /dev/ttyRPMSG0
 55;2;4;1;22;10;20;57;10 6
 
 --a7'den yolla
-echo -en '\x55\x02\x04\x01\x25\x10\x01\x3b\x10' > /dev/ttyRPMSG0 1
+echo -en '\x55\x02\x04\x03\x25\x10\x01\x3d\x10' > /dev/ttyRPMSG0 (led 1, packet id 4)
 55;2;3;1;6;a;10  ack (for pid=1)
-echo -en '\x55\x02\x04\x01\x25\x10\x00\x3x\x10' > /dev/ttyRPMSG0
+echo -en '\x55\x02\x04\x04\x25\x10\x00\x3e\x10' > /dev/ttyRPMSG0
 55;2;3;2;6;b;10  ack (for pid=2)
-
 
 --press sw10
 55 02 05 01 25 41 00 02 6E 10 
@@ -270,3 +269,15 @@ echo -en '\x55\x02\x04\x01\x25\x10\x00\x3x\x10' > /dev/ttyRPMSG0
 --release sw3
 ...
 55;2;3;16;6;1f;10  ack (for pid=16)
+
+
+
+
+
+
+
+
+
+
+55 02 05 01 25 41 00 02 6E 10
+55 02 05 01 25 41 00 04 70 10
