@@ -41,9 +41,7 @@ void Hw_Timer_Init(void)
     GPT_SetOscPrescaler(BOARD_GPTA_BASEADDR, 1);
     GPT_SetPrescaler(BOARD_GPTA_BASEADDR, 1);
 
-    freqA = 800 / 2;
-    freqA /= 2;
-
+    freqA = 60;
     GPT_SetOutputCompareValue(BOARD_GPTA_BASEADDR, gptOutputCompareChannel1, freqA);
     NVIC_SetPriority(BOARD_GPTA_IRQ_NUM, 3);
     NVIC_EnableIRQ(BOARD_GPTA_IRQ_NUM);

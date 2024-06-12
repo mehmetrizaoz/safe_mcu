@@ -121,14 +121,17 @@ void i2s_init(I2S_Type *base){
     base->TCR5 |= I2S_TCR5_W0W(31);  //number of bits in each word - 1
     base->TCR5 |= I2S_TCR5_FBT(0x1f);//sai first bit shifted, msb first
 
-    base->TMR  = 0; //no masking
+    
     base->TCSR |= I2S_TCSR_TE(1); //transmitter enable  
+    base->TMR  = 0; //no masking
     base->TCR3 |= I2S_TCR3_TCE(1);
 }
 
 void fill_sai(I2S_Type *base){    
     PRINTF("TFR  : %.4x\r\n", base->TFR[0]);
     PRINTF("TCSR : %.4x\r\n", base->TCSR);
+    base->TCSR |= I2S_TCSR_FEF(1);
+    base->TCSR |= I2S_TCSR_WSF(1);
 }
 
 void read_rotary_encoder(){
