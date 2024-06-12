@@ -30,7 +30,8 @@ int main(void){
 #if ENABLE_WDT == 1
     wdt_init();
 #endif
-
+    
+    
     init_gpio();
     MU_Init(BOARD_MU_BASE_ADDR);
     NVIC_SetPriority(BOARD_MU_IRQ_NUM, APP_MU_IRQ_PRIORITY);

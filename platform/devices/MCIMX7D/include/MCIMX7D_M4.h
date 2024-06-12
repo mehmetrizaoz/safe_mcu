@@ -21307,40 +21307,58 @@ typedef struct {
 /* TCSR Bit Fields */
 #define I2S_TCSR_FRDE_MASK                       0x1u
 #define I2S_TCSR_FRDE_SHIFT                      0
+#define I2S_TCSR_FRDE(x)                         (((uint32_t)(((uint32_t)(x))<<I2S_TCSR_FRDE_SHIFT))&I2S_TCSR_FRDE_MASK)
 #define I2S_TCSR_FWDE_MASK                       0x2u
 #define I2S_TCSR_FWDE_SHIFT                      1
+#define I2S_TCSR_FWDE(x)                         (((uint32_t)(((uint32_t)(x))<<I2S_TCSR_FWDE_SHIFT))&I2S_TCSR_FWDE_MASK)
 #define I2S_TCSR_FRIE_MASK                       0x100u
 #define I2S_TCSR_FRIE_SHIFT                      8
+#define I2S_TCSR_FRIE(x)                         (((uint32_t)(((uint32_t)(x))<<I2S_TCSR_FRIE_SHIFT))&I2S_TCSR_FRIE_MASK)
 #define I2S_TCSR_FWIE_MASK                       0x200u
 #define I2S_TCSR_FWIE_SHIFT                      9
+#define I2S_TCSR_FWIE(x)                         (((uint32_t)(((uint32_t)(x))<<I2S_TCSR_FWIE_SHIFT))&I2S_TCSR_FWIE_MASK)
 #define I2S_TCSR_FEIE_MASK                       0x400u
 #define I2S_TCSR_FEIE_SHIFT                      10
+#define I2S_TCSR_FEIE(x)                         (((uint32_t)(((uint32_t)(x))<<I2S_TCSR_FEIE_SHIFT))&I2S_TCSR_FEIE_MASK)
 #define I2S_TCSR_SEIE_MASK                       0x800u
 #define I2S_TCSR_SEIE_SHIFT                      11
+#define I2S_TCSR_SEIE(x)                         (((uint32_t)(((uint32_t)(x))<<I2S_TCSR_SEIE_SHIFT))&I2S_TCSR_SEIE_MASK)
 #define I2S_TCSR_WSIE_MASK                       0x1000u
 #define I2S_TCSR_WSIE_SHIFT                      12
+#define I2S_TCSR_WSIE(x)                         (((uint32_t)(((uint32_t)(x))<<I2S_TCSR_WSIE_SHIFT))&I2S_TCSR_WSIE_MASK)
 #define I2S_TCSR_FRF_MASK                        0x10000u
 #define I2S_TCSR_FRF_SHIFT                       16
+#define I2S_TCSR_FRF(x)                          (((uint32_t)(((uint32_t)(x))<<I2S_TCSR_FRF_SHIFT))&I2S_TCSR_FRF_MASK)
 #define I2S_TCSR_FWF_MASK                        0x20000u
 #define I2S_TCSR_FWF_SHIFT                       17
+#define I2S_TCSR_FWF(x)                          (((uint32_t)(((uint32_t)(x))<<I2S_TCSR_FWF_SHIFT))&I2S_TCSR_FWF_MASK)
 #define I2S_TCSR_FEF_MASK                        0x40000u
 #define I2S_TCSR_FEF_SHIFT                       18
+#define I2S_TCSR_FEF(x)                          (((uint32_t)(((uint32_t)(x))<<I2S_TCSR_FEF_SHIFT))&I2S_TCSR_FEF_MASK)
 #define I2S_TCSR_SEF_MASK                        0x80000u
 #define I2S_TCSR_SEF_SHIFT                       19
+#define I2S_TCSR_SEF(x)                          (((uint32_t)(((uint32_t)(x))<<I2S_TCSR_SEF_SHIFT))&I2S_TCSR_SEF_MASK)
 #define I2S_TCSR_WSF_MASK                        0x100000u
 #define I2S_TCSR_WSF_SHIFT                       20
+#define I2S_TCSR_WSF(x)                          (((uint32_t)(((uint32_t)(x))<<I2S_TCSR_WSF_SHIFT))&I2S_TCSR_WSF_MASK)
 #define I2S_TCSR_SR_MASK                         0x1000000u
 #define I2S_TCSR_SR_SHIFT                        24
+#define I2S_TCSR_SR(x)                           (((uint32_t)(((uint32_t)(x))<<I2S_TCSR_SR_SHIFT))&I2S_TCSR_SR_MASK)
 #define I2S_TCSR_FR_MASK                         0x2000000u
 #define I2S_TCSR_FR_SHIFT                        25
+#define I2S_TCSR_FR(x)                           (((uint32_t)(((uint32_t)(x))<<I2S_TCSR_FR_SHIFT))&I2S_TCSR_FR_MASK)
 #define I2S_TCSR_BCE_MASK                        0x10000000u
 #define I2S_TCSR_BCE_SHIFT                       28
+#define I2S_TCSR_BCE(x)                          (((uint32_t)(((uint32_t)(x))<<I2S_TCSR_BCE_SHIFT))&I2S_TCSR_BCE_MASK)
 #define I2S_TCSR_DBGE_MASK                       0x20000000u
 #define I2S_TCSR_DBGE_SHIFT                      29
+#define I2S_TCSR_DBGE(x)                         (((uint32_t)(((uint32_t)(x))<<I2S_TCSR_DBGE_SHIFT))&I2S_TCSR_DBGE_MASK)
 #define I2S_TCSR_STOPE_MASK                      0x40000000u
 #define I2S_TCSR_STOPE_SHIFT                     30
+#define I2S_TCSR_STOPE(x)                        (((uint32_t)(((uint32_t)(x))<<I2S_TCSR_STOPE_SHIFT))&I2S_TCSR_STOPE_MASK)
 #define I2S_TCSR_TE_MASK                         0x80000000u
 #define I2S_TCSR_TE_SHIFT                        31
+#define I2S_TCSR_TE(x)                           (((uint32_t)(((uint32_t)(x))<<I2S_TCSR_TE_SHIFT))&I2S_TCSR_TE_MASK)
 /* TCR1 Bit Fields */
 #define I2S_TCR1_TFW_MASK                        0x1Fu
 #define I2S_TCR1_TFW_SHIFT                       0
@@ -21351,15 +21369,20 @@ typedef struct {
 #define I2S_TCR2_DIV(x)                          (((uint32_t)(((uint32_t)(x))<<I2S_TCR2_DIV_SHIFT))&I2S_TCR2_DIV_MASK)
 #define I2S_TCR2_BCD_MASK                        0x1000000u
 #define I2S_TCR2_BCD_SHIFT                       24
+#define I2S_TCR2_BCD(x)                         (((uint32_t)(((uint32_t)(x))<<I2S_TCR2_BCD_SHIFT))&I2S_TCR2_BCD_MASK)
 #define I2S_TCR2_BCP_MASK                        0x2000000u
 #define I2S_TCR2_BCP_SHIFT                       25
+#define I2S_TCR2_BCP(x)                         (((uint32_t)(((uint32_t)(x))<<I2S_TCR2_BCP_SHIFT))&I2S_TCR2_BCP_MASK)
 #define I2S_TCR2_MSEL_MASK                       0xC000000u
 #define I2S_TCR2_MSEL_SHIFT                      26
 #define I2S_TCR2_MSEL(x)                         (((uint32_t)(((uint32_t)(x))<<I2S_TCR2_MSEL_SHIFT))&I2S_TCR2_MSEL_MASK)
 #define I2S_TCR2_BCI_MASK                        0x10000000u
 #define I2S_TCR2_BCI_SHIFT                       28
+#define I2S_TCR2_BCI(x)                         (((uint32_t)(((uint32_t)(x))<<I2S_TCR2_BCI_SHIFT))&I2S_TCR2_BCI_MASK)
 #define I2S_TCR2_BCS_MASK                        0x20000000u
 #define I2S_TCR2_BCS_SHIFT                       29
+#define I2S_TCR2_BCS(x)                         (((uint32_t)(((uint32_t)(x))<<I2S_TCR2_BCS_SHIFT))&I2S_TCR2_BCS_MASK)
+
 #define I2S_TCR2_SYNC_MASK                       0xC0000000u
 #define I2S_TCR2_SYNC_SHIFT                      30
 #define I2S_TCR2_SYNC(x)                         (((uint32_t)(((uint32_t)(x))<<I2S_TCR2_SYNC_SHIFT))&I2S_TCR2_SYNC_MASK)
@@ -21369,15 +21392,19 @@ typedef struct {
 #define I2S_TCR3_WDFL(x)                         (((uint32_t)(((uint32_t)(x))<<I2S_TCR3_WDFL_SHIFT))&I2S_TCR3_WDFL_MASK)
 #define I2S_TCR3_TCE_MASK                        0x10000u
 #define I2S_TCR3_TCE_SHIFT                       16
+#define I2S_TCR3_TCE(x)                         (((uint32_t)(((uint32_t)(x))<<I2S_TCR3_TCE_SHIFT))&I2S_TCR3_TCE_MASK)
 /* TCR4 Bit Fields */
 #define I2S_TCR4_FSD_MASK                        0x1u
 #define I2S_TCR4_FSD_SHIFT                       0
+#define I2S_TCR4_FSD(x)                           (((uint32_t)(((uint32_t)(x))<<I2S_TCR4_FSD_SHIFT))&I2S_TCR4_FSD_MASK)
 #define I2S_TCR4_FSP_MASK                        0x2u
 #define I2S_TCR4_FSP_SHIFT                       1
+#define I2S_TCR4_FSP(x)                           (((uint32_t)(((uint32_t)(x))<<I2S_TCR4_FSP_SHIFT))&I2S_TCR4_FSP_MASK)
 #define I2S_TCR4_FSE_MASK                        0x8u
 #define I2S_TCR4_FSE_SHIFT                       3
 #define I2S_TCR4_MF_MASK                         0x10u
 #define I2S_TCR4_MF_SHIFT                        4
+#define I2S_TCR4_MF(x)                           (((uint32_t)(((uint32_t)(x))<<I2S_TCR4_MF_SHIFT))&I2S_TCR4_MF_MASK)
 #define I2S_TCR4_SYWD_MASK                       0x1F00u
 #define I2S_TCR4_SYWD_SHIFT                      8
 #define I2S_TCR4_SYWD(x)                         (((uint32_t)(((uint32_t)(x))<<I2S_TCR4_SYWD_SHIFT))&I2S_TCR4_SYWD_MASK)
@@ -21773,8 +21800,8 @@ typedef struct {
   __IO  uint32_t SW_MUX_CTL_PAD_SAI1_RX_SYNC;            /**< SW_MUX_CTL_PAD_SAI1_RX_SYNC SW MUX Control Register, offset: 0x210 */
   __IO  uint32_t SW_MUX_CTL_PAD_SAI1_RX_BCLK;            /**< SW_MUX_CTL_PAD_SAI1_RX_BCLK SW MUX Control Register, offset: 0x214 */
   __IO  uint32_t SW_MUX_CTL_PAD_SAI1_MCLK;               /**< SW_MUX_CTL_PAD_SAI1_MCLK SW MUX Control Register, offset: 0x218 */
-  __IO  uint32_t SW_MUX_CTL_PAD_SAI2_TX_SYNC;            /**< SW_MUX_CTL_PAD_SAI2_TX_SYNC SW MUX Control Register, offset: 0x21C */
-  __IO  uint32_t SW_MUX_CTL_PAD_SAI2_TX_BCLK;            /**< SW_MUX_CTL_PAD_SAI2_TX_BCLK SW MUX Control Register, offset: 0x220 */
+  __IO  uint32_t SW_MUX_CTL_PAD_SAI2_TX_SYNC;            /**< SW_MUX_CTL_PAD_SAI2_TX_SYNC SW MUX Control Register, offset: 0x21C */ 
+  __IO  uint32_t SW_MUX_CTL_PAD_SAI2_TX_BCLK;            /**< SW_MUX_CTL_PAD_SAI2_TX_BCLK SW MUX Control Register, offset: 0x220 */ //mehmet
   __IO  uint32_t SW_MUX_CTL_PAD_SAI2_RX_DATA;            /**< SW_MUX_CTL_PAD_SAI2_RX_DATA SW MUX Control Register, offset: 0x224 */
   __IO  uint32_t SW_MUX_CTL_PAD_SAI2_TX_DATA;            /**< SW_MUX_CTL_PAD_SAI2_TX_DATA SW MUX Control Register, offset: 0x228 */
   __IO  uint32_t SW_MUX_CTL_PAD_ENET1_RGMII_RD0;         /**< SW_MUX_CTL_PAD_ENET1_RGMII_RD0 SW MUX Control Register, offset: 0x22C */
@@ -21930,7 +21957,7 @@ typedef struct {
   __IO  uint32_t SW_PAD_CTL_PAD_SAI1_RX_BCLK;            /**< SW_PAD_CTL_PAD_SAI1_RX_BCLK SW PAD Control Register, offset: 0x484 */
   __IO  uint32_t SW_PAD_CTL_PAD_SAI1_MCLK;               /**< SW_PAD_CTL_PAD_SAI1_MCLK SW PAD Control Register, offset: 0x488 */
   __IO  uint32_t SW_PAD_CTL_PAD_SAI2_TX_SYNC;            /**< SW_PAD_CTL_PAD_SAI2_TX_SYNC SW PAD Control Register, offset: 0x48C */
-  __IO  uint32_t SW_PAD_CTL_PAD_SAI2_TX_BCLK;            /**< SW_PAD_CTL_PAD_SAI2_TX_BCLK SW PAD Control Register, offset: 0x490 */
+  __IO  uint32_t SW_PAD_CTL_PAD_SAI2_TX_BCLK;            /**< SW_PAD_CTL_PAD_SAI2_TX_BCLK SW PAD Control Register, offset: 0x490 */ //mehmet
   __IO  uint32_t SW_PAD_CTL_PAD_SAI2_RX_DATA;            /**< SW_PAD_CTL_PAD_SAI2_RX_DATA SW PAD Control Register, offset: 0x494 */
   __IO  uint32_t SW_PAD_CTL_PAD_SAI2_TX_DATA;            /**< SW_PAD_CTL_PAD_SAI2_TX_DATA SW PAD Control Register, offset: 0x498 */
   __IO  uint32_t SW_PAD_CTL_PAD_ENET1_RGMII_RD0;         /**< SW_PAD_CTL_PAD_ENET1_RGMII_RD0 SW PAD Control Register, offset: 0x49C */
@@ -26203,8 +26230,8 @@ typedef struct {
 #define IOMUXC_SW_MUX_CTL_PAD_SAI1_RX_SYNC       IOMUXC_SW_MUX_CTL_PAD_SAI1_RX_SYNC_REG(IOMUXC_BASE_PTR)
 #define IOMUXC_SW_MUX_CTL_PAD_SAI1_RX_BCLK       IOMUXC_SW_MUX_CTL_PAD_SAI1_RX_BCLK_REG(IOMUXC_BASE_PTR)
 #define IOMUXC_SW_MUX_CTL_PAD_SAI1_MCLK          IOMUXC_SW_MUX_CTL_PAD_SAI1_MCLK_REG(IOMUXC_BASE_PTR)
-#define IOMUXC_SW_MUX_CTL_PAD_SAI2_TX_SYNC       IOMUXC_SW_MUX_CTL_PAD_SAI2_TX_SYNC_REG(IOMUXC_BASE_PTR)
-#define IOMUXC_SW_MUX_CTL_PAD_SAI2_TX_BCLK       IOMUXC_SW_MUX_CTL_PAD_SAI2_TX_BCLK_REG(IOMUXC_BASE_PTR)
+#define IOMUXC_SW_MUX_CTL_PAD_SAI2_TX_SYNC       IOMUXC_SW_MUX_CTL_PAD_SAI2_TX_SYNC_REG(IOMUXC_BASE_PTR) 
+#define IOMUXC_SW_MUX_CTL_PAD_SAI2_TX_BCLK       IOMUXC_SW_MUX_CTL_PAD_SAI2_TX_BCLK_REG(IOMUXC_BASE_PTR) //mehmet
 #define IOMUXC_SW_MUX_CTL_PAD_SAI2_RX_DATA       IOMUXC_SW_MUX_CTL_PAD_SAI2_RX_DATA_REG(IOMUXC_BASE_PTR)
 #define IOMUXC_SW_MUX_CTL_PAD_SAI2_TX_DATA       IOMUXC_SW_MUX_CTL_PAD_SAI2_TX_DATA_REG(IOMUXC_BASE_PTR)
 #define IOMUXC_SW_MUX_CTL_PAD_ENET1_RGMII_RD0    IOMUXC_SW_MUX_CTL_PAD_ENET1_RGMII_RD0_REG(IOMUXC_BASE_PTR)

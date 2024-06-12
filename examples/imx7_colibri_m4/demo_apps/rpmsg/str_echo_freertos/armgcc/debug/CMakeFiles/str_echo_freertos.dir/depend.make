@@ -200,13 +200,17 @@ CMakeFiles/str_echo_freertos.dir/home/aselsan/Desktop/GPT_BACKUP/freertos-colibr
 CMakeFiles/str_echo_freertos.dir/home/aselsan/Desktop/GPT_BACKUP/freertos-colibri-imx7/examples/imx7_colibri_m4/demo_apps/rpmsg/str_echo_freertos/timer.c.obj: ../../../../../../../platform/devices/MCIMX7D/startup/system_MCIMX7D_M4.h
 CMakeFiles/str_echo_freertos.dir/home/aselsan/Desktop/GPT_BACKUP/freertos-colibri-imx7/examples/imx7_colibri_m4/demo_apps/rpmsg/str_echo_freertos/timer.c.obj: ../../../../../../../platform/devices/device_imx.h
 CMakeFiles/str_echo_freertos.dir/home/aselsan/Desktop/GPT_BACKUP/freertos-colibri-imx7/examples/imx7_colibri_m4/demo_apps/rpmsg/str_echo_freertos/timer.c.obj: ../../../../../../../platform/drivers/inc/ccm_imx7d.h
+CMakeFiles/str_echo_freertos.dir/home/aselsan/Desktop/GPT_BACKUP/freertos-colibri-imx7/examples/imx7_colibri_m4/demo_apps/rpmsg/str_echo_freertos/timer.c.obj: ../../../../../../../platform/drivers/inc/gpio_imx.h
 CMakeFiles/str_echo_freertos.dir/home/aselsan/Desktop/GPT_BACKUP/freertos-colibri-imx7/examples/imx7_colibri_m4/demo_apps/rpmsg/str_echo_freertos/timer.c.obj: ../../../../../../../platform/drivers/inc/gpt.h
 CMakeFiles/str_echo_freertos.dir/home/aselsan/Desktop/GPT_BACKUP/freertos-colibri-imx7/examples/imx7_colibri_m4/demo_apps/rpmsg/str_echo_freertos/timer.c.obj: ../../../../../../../platform/drivers/inc/rdc.h
 CMakeFiles/str_echo_freertos.dir/home/aselsan/Desktop/GPT_BACKUP/freertos-colibri-imx7/examples/imx7_colibri_m4/demo_apps/rpmsg/str_echo_freertos/timer.c.obj: ../../../../../../../platform/drivers/inc/rdc_defs_imx7d.h
 CMakeFiles/str_echo_freertos.dir/home/aselsan/Desktop/GPT_BACKUP/freertos-colibri-imx7/examples/imx7_colibri_m4/demo_apps/rpmsg/str_echo_freertos/timer.c.obj: ../../../../../../../platform/utilities/inc/debug_console_imx.h
 CMakeFiles/str_echo_freertos.dir/home/aselsan/Desktop/GPT_BACKUP/freertos-colibri-imx7/examples/imx7_colibri_m4/demo_apps/rpmsg/str_echo_freertos/timer.c.obj: ../../../../../board.h
 CMakeFiles/str_echo_freertos.dir/home/aselsan/Desktop/GPT_BACKUP/freertos-colibri-imx7/examples/imx7_colibri_m4/demo_apps/rpmsg/str_echo_freertos/timer.c.obj: ../../../../../clock_freq.h
+CMakeFiles/str_echo_freertos.dir/home/aselsan/Desktop/GPT_BACKUP/freertos-colibri-imx7/examples/imx7_colibri_m4/demo_apps/rpmsg/str_echo_freertos/timer.c.obj: ../../../../../gpio_pins.h
 CMakeFiles/str_echo_freertos.dir/home/aselsan/Desktop/GPT_BACKUP/freertos-colibri-imx7/examples/imx7_colibri_m4/demo_apps/rpmsg/str_echo_freertos/timer.c.obj: ../../../../../pin_mux.h
+CMakeFiles/str_echo_freertos.dir/home/aselsan/Desktop/GPT_BACKUP/freertos-colibri-imx7/examples/imx7_colibri_m4/demo_apps/rpmsg/str_echo_freertos/timer.c.obj: /home/aselsan/Desktop/GPT_BACKUP/freertos-colibri-imx7/examples/imx7_colibri_m4/demo_apps/rpmsg/str_echo_freertos/comm_skb.h
+CMakeFiles/str_echo_freertos.dir/home/aselsan/Desktop/GPT_BACKUP/freertos-colibri-imx7/examples/imx7_colibri_m4/demo_apps/rpmsg/str_echo_freertos/timer.c.obj: /home/aselsan/Desktop/GPT_BACKUP/freertos-colibri-imx7/examples/imx7_colibri_m4/demo_apps/rpmsg/str_echo_freertos/gpio.h
 CMakeFiles/str_echo_freertos.dir/home/aselsan/Desktop/GPT_BACKUP/freertos-colibri-imx7/examples/imx7_colibri_m4/demo_apps/rpmsg/str_echo_freertos/timer.c.obj: /home/aselsan/Desktop/GPT_BACKUP/freertos-colibri-imx7/examples/imx7_colibri_m4/demo_apps/rpmsg/str_echo_freertos/timer.c
 CMakeFiles/str_echo_freertos.dir/home/aselsan/Desktop/GPT_BACKUP/freertos-colibri-imx7/examples/imx7_colibri_m4/demo_apps/rpmsg/str_echo_freertos/timer.c.obj: /home/aselsan/Desktop/GPT_BACKUP/freertos-colibri-imx7/examples/imx7_colibri_m4/demo_apps/rpmsg/str_echo_freertos/timer.h
 
@@ -442,6 +446,7 @@ CMakeFiles/str_echo_freertos.dir/home/aselsan/Desktop/GPT_BACKUP/freertos-colibr
 CMakeFiles/str_echo_freertos.dir/home/aselsan/Desktop/GPT_BACKUP/freertos-colibri-imx7/platform/drivers/src/ccm_analog_imx7d.c.obj: ../../../../../../../platform/devices/MCIMX7D/startup/system_MCIMX7D_M4.h
 CMakeFiles/str_echo_freertos.dir/home/aselsan/Desktop/GPT_BACKUP/freertos-colibri-imx7/platform/drivers/src/ccm_analog_imx7d.c.obj: ../../../../../../../platform/devices/device_imx.h
 CMakeFiles/str_echo_freertos.dir/home/aselsan/Desktop/GPT_BACKUP/freertos-colibri-imx7/platform/drivers/src/ccm_analog_imx7d.c.obj: ../../../../../../../platform/drivers/inc/ccm_analog_imx7d.h
+CMakeFiles/str_echo_freertos.dir/home/aselsan/Desktop/GPT_BACKUP/freertos-colibri-imx7/platform/drivers/src/ccm_analog_imx7d.c.obj: ../../../../../../../platform/utilities/inc/debug_console_imx.h
 CMakeFiles/str_echo_freertos.dir/home/aselsan/Desktop/GPT_BACKUP/freertos-colibri-imx7/platform/drivers/src/ccm_analog_imx7d.c.obj: /home/aselsan/Desktop/GPT_BACKUP/freertos-colibri-imx7/platform/drivers/src/ccm_analog_imx7d.c
 
 CMakeFiles/str_echo_freertos.dir/home/aselsan/Desktop/GPT_BACKUP/freertos-colibri-imx7/platform/drivers/src/ccm_imx7d.c.obj: ../../../../../../../platform/CMSIS/Include/core_cm4.h
@@ -452,6 +457,7 @@ CMakeFiles/str_echo_freertos.dir/home/aselsan/Desktop/GPT_BACKUP/freertos-colibr
 CMakeFiles/str_echo_freertos.dir/home/aselsan/Desktop/GPT_BACKUP/freertos-colibri-imx7/platform/drivers/src/ccm_imx7d.c.obj: ../../../../../../../platform/devices/MCIMX7D/startup/system_MCIMX7D_M4.h
 CMakeFiles/str_echo_freertos.dir/home/aselsan/Desktop/GPT_BACKUP/freertos-colibri-imx7/platform/drivers/src/ccm_imx7d.c.obj: ../../../../../../../platform/devices/device_imx.h
 CMakeFiles/str_echo_freertos.dir/home/aselsan/Desktop/GPT_BACKUP/freertos-colibri-imx7/platform/drivers/src/ccm_imx7d.c.obj: ../../../../../../../platform/drivers/inc/ccm_imx7d.h
+CMakeFiles/str_echo_freertos.dir/home/aselsan/Desktop/GPT_BACKUP/freertos-colibri-imx7/platform/drivers/src/ccm_imx7d.c.obj: ../../../../../../../platform/utilities/inc/debug_console_imx.h
 CMakeFiles/str_echo_freertos.dir/home/aselsan/Desktop/GPT_BACKUP/freertos-colibri-imx7/platform/drivers/src/ccm_imx7d.c.obj: /home/aselsan/Desktop/GPT_BACKUP/freertos-colibri-imx7/platform/drivers/src/ccm_imx7d.c
 
 CMakeFiles/str_echo_freertos.dir/home/aselsan/Desktop/GPT_BACKUP/freertos-colibri-imx7/platform/drivers/src/gpio_imx.c.obj: ../../../../../../../platform/CMSIS/Include/core_cm4.h

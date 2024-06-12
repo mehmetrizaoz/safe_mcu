@@ -57,6 +57,7 @@ enum _ccm_root_control
     ccmRootAxi    = (uint32_t)(&CCM_TARGET_ROOT16),  /*!< AXI Clock control name.*/
     ccmRootAhb    = (uint32_t)(&CCM_TARGET_ROOT32),  /*!< AHB Clock control name.*/
     ccmRootIpg    = (uint32_t)(&CCM_TARGET_ROOT33),  /*!< IPG Clock control name.*/
+    ccmRootSai2   = (uint32_t)(&CCM_TARGET_ROOT75),  /*!< SAI2 Clock control name.*/
     ccmRootQspi   = (uint32_t)(&CCM_TARGET_ROOT85),  /*!< QSPI Clock control name.*/
     ccmRootCan1   = (uint32_t)(&CCM_TARGET_ROOT89),  /*!< CAN1 Clock control name.*/
     ccmRootCan2   = (uint32_t)(&CCM_TARGET_ROOT90),  /*!< CAN2 Clock control name.*/
@@ -82,6 +83,7 @@ enum _ccm_root_control
     ccmRootGpt3   = (uint32_t)(&CCM_TARGET_ROOT116), /*!< GPT3 Clock control name.*/
     ccmRootGpt4   = (uint32_t)(&CCM_TARGET_ROOT117), /*!< GPT4 Clock control name.*/
     ccmRootWdog   = (uint32_t)(&CCM_TARGET_ROOT119), /*!< WDOG Clock control name.*/
+    ccmRootMclk   = (uint32_t)(&CCM_TARGET_ROOT121), /*!< MCLK Clock control name.*/
 };
 
 /*! @brief Clock source enumeration for ARM Cortex-M4 core. */
@@ -301,6 +303,7 @@ enum _ccm_ccgr_gate
     ccmCcgrGateI2c2      = (uint32_t)(&CCM_CCGR137), /*!< I2C2 Clock Gate.*/
     ccmCcgrGateI2c3      = (uint32_t)(&CCM_CCGR138), /*!< I2C3 Clock Gate.*/
     ccmCcgrGateI2c4      = (uint32_t)(&CCM_CCGR139), /*!< I2C4 Clock Gate.*/
+    ccmCcgrGateSai2      = (uint32_t)(&CCM_CCGR141), /*!< SAI2 Clock Gate.*/
     ccmCcgrGateUart1     = (uint32_t)(&CCM_CCGR148), /*!< UART1 Clock Gate.*/
     ccmCcgrGateUart2     = (uint32_t)(&CCM_CCGR149), /*!< UART2 Clock Gate.*/
     ccmCcgrGateUart3     = (uint32_t)(&CCM_CCGR150), /*!< UART3 Clock Gate.*/
@@ -379,6 +382,8 @@ static inline uint32_t CCM_GetRootMux(CCM_Type * base, uint32_t ccmRoot)
 static inline void CCM_EnableRoot(CCM_Type * base, uint32_t ccmRoot)
 {
     CCM_REG_SET(ccmRoot) = CCM_TARGET_ROOT_SET_ENABLE_MASK;
+    // PRINTF("tar root set adr: %.4x\r\n", &(CCM_REG_SET(ccmRoot)));
+    // PRINTF("tar root set cnt: %.4x\r\n\r\n", CCM_REG_SET(ccmRoot));
 }
 
 /*!
@@ -454,6 +459,8 @@ void CCM_UpdateRoot(CCM_Type * base, uint32_t ccmRoot, uint32_t mux, uint32_t pr
 static inline void CCM_ControlGate(CCM_Type * base, uint32_t ccmGate, uint32_t control)
 {
     CCM_REG(ccmGate) = control;
+    // PRINTF("clock gating adr: %.4x\r\n", &(CCM_REG(ccmGate)));
+    // PRINTF("clock gating cnt: %.4x\r\n\r\n", CCM_REG(ccmGate));
 }
 
 /*@}*/

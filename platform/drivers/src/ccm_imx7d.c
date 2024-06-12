@@ -29,6 +29,7 @@
  */
 
 #include "ccm_imx7d.h"
+#include "debug_console_imx.h"
 
 /*******************************************************************************
  * Code
@@ -74,10 +75,13 @@ void CCM_UpdateRoot(CCM_Type * base, uint32_t ccmRoot, uint32_t mux, uint32_t pr
 {
     assert (pre < 8);
     assert (post < 64);
-
+    
     CCM_REG(ccmRoot) = (CCM_REG(ccmRoot) &
                         (~(CCM_TARGET_ROOT_MUX_MASK | CCM_TARGET_ROOT_PRE_PODF_MASK | CCM_TARGET_ROOT_POST_PODF_MASK))) |
                        CCM_TARGET_ROOT_MUX(mux) | CCM_TARGET_ROOT_PRE_PODF(pre) | CCM_TARGET_ROOT_POST_PODF(post);
+    // PRINTF("trgt root: %.4x\r\n", &(CCM_REG(ccmRoot)));
+    // PRINTF("trgt root: %.4x\r\n\r\n", CCM_REG(ccmRoot));
+    // PRINTF("uart6_urxd: %.8x\r\n", GPIO_DR_REG(((GPIO_Type *)0x30a80000)));
 }
 
 /*******************************************************************************

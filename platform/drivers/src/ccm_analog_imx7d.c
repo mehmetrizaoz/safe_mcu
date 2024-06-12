@@ -29,7 +29,7 @@
  */
 
 #include "ccm_analog_imx7d.h"
-
+#include "debug_console_imx.h"
 /*******************************************************************************
  * Code
  ******************************************************************************/
@@ -143,6 +143,8 @@ uint32_t CCM_ANALOG_GetAudioPllFreq(CCM_ANALOG_Type * base)
                     CCM_ANALOG_PLL_AUDIO_POST_DIV_SEL_SHIFT;
     divTestSelect = (CCM_ANALOG_PLL_AUDIO_REG(CCM_ANALOG) & CCM_ANALOG_PLL_AUDIO_TEST_DIV_SELECT_MASK) >>
                     CCM_ANALOG_PLL_AUDIO_TEST_DIV_SELECT_SHIFT;
+    
+    PRINTF("divTestSelect: %d divPostSelect: %d divSelect: %d\r\n", divTestSelect, divPostSelect, divSelect);
 
     switch (divPostSelect)
     {
@@ -172,15 +174,32 @@ uint32_t CCM_ANALOG_GetAudioPllFreq(CCM_ANALOG_Type * base)
             break;
     }
 
+    PRINTF("divTestSelect: %d divPostSelect: %d divSelect: %d\r\n", divTestSelect, divPostSelect, divSelect);
+
     if (CCM_ANALOG_PLL_AUDIO_SS_REG(base) & CCM_ANALOG_PLL_AUDIO_SS_ENABLE_MASK)
     {
+        PRINTF("...a111...111...\r\n");
         factor = ((float)(CCM_ANALOG_PLL_AUDIO_SS_REG(base) & CCM_ANALOG_PLL_AUDIO_SS_STEP_MASK)) /
                  ((float)(CCM_ANALOG_PLL_AUDIO_DENOM_REG(base) & CCM_ANALOG_PLL_AUDIO_DENOM_B_MASK)) *
                  ((float)(CCM_ANALOG_PLL_AUDIO_NUM_REG(base) & CCM_ANALOG_PLL_AUDIO_NUM_A_MASK));
+
+        PRINTF("%.4x\r\n", (CCM_ANALOG_PLL_AUDIO_SS_REG(base) & CCM_ANALOG_PLL_AUDIO_SS_STEP_MASK));
+        PRINTF("%.4x\r\n", (CCM_ANALOG_PLL_AUDIO_DENOM_REG(base) & CCM_ANALOG_PLL_AUDIO_DENOM_B_MASK));
+        PRINTF("%.4x\r\n", (CCM_ANALOG_PLL_AUDIO_NUM_REG(base) & CCM_ANALOG_PLL_AUDIO_NUM_A_MASK));
+
+        PRINTF("CCM_ANALOG_PLL_AUDIO_SS (%.4x) : ", &CCM_ANALOG_PLL_AUDIO_SS);
+        PRINTF("%.4x\r\n", CCM_ANALOG_PLL_AUDIO_SS & CCM_ANALOG_PLL_AUDIO_SS_STEP_MASK);
+        PRINTF("CCM_ANALOG_PLL_AUDIO_DENOM (%.4x) : ", &CCM_ANALOG_PLL_AUDIO_DENOM);
+        PRINTF("%.4x\r\n", CCM_ANALOG_PLL_AUDIO_DENOM & CCM_ANALOG_PLL_AUDIO_DENOM_B_MASK);
+        PRINTF("CCM_ANALOG_PLL_AUDIO_NUM (%.4x) : ", &CCM_ANALOG_PLL_AUDIO_NUM);
+        PRINTF("%.4x\r\n", CCM_ANALOG_PLL_AUDIO_NUM & CCM_ANALOG_PLL_AUDIO_NUM_A_MASK);
+
+
         return (uint32_t)(((24000000ul >> divTestSelect) >> divPostSelect) * (divSelect + factor));
     }
     else
     {
+        PRINTF("...a222...222...\r\n");
         return ((24000000ul >> divTestSelect) >> divPostSelect) * divSelect;
     }
 }

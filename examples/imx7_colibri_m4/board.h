@@ -58,6 +58,9 @@
 #define BOARD_WDOG_IRQ_NUM                    WDOG3_IRQn
 #define BOARD_WDOG_HANDLER                    WDOG3_Handler
 
+
+#define BOARD_SAI2_RDC_PDAP                   rdcPdapSai2
+
 /* SEMA4 information for this board */
 #define BOARD_SEMA4_RDC_PDAP                  rdcPdapSemaphoreHs
 #define BOARD_SEMA4_CCM_CCGR                  ccmCcgrGateSemaHs
@@ -140,6 +143,15 @@
 #define BOARD_ECSPI_CHANNEL                   ecspiSelectChannel0
 #define BOARD_ECSPI_IRQ_NUM                   eCSPI3_IRQn
 #define BOARD_ECSPI_HANDLER                   eCSPI3_Handler
+
+
+#define BOARD_SAI2_CCM_ROOT             ccmRootSai2 //mehmet
+#define BOARD_SAI2_CCM_CCGR             ccmCcgrGateSai2
+#define BOARD_IPG_CCM_ROOT              ccmRootIpg
+
+#define BOARD_MCLK_CCM_ROOT             ccmRootMclk //mehmet
+
+
 
 /* Debug UART information for this board */
 //#define BOARD_DEBUG_UART_RDC_PDAP             rdcPdapUart2

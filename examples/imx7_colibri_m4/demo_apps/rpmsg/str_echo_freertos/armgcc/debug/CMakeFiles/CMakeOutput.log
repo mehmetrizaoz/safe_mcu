@@ -29,13 +29,13 @@ The CXX compiler identification is GNU, found in "/home/aselsan/Desktop/GPT_BACK
 Determining if the C compiler works passed with the following output:
 Change Dir: /home/aselsan/Desktop/GPT_BACKUP/freertos-colibri-imx7/examples/imx7_colibri_m4/demo_apps/rpmsg/str_echo_freertos/armgcc/debug/CMakeFiles/CMakeTmp
 
-Run Build Command(s):/usr/bin/make cmTC_2535a/fast && /usr/bin/make -f CMakeFiles/cmTC_2535a.dir/build.make CMakeFiles/cmTC_2535a.dir/build
+Run Build Command(s):/usr/bin/make cmTC_aede1/fast && /usr/bin/make -f CMakeFiles/cmTC_aede1.dir/build.make CMakeFiles/cmTC_aede1.dir/build
 make[1]: Entering directory '/home/aselsan/Desktop/GPT_BACKUP/freertos-colibri-imx7/examples/imx7_colibri_m4/demo_apps/rpmsg/str_echo_freertos/armgcc/debug/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_2535a.dir/testCCompiler.c.obj
-/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-gcc   --specs=nosys.specs   -O3    -o CMakeFiles/cmTC_2535a.dir/testCCompiler.c.obj   -c /home/aselsan/Desktop/GPT_BACKUP/freertos-colibri-imx7/examples/imx7_colibri_m4/demo_apps/rpmsg/str_echo_freertos/armgcc/debug/CMakeFiles/CMakeTmp/testCCompiler.c
-Linking C executable cmTC_2535a
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_2535a.dir/link.txt --verbose=1
-/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-gcc --specs=nosys.specs   -O3     CMakeFiles/cmTC_2535a.dir/testCCompiler.c.obj  -o cmTC_2535a 
+Building C object CMakeFiles/cmTC_aede1.dir/testCCompiler.c.obj
+/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-gcc   --specs=nosys.specs   -O3    -o CMakeFiles/cmTC_aede1.dir/testCCompiler.c.obj   -c /home/aselsan/Desktop/GPT_BACKUP/freertos-colibri-imx7/examples/imx7_colibri_m4/demo_apps/rpmsg/str_echo_freertos/armgcc/debug/CMakeFiles/CMakeTmp/testCCompiler.c
+Linking C executable cmTC_aede1
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_aede1.dir/link.txt --verbose=1
+/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-gcc --specs=nosys.specs   -O3     CMakeFiles/cmTC_aede1.dir/testCCompiler.c.obj  -o cmTC_aede1 
 make[1]: Leaving directory '/home/aselsan/Desktop/GPT_BACKUP/freertos-colibri-imx7/examples/imx7_colibri_m4/demo_apps/rpmsg/str_echo_freertos/armgcc/debug/CMakeFiles/CMakeTmp'
 
 
@@ -43,10 +43,10 @@ make[1]: Leaving directory '/home/aselsan/Desktop/GPT_BACKUP/freertos-colibri-im
 Detecting C compiler ABI info compiled with the following output:
 Change Dir: /home/aselsan/Desktop/GPT_BACKUP/freertos-colibri-imx7/examples/imx7_colibri_m4/demo_apps/rpmsg/str_echo_freertos/armgcc/debug/CMakeFiles/CMakeTmp
 
-Run Build Command(s):/usr/bin/make cmTC_ce1b2/fast && /usr/bin/make -f CMakeFiles/cmTC_ce1b2.dir/build.make CMakeFiles/cmTC_ce1b2.dir/build
+Run Build Command(s):/usr/bin/make cmTC_606a3/fast && /usr/bin/make -f CMakeFiles/cmTC_606a3.dir/build.make CMakeFiles/cmTC_606a3.dir/build
 make[1]: Entering directory '/home/aselsan/Desktop/GPT_BACKUP/freertos-colibri-imx7/examples/imx7_colibri_m4/demo_apps/rpmsg/str_echo_freertos/armgcc/debug/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_ce1b2.dir/CMakeCCompilerABI.c.obj
-/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-gcc   --specs=nosys.specs   -O3    -v -o CMakeFiles/cmTC_ce1b2.dir/CMakeCCompilerABI.c.obj   -c /usr/share/cmake-3.16/Modules/CMakeCCompilerABI.c
+Building C object CMakeFiles/cmTC_606a3.dir/CMakeCCompilerABI.c.obj
+/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-gcc   --specs=nosys.specs   -O3    -v -o CMakeFiles/cmTC_606a3.dir/CMakeCCompilerABI.c.obj   -c /usr/share/cmake-3.16/Modules/CMakeCCompilerABI.c
 Using built-in specs.
 Reading specs from /home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/nosys.specs
 rename spec link_gcc_c_sequence to nosys_link_gcc_c_sequence
@@ -55,8 +55,8 @@ Target: arm-none-eabi
 Configured with: /home/build/work/GCC-4-9-build/src/gcc/configure --target=arm-none-eabi --prefix=/home/build/work/GCC-4-9-build/install-native --libexecdir=/home/build/work/GCC-4-9-build/install-native/lib --infodir=/home/build/work/GCC-4-9-build/install-native/share/doc/gcc-arm-none-eabi/info --mandir=/home/build/work/GCC-4-9-build/install-native/share/doc/gcc-arm-none-eabi/man --htmldir=/home/build/work/GCC-4-9-build/install-native/share/doc/gcc-arm-none-eabi/html --pdfdir=/home/build/work/GCC-4-9-build/install-native/share/doc/gcc-arm-none-eabi/pdf --enable-languages=c,c++ --enable-plugins --disable-decimal-float --disable-libffi --disable-libgomp --disable-libmudflap --disable-libquadmath --disable-libssp --disable-libstdcxx-pch --disable-nls --disable-shared --disable-threads --disable-tls --with-gnu-as --with-gnu-ld --with-newlib --with-headers=yes --with-python-dir=share/gcc-arm-none-eabi --with-sysroot=/home/build/work/GCC-4-9-build/install-native/arm-none-eabi --build=i686-linux-gnu --host=i686-linux-gnu --with-gmp=/home/build/work/GCC-4-9-build/build-native/host-libs/usr --with-mpfr=/home/build/work/GCC-4-9-build/build-native/host-libs/usr --with-mpc=/home/build/work/GCC-4-9-build/build-native/host-libs/usr --with-isl=/home/build/work/GCC-4-9-build/build-native/host-libs/usr --with-cloog=/home/build/work/GCC-4-9-build/build-native/host-libs/usr --with-libelf=/home/build/work/GCC-4-9-build/build-native/host-libs/usr --with-host-libstdcxx='-static-libgcc -Wl,-Bstatic,-lstdc++,-Bdynamic -lm' --with-pkgversion='GNU Tools for ARM Embedded Processors' --with-multilib-list=armv6-m,armv7-m,armv7e-m,cortex-m7,armv7-r
 Thread model: single
 gcc version 4.9.3 20150529 (release) [ARM/embedded-4_9-branch revision 227977] (GNU Tools for ARM Embedded Processors) 
-COLLECT_GCC_OPTIONS='-specs=nosys.specs' '-O3' '-v' '-o' 'CMakeFiles/cmTC_ce1b2.dir/CMakeCCompilerABI.c.obj' '-c'
- /home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/cc1 -quiet -v -iprefix /home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/ -isysroot /home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../arm-none-eabi -D__USES_INITFINI__ /usr/share/cmake-3.16/Modules/CMakeCCompilerABI.c -quiet -dumpbase CMakeCCompilerABI.c -auxbase-strip CMakeFiles/cmTC_ce1b2.dir/CMakeCCompilerABI.c.obj -O3 -version -o /tmp/cchpjHmu.s
+COLLECT_GCC_OPTIONS='-specs=nosys.specs' '-O3' '-v' '-o' 'CMakeFiles/cmTC_606a3.dir/CMakeCCompilerABI.c.obj' '-c'
+ /home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/cc1 -quiet -v -iprefix /home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/ -isysroot /home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../arm-none-eabi -D__USES_INITFINI__ /usr/share/cmake-3.16/Modules/CMakeCCompilerABI.c -quiet -dumpbase CMakeCCompilerABI.c -auxbase-strip CMakeFiles/cmTC_606a3.dir/CMakeCCompilerABI.c.obj -O3 -version -o /tmp/ccYLpIO3.s
 GNU C (GNU Tools for ARM Embedded Processors) version 4.9.3 20150529 (release) [ARM/embedded-4_9-branch revision 227977] (arm-none-eabi)
 	compiled by GNU C version 4.7.4, GMP version 4.3.2, MPFR version 2.4.2, MPC version 0.8.1
 GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
@@ -75,15 +75,15 @@ GNU C (GNU Tools for ARM Embedded Processors) version 4.9.3 20150529 (release) [
 	compiled by GNU C version 4.7.4, GMP version 4.3.2, MPFR version 2.4.2, MPC version 0.8.1
 GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 Compiler executable checksum: 23ae9d7553dfa09bbef2d3a65686f7ef
-COLLECT_GCC_OPTIONS='-specs=nosys.specs' '-O3' '-v' '-o' 'CMakeFiles/cmTC_ce1b2.dir/CMakeCCompilerABI.c.obj' '-c'
- /home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/bin/as -v -meabi=5 -o CMakeFiles/cmTC_ce1b2.dir/CMakeCCompilerABI.c.obj /tmp/cchpjHmu.s
+COLLECT_GCC_OPTIONS='-specs=nosys.specs' '-O3' '-v' '-o' 'CMakeFiles/cmTC_606a3.dir/CMakeCCompilerABI.c.obj' '-c'
+ /home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/bin/as -v -meabi=5 -o CMakeFiles/cmTC_606a3.dir/CMakeCCompilerABI.c.obj /tmp/ccYLpIO3.s
 GNU assembler version 2.24.0 (arm-none-eabi) using BFD version (GNU Tools for ARM Embedded Processors) 2.24.0.20150921
 COMPILER_PATH=/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/:/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/:/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/bin/
 LIBRARY_PATH=/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/:/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/:/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/:/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../arm-none-eabi/lib/
-COLLECT_GCC_OPTIONS='-specs=nosys.specs' '-O3' '-v' '-o' 'CMakeFiles/cmTC_ce1b2.dir/CMakeCCompilerABI.c.obj' '-c'
-Linking C executable cmTC_ce1b2
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_ce1b2.dir/link.txt --verbose=1
-/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-gcc --specs=nosys.specs   -O3    -v CMakeFiles/cmTC_ce1b2.dir/CMakeCCompilerABI.c.obj  -o cmTC_ce1b2 
+COLLECT_GCC_OPTIONS='-specs=nosys.specs' '-O3' '-v' '-o' 'CMakeFiles/cmTC_606a3.dir/CMakeCCompilerABI.c.obj' '-c'
+Linking C executable cmTC_606a3
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_606a3.dir/link.txt --verbose=1
+/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-gcc --specs=nosys.specs   -O3    -v CMakeFiles/cmTC_606a3.dir/CMakeCCompilerABI.c.obj  -o cmTC_606a3 
 Using built-in specs.
 Reading specs from /home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/nosys.specs
 rename spec link_gcc_c_sequence to nosys_link_gcc_c_sequence
@@ -95,8 +95,8 @@ Thread model: single
 gcc version 4.9.3 20150529 (release) [ARM/embedded-4_9-branch revision 227977] (GNU Tools for ARM Embedded Processors) 
 COMPILER_PATH=/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/:/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/:/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/bin/
 LIBRARY_PATH=/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/:/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/:/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/:/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../arm-none-eabi/lib/
-COLLECT_GCC_OPTIONS='-specs=nosys.specs' '-O3' '-v' '-o' 'cmTC_ce1b2'
- /home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/collect2 -plugin /home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/liblto_plugin.so -plugin-opt=/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/lto-wrapper -plugin-opt=-fresolution=/tmp/ccPLnett.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lnosys --sysroot=/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../arm-none-eabi -X -o cmTC_ce1b2 /home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/crti.o /home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/crtbegin.o /home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/crt0.o -L/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3 -L/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc -L/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib -L/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../arm-none-eabi/lib CMakeFiles/cmTC_ce1b2.dir/CMakeCCompilerABI.c.obj --start-group -lgcc -lc --end-group --start-group -lgcc -lc -lnosys --end-group /home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/crtend.o /home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/crtn.o
+COLLECT_GCC_OPTIONS='-specs=nosys.specs' '-O3' '-v' '-o' 'cmTC_606a3'
+ /home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/collect2 -plugin /home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/liblto_plugin.so -plugin-opt=/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/lto-wrapper -plugin-opt=-fresolution=/tmp/cckmh8b6.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lnosys --sysroot=/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../arm-none-eabi -X -o cmTC_606a3 /home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/crti.o /home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/crtbegin.o /home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/crt0.o -L/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3 -L/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc -L/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib -L/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../arm-none-eabi/lib CMakeFiles/cmTC_606a3.dir/CMakeCCompilerABI.c.obj --start-group -lgcc -lc --end-group --start-group -lgcc -lc -lnosys --end-group /home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/crtend.o /home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/crtn.o
 make[1]: Leaving directory '/home/aselsan/Desktop/GPT_BACKUP/freertos-colibri-imx7/examples/imx7_colibri_m4/demo_apps/rpmsg/str_echo_freertos/armgcc/debug/CMakeFiles/CMakeTmp'
 
 
@@ -118,10 +118,10 @@ Parsed C implicit link information from above output:
   link line regex: [^( *|.*[/\])(arm-none-eabi-ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
   ignore line: [Change Dir: /home/aselsan/Desktop/GPT_BACKUP/freertos-colibri-imx7/examples/imx7_colibri_m4/demo_apps/rpmsg/str_echo_freertos/armgcc/debug/CMakeFiles/CMakeTmp]
   ignore line: []
-  ignore line: [Run Build Command(s):/usr/bin/make cmTC_ce1b2/fast && /usr/bin/make -f CMakeFiles/cmTC_ce1b2.dir/build.make CMakeFiles/cmTC_ce1b2.dir/build]
+  ignore line: [Run Build Command(s):/usr/bin/make cmTC_606a3/fast && /usr/bin/make -f CMakeFiles/cmTC_606a3.dir/build.make CMakeFiles/cmTC_606a3.dir/build]
   ignore line: [make[1]: Entering directory '/home/aselsan/Desktop/GPT_BACKUP/freertos-colibri-imx7/examples/imx7_colibri_m4/demo_apps/rpmsg/str_echo_freertos/armgcc/debug/CMakeFiles/CMakeTmp']
-  ignore line: [Building C object CMakeFiles/cmTC_ce1b2.dir/CMakeCCompilerABI.c.obj]
-  ignore line: [/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-gcc   --specs=nosys.specs   -O3    -v -o CMakeFiles/cmTC_ce1b2.dir/CMakeCCompilerABI.c.obj   -c /usr/share/cmake-3.16/Modules/CMakeCCompilerABI.c]
+  ignore line: [Building C object CMakeFiles/cmTC_606a3.dir/CMakeCCompilerABI.c.obj]
+  ignore line: [/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-gcc   --specs=nosys.specs   -O3    -v -o CMakeFiles/cmTC_606a3.dir/CMakeCCompilerABI.c.obj   -c /usr/share/cmake-3.16/Modules/CMakeCCompilerABI.c]
   ignore line: [Using built-in specs.]
   ignore line: [Reading specs from /home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/nosys.specs]
   ignore line: [rename spec link_gcc_c_sequence to nosys_link_gcc_c_sequence]
@@ -130,8 +130,8 @@ Parsed C implicit link information from above output:
   ignore line: [Configured with: /home/build/work/GCC-4-9-build/src/gcc/configure --target=arm-none-eabi --prefix=/home/build/work/GCC-4-9-build/install-native --libexecdir=/home/build/work/GCC-4-9-build/install-native/lib --infodir=/home/build/work/GCC-4-9-build/install-native/share/doc/gcc-arm-none-eabi/info --mandir=/home/build/work/GCC-4-9-build/install-native/share/doc/gcc-arm-none-eabi/man --htmldir=/home/build/work/GCC-4-9-build/install-native/share/doc/gcc-arm-none-eabi/html --pdfdir=/home/build/work/GCC-4-9-build/install-native/share/doc/gcc-arm-none-eabi/pdf --enable-languages=c,c++ --enable-plugins --disable-decimal-float --disable-libffi --disable-libgomp --disable-libmudflap --disable-libquadmath --disable-libssp --disable-libstdcxx-pch --disable-nls --disable-shared --disable-threads --disable-tls --with-gnu-as --with-gnu-ld --with-newlib --with-headers=yes --with-python-dir=share/gcc-arm-none-eabi --with-sysroot=/home/build/work/GCC-4-9-build/install-native/arm-none-eabi --build=i686-linux-gnu --host=i686-linux-gnu --with-gmp=/home/build/work/GCC-4-9-build/build-native/host-libs/usr --with-mpfr=/home/build/work/GCC-4-9-build/build-native/host-libs/usr --with-mpc=/home/build/work/GCC-4-9-build/build-native/host-libs/usr --with-isl=/home/build/work/GCC-4-9-build/build-native/host-libs/usr --with-cloog=/home/build/work/GCC-4-9-build/build-native/host-libs/usr --with-libelf=/home/build/work/GCC-4-9-build/build-native/host-libs/usr --with-host-libstdcxx='-static-libgcc -Wl,-Bstatic,-lstdc++,-Bdynamic -lm' --with-pkgversion='GNU Tools for ARM Embedded Processors' --with-multilib-list=armv6-m,armv7-m,armv7e-m,cortex-m7,armv7-r]
   ignore line: [Thread model: single]
   ignore line: [gcc version 4.9.3 20150529 (release) [ARM/embedded-4_9-branch revision 227977] (GNU Tools for ARM Embedded Processors) ]
-  ignore line: [COLLECT_GCC_OPTIONS='-specs=nosys.specs' '-O3' '-v' '-o' 'CMakeFiles/cmTC_ce1b2.dir/CMakeCCompilerABI.c.obj' '-c']
-  ignore line: [ /home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/cc1 -quiet -v -iprefix /home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/ -isysroot /home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../arm-none-eabi -D__USES_INITFINI__ /usr/share/cmake-3.16/Modules/CMakeCCompilerABI.c -quiet -dumpbase CMakeCCompilerABI.c -auxbase-strip CMakeFiles/cmTC_ce1b2.dir/CMakeCCompilerABI.c.obj -O3 -version -o /tmp/cchpjHmu.s]
+  ignore line: [COLLECT_GCC_OPTIONS='-specs=nosys.specs' '-O3' '-v' '-o' 'CMakeFiles/cmTC_606a3.dir/CMakeCCompilerABI.c.obj' '-c']
+  ignore line: [ /home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/cc1 -quiet -v -iprefix /home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/ -isysroot /home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../arm-none-eabi -D__USES_INITFINI__ /usr/share/cmake-3.16/Modules/CMakeCCompilerABI.c -quiet -dumpbase CMakeCCompilerABI.c -auxbase-strip CMakeFiles/cmTC_606a3.dir/CMakeCCompilerABI.c.obj -O3 -version -o /tmp/ccYLpIO3.s]
   ignore line: [GNU C (GNU Tools for ARM Embedded Processors) version 4.9.3 20150529 (release) [ARM/embedded-4_9-branch revision 227977] (arm-none-eabi)]
   ignore line: [	compiled by GNU C version 4.7.4  GMP version 4.3.2  MPFR version 2.4.2  MPC version 0.8.1]
   ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
@@ -150,15 +150,15 @@ Parsed C implicit link information from above output:
   ignore line: [	compiled by GNU C version 4.7.4  GMP version 4.3.2  MPFR version 2.4.2  MPC version 0.8.1]
   ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
   ignore line: [Compiler executable checksum: 23ae9d7553dfa09bbef2d3a65686f7ef]
-  ignore line: [COLLECT_GCC_OPTIONS='-specs=nosys.specs' '-O3' '-v' '-o' 'CMakeFiles/cmTC_ce1b2.dir/CMakeCCompilerABI.c.obj' '-c']
-  ignore line: [ /home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/bin/as -v -meabi=5 -o CMakeFiles/cmTC_ce1b2.dir/CMakeCCompilerABI.c.obj /tmp/cchpjHmu.s]
+  ignore line: [COLLECT_GCC_OPTIONS='-specs=nosys.specs' '-O3' '-v' '-o' 'CMakeFiles/cmTC_606a3.dir/CMakeCCompilerABI.c.obj' '-c']
+  ignore line: [ /home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/bin/as -v -meabi=5 -o CMakeFiles/cmTC_606a3.dir/CMakeCCompilerABI.c.obj /tmp/ccYLpIO3.s]
   ignore line: [GNU assembler version 2.24.0 (arm-none-eabi) using BFD version (GNU Tools for ARM Embedded Processors) 2.24.0.20150921]
   ignore line: [COMPILER_PATH=/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/:/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/:/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/bin/]
   ignore line: [LIBRARY_PATH=/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/:/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/:/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/:/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../arm-none-eabi/lib/]
-  ignore line: [COLLECT_GCC_OPTIONS='-specs=nosys.specs' '-O3' '-v' '-o' 'CMakeFiles/cmTC_ce1b2.dir/CMakeCCompilerABI.c.obj' '-c']
-  ignore line: [Linking C executable cmTC_ce1b2]
-  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_ce1b2.dir/link.txt --verbose=1]
-  ignore line: [/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-gcc --specs=nosys.specs   -O3    -v CMakeFiles/cmTC_ce1b2.dir/CMakeCCompilerABI.c.obj  -o cmTC_ce1b2 ]
+  ignore line: [COLLECT_GCC_OPTIONS='-specs=nosys.specs' '-O3' '-v' '-o' 'CMakeFiles/cmTC_606a3.dir/CMakeCCompilerABI.c.obj' '-c']
+  ignore line: [Linking C executable cmTC_606a3]
+  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_606a3.dir/link.txt --verbose=1]
+  ignore line: [/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-gcc --specs=nosys.specs   -O3    -v CMakeFiles/cmTC_606a3.dir/CMakeCCompilerABI.c.obj  -o cmTC_606a3 ]
   ignore line: [Using built-in specs.]
   ignore line: [Reading specs from /home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/nosys.specs]
   ignore line: [rename spec link_gcc_c_sequence to nosys_link_gcc_c_sequence]
@@ -170,13 +170,13 @@ Parsed C implicit link information from above output:
   ignore line: [gcc version 4.9.3 20150529 (release) [ARM/embedded-4_9-branch revision 227977] (GNU Tools for ARM Embedded Processors) ]
   ignore line: [COMPILER_PATH=/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/:/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/:/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/bin/]
   ignore line: [LIBRARY_PATH=/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/:/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/:/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/:/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../arm-none-eabi/lib/]
-  ignore line: [COLLECT_GCC_OPTIONS='-specs=nosys.specs' '-O3' '-v' '-o' 'cmTC_ce1b2']
-  link line: [ /home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/collect2 -plugin /home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/liblto_plugin.so -plugin-opt=/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/lto-wrapper -plugin-opt=-fresolution=/tmp/ccPLnett.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lnosys --sysroot=/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../arm-none-eabi -X -o cmTC_ce1b2 /home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/crti.o /home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/crtbegin.o /home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/crt0.o -L/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3 -L/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc -L/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib -L/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../arm-none-eabi/lib CMakeFiles/cmTC_ce1b2.dir/CMakeCCompilerABI.c.obj --start-group -lgcc -lc --end-group --start-group -lgcc -lc -lnosys --end-group /home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/crtend.o /home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/crtn.o]
+  ignore line: [COLLECT_GCC_OPTIONS='-specs=nosys.specs' '-O3' '-v' '-o' 'cmTC_606a3']
+  link line: [ /home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/collect2 -plugin /home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/liblto_plugin.so -plugin-opt=/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/lto-wrapper -plugin-opt=-fresolution=/tmp/cckmh8b6.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lnosys --sysroot=/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../arm-none-eabi -X -o cmTC_606a3 /home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/crti.o /home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/crtbegin.o /home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/crt0.o -L/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3 -L/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc -L/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib -L/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../arm-none-eabi/lib CMakeFiles/cmTC_606a3.dir/CMakeCCompilerABI.c.obj --start-group -lgcc -lc --end-group --start-group -lgcc -lc -lnosys --end-group /home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/crtend.o /home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/crtn.o]
     arg [/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/collect2] ==> ignore
     arg [-plugin] ==> ignore
     arg [/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/liblto_plugin.so] ==> ignore
     arg [-plugin-opt=/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/lto-wrapper] ==> ignore
-    arg [-plugin-opt=-fresolution=/tmp/ccPLnett.res] ==> ignore
+    arg [-plugin-opt=-fresolution=/tmp/cckmh8b6.res] ==> ignore
     arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
     arg [-plugin-opt=-pass-through=-lc] ==> ignore
     arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
@@ -185,7 +185,7 @@ Parsed C implicit link information from above output:
     arg [--sysroot=/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../arm-none-eabi] ==> ignore
     arg [-X] ==> ignore
     arg [-o] ==> ignore
-    arg [cmTC_ce1b2] ==> ignore
+    arg [cmTC_606a3] ==> ignore
     arg [/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/crti.o] ==> ignore
     arg [/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/crtbegin.o] ==> ignore
     arg [/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/crt0.o] ==> ignore
@@ -193,7 +193,7 @@ Parsed C implicit link information from above output:
     arg [-L/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc] ==> dir [/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc]
     arg [-L/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib] ==> dir [/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib]
     arg [-L/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../arm-none-eabi/lib] ==> dir [/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../arm-none-eabi/lib]
-    arg [CMakeFiles/cmTC_ce1b2.dir/CMakeCCompilerABI.c.obj] ==> ignore
+    arg [CMakeFiles/cmTC_606a3.dir/CMakeCCompilerABI.c.obj] ==> ignore
     arg [--start-group] ==> ignore
     arg [-lgcc] ==> lib [gcc]
     arg [-lc] ==> lib [c]
@@ -217,13 +217,13 @@ Parsed C implicit link information from above output:
 Determining if the CXX compiler works passed with the following output:
 Change Dir: /home/aselsan/Desktop/GPT_BACKUP/freertos-colibri-imx7/examples/imx7_colibri_m4/demo_apps/rpmsg/str_echo_freertos/armgcc/debug/CMakeFiles/CMakeTmp
 
-Run Build Command(s):/usr/bin/make cmTC_f446b/fast && /usr/bin/make -f CMakeFiles/cmTC_f446b.dir/build.make CMakeFiles/cmTC_f446b.dir/build
+Run Build Command(s):/usr/bin/make cmTC_27304/fast && /usr/bin/make -f CMakeFiles/cmTC_27304.dir/build.make CMakeFiles/cmTC_27304.dir/build
 make[1]: Entering directory '/home/aselsan/Desktop/GPT_BACKUP/freertos-colibri-imx7/examples/imx7_colibri_m4/demo_apps/rpmsg/str_echo_freertos/armgcc/debug/CMakeFiles/CMakeTmp'
-Building CXX object CMakeFiles/cmTC_f446b.dir/testCXXCompiler.cxx.obj
-/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-g++    --specs=nosys.specs   -O3    -o CMakeFiles/cmTC_f446b.dir/testCXXCompiler.cxx.obj -c /home/aselsan/Desktop/GPT_BACKUP/freertos-colibri-imx7/examples/imx7_colibri_m4/demo_apps/rpmsg/str_echo_freertos/armgcc/debug/CMakeFiles/CMakeTmp/testCXXCompiler.cxx
-Linking CXX executable cmTC_f446b
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_f446b.dir/link.txt --verbose=1
-/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-g++  --specs=nosys.specs   -O3     CMakeFiles/cmTC_f446b.dir/testCXXCompiler.cxx.obj  -o cmTC_f446b 
+Building CXX object CMakeFiles/cmTC_27304.dir/testCXXCompiler.cxx.obj
+/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-g++    --specs=nosys.specs   -O3    -o CMakeFiles/cmTC_27304.dir/testCXXCompiler.cxx.obj -c /home/aselsan/Desktop/GPT_BACKUP/freertos-colibri-imx7/examples/imx7_colibri_m4/demo_apps/rpmsg/str_echo_freertos/armgcc/debug/CMakeFiles/CMakeTmp/testCXXCompiler.cxx
+Linking CXX executable cmTC_27304
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_27304.dir/link.txt --verbose=1
+/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-g++  --specs=nosys.specs   -O3     CMakeFiles/cmTC_27304.dir/testCXXCompiler.cxx.obj  -o cmTC_27304 
 make[1]: Leaving directory '/home/aselsan/Desktop/GPT_BACKUP/freertos-colibri-imx7/examples/imx7_colibri_m4/demo_apps/rpmsg/str_echo_freertos/armgcc/debug/CMakeFiles/CMakeTmp'
 
 
@@ -231,10 +231,10 @@ make[1]: Leaving directory '/home/aselsan/Desktop/GPT_BACKUP/freertos-colibri-im
 Detecting CXX compiler ABI info compiled with the following output:
 Change Dir: /home/aselsan/Desktop/GPT_BACKUP/freertos-colibri-imx7/examples/imx7_colibri_m4/demo_apps/rpmsg/str_echo_freertos/armgcc/debug/CMakeFiles/CMakeTmp
 
-Run Build Command(s):/usr/bin/make cmTC_9c3b4/fast && /usr/bin/make -f CMakeFiles/cmTC_9c3b4.dir/build.make CMakeFiles/cmTC_9c3b4.dir/build
+Run Build Command(s):/usr/bin/make cmTC_57060/fast && /usr/bin/make -f CMakeFiles/cmTC_57060.dir/build.make CMakeFiles/cmTC_57060.dir/build
 make[1]: Entering directory '/home/aselsan/Desktop/GPT_BACKUP/freertos-colibri-imx7/examples/imx7_colibri_m4/demo_apps/rpmsg/str_echo_freertos/armgcc/debug/CMakeFiles/CMakeTmp'
-Building CXX object CMakeFiles/cmTC_9c3b4.dir/CMakeCXXCompilerABI.cpp.obj
-/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-g++    --specs=nosys.specs   -O3    -v -o CMakeFiles/cmTC_9c3b4.dir/CMakeCXXCompilerABI.cpp.obj -c /usr/share/cmake-3.16/Modules/CMakeCXXCompilerABI.cpp
+Building CXX object CMakeFiles/cmTC_57060.dir/CMakeCXXCompilerABI.cpp.obj
+/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-g++    --specs=nosys.specs   -O3    -v -o CMakeFiles/cmTC_57060.dir/CMakeCXXCompilerABI.cpp.obj -c /usr/share/cmake-3.16/Modules/CMakeCXXCompilerABI.cpp
 Using built-in specs.
 Reading specs from /home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/nosys.specs
 rename spec link_gcc_c_sequence to nosys_link_gcc_c_sequence
@@ -243,8 +243,8 @@ Target: arm-none-eabi
 Configured with: /home/build/work/GCC-4-9-build/src/gcc/configure --target=arm-none-eabi --prefix=/home/build/work/GCC-4-9-build/install-native --libexecdir=/home/build/work/GCC-4-9-build/install-native/lib --infodir=/home/build/work/GCC-4-9-build/install-native/share/doc/gcc-arm-none-eabi/info --mandir=/home/build/work/GCC-4-9-build/install-native/share/doc/gcc-arm-none-eabi/man --htmldir=/home/build/work/GCC-4-9-build/install-native/share/doc/gcc-arm-none-eabi/html --pdfdir=/home/build/work/GCC-4-9-build/install-native/share/doc/gcc-arm-none-eabi/pdf --enable-languages=c,c++ --enable-plugins --disable-decimal-float --disable-libffi --disable-libgomp --disable-libmudflap --disable-libquadmath --disable-libssp --disable-libstdcxx-pch --disable-nls --disable-shared --disable-threads --disable-tls --with-gnu-as --with-gnu-ld --with-newlib --with-headers=yes --with-python-dir=share/gcc-arm-none-eabi --with-sysroot=/home/build/work/GCC-4-9-build/install-native/arm-none-eabi --build=i686-linux-gnu --host=i686-linux-gnu --with-gmp=/home/build/work/GCC-4-9-build/build-native/host-libs/usr --with-mpfr=/home/build/work/GCC-4-9-build/build-native/host-libs/usr --with-mpc=/home/build/work/GCC-4-9-build/build-native/host-libs/usr --with-isl=/home/build/work/GCC-4-9-build/build-native/host-libs/usr --with-cloog=/home/build/work/GCC-4-9-build/build-native/host-libs/usr --with-libelf=/home/build/work/GCC-4-9-build/build-native/host-libs/usr --with-host-libstdcxx='-static-libgcc -Wl,-Bstatic,-lstdc++,-Bdynamic -lm' --with-pkgversion='GNU Tools for ARM Embedded Processors' --with-multilib-list=armv6-m,armv7-m,armv7e-m,cortex-m7,armv7-r
 Thread model: single
 gcc version 4.9.3 20150529 (release) [ARM/embedded-4_9-branch revision 227977] (GNU Tools for ARM Embedded Processors) 
-COLLECT_GCC_OPTIONS='-specs=nosys.specs' '-O3' '-v' '-o' 'CMakeFiles/cmTC_9c3b4.dir/CMakeCXXCompilerABI.cpp.obj' '-c'
- /home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/cc1plus -quiet -v -iprefix /home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/ -isysroot /home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../arm-none-eabi -D__USES_INITFINI__ /usr/share/cmake-3.16/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpbase CMakeCXXCompilerABI.cpp -auxbase-strip CMakeFiles/cmTC_9c3b4.dir/CMakeCXXCompilerABI.cpp.obj -O3 -version -o /tmp/cc976o4B.s
+COLLECT_GCC_OPTIONS='-specs=nosys.specs' '-O3' '-v' '-o' 'CMakeFiles/cmTC_57060.dir/CMakeCXXCompilerABI.cpp.obj' '-c'
+ /home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/cc1plus -quiet -v -iprefix /home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/ -isysroot /home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../arm-none-eabi -D__USES_INITFINI__ /usr/share/cmake-3.16/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpbase CMakeCXXCompilerABI.cpp -auxbase-strip CMakeFiles/cmTC_57060.dir/CMakeCXXCompilerABI.cpp.obj -O3 -version -o /tmp/ccuT2qua.s
 GNU C++ (GNU Tools for ARM Embedded Processors) version 4.9.3 20150529 (release) [ARM/embedded-4_9-branch revision 227977] (arm-none-eabi)
 	compiled by GNU C version 4.7.4, GMP version 4.3.2, MPFR version 2.4.2, MPC version 0.8.1
 GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
@@ -269,15 +269,15 @@ GNU C++ (GNU Tools for ARM Embedded Processors) version 4.9.3 20150529 (release)
 	compiled by GNU C version 4.7.4, GMP version 4.3.2, MPFR version 2.4.2, MPC version 0.8.1
 GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 Compiler executable checksum: b2a48e419865560d4c520822e41296e7
-COLLECT_GCC_OPTIONS='-specs=nosys.specs' '-O3' '-v' '-o' 'CMakeFiles/cmTC_9c3b4.dir/CMakeCXXCompilerABI.cpp.obj' '-c'
- /home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/bin/as -v -meabi=5 -o CMakeFiles/cmTC_9c3b4.dir/CMakeCXXCompilerABI.cpp.obj /tmp/cc976o4B.s
+COLLECT_GCC_OPTIONS='-specs=nosys.specs' '-O3' '-v' '-o' 'CMakeFiles/cmTC_57060.dir/CMakeCXXCompilerABI.cpp.obj' '-c'
+ /home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/bin/as -v -meabi=5 -o CMakeFiles/cmTC_57060.dir/CMakeCXXCompilerABI.cpp.obj /tmp/ccuT2qua.s
 GNU assembler version 2.24.0 (arm-none-eabi) using BFD version (GNU Tools for ARM Embedded Processors) 2.24.0.20150921
 COMPILER_PATH=/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/:/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/:/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/bin/
 LIBRARY_PATH=/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/:/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/:/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/:/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../arm-none-eabi/lib/
-COLLECT_GCC_OPTIONS='-specs=nosys.specs' '-O3' '-v' '-o' 'CMakeFiles/cmTC_9c3b4.dir/CMakeCXXCompilerABI.cpp.obj' '-c'
-Linking CXX executable cmTC_9c3b4
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_9c3b4.dir/link.txt --verbose=1
-/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-g++  --specs=nosys.specs   -O3    -v CMakeFiles/cmTC_9c3b4.dir/CMakeCXXCompilerABI.cpp.obj  -o cmTC_9c3b4 
+COLLECT_GCC_OPTIONS='-specs=nosys.specs' '-O3' '-v' '-o' 'CMakeFiles/cmTC_57060.dir/CMakeCXXCompilerABI.cpp.obj' '-c'
+Linking CXX executable cmTC_57060
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_57060.dir/link.txt --verbose=1
+/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-g++  --specs=nosys.specs   -O3    -v CMakeFiles/cmTC_57060.dir/CMakeCXXCompilerABI.cpp.obj  -o cmTC_57060 
 Using built-in specs.
 Reading specs from /home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/nosys.specs
 rename spec link_gcc_c_sequence to nosys_link_gcc_c_sequence
@@ -289,8 +289,8 @@ Thread model: single
 gcc version 4.9.3 20150529 (release) [ARM/embedded-4_9-branch revision 227977] (GNU Tools for ARM Embedded Processors) 
 COMPILER_PATH=/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/:/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/:/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/bin/
 LIBRARY_PATH=/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/:/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/:/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/:/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../arm-none-eabi/lib/
-COLLECT_GCC_OPTIONS='-specs=nosys.specs' '-O3' '-v' '-o' 'cmTC_9c3b4'
- /home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/collect2 -plugin /home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/liblto_plugin.so -plugin-opt=/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/lto-wrapper -plugin-opt=-fresolution=/tmp/ccXSXVeA.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lnosys --sysroot=/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../arm-none-eabi -X -o cmTC_9c3b4 /home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/crti.o /home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/crtbegin.o /home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/crt0.o -L/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3 -L/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc -L/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib -L/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../arm-none-eabi/lib CMakeFiles/cmTC_9c3b4.dir/CMakeCXXCompilerABI.cpp.obj -lstdc++ -lm --start-group -lgcc -lc --end-group --start-group -lgcc -lc -lnosys --end-group /home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/crtend.o /home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/crtn.o
+COLLECT_GCC_OPTIONS='-specs=nosys.specs' '-O3' '-v' '-o' 'cmTC_57060'
+ /home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/collect2 -plugin /home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/liblto_plugin.so -plugin-opt=/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/lto-wrapper -plugin-opt=-fresolution=/tmp/cciKNny9.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lnosys --sysroot=/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../arm-none-eabi -X -o cmTC_57060 /home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/crti.o /home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/crtbegin.o /home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/crt0.o -L/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3 -L/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc -L/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib -L/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../arm-none-eabi/lib CMakeFiles/cmTC_57060.dir/CMakeCXXCompilerABI.cpp.obj -lstdc++ -lm --start-group -lgcc -lc --end-group --start-group -lgcc -lc -lnosys --end-group /home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/crtend.o /home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/crtn.o
 make[1]: Leaving directory '/home/aselsan/Desktop/GPT_BACKUP/freertos-colibri-imx7/examples/imx7_colibri_m4/demo_apps/rpmsg/str_echo_freertos/armgcc/debug/CMakeFiles/CMakeTmp'
 
 
@@ -318,10 +318,10 @@ Parsed CXX implicit link information from above output:
   link line regex: [^( *|.*[/\])(arm-none-eabi-ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
   ignore line: [Change Dir: /home/aselsan/Desktop/GPT_BACKUP/freertos-colibri-imx7/examples/imx7_colibri_m4/demo_apps/rpmsg/str_echo_freertos/armgcc/debug/CMakeFiles/CMakeTmp]
   ignore line: []
-  ignore line: [Run Build Command(s):/usr/bin/make cmTC_9c3b4/fast && /usr/bin/make -f CMakeFiles/cmTC_9c3b4.dir/build.make CMakeFiles/cmTC_9c3b4.dir/build]
+  ignore line: [Run Build Command(s):/usr/bin/make cmTC_57060/fast && /usr/bin/make -f CMakeFiles/cmTC_57060.dir/build.make CMakeFiles/cmTC_57060.dir/build]
   ignore line: [make[1]: Entering directory '/home/aselsan/Desktop/GPT_BACKUP/freertos-colibri-imx7/examples/imx7_colibri_m4/demo_apps/rpmsg/str_echo_freertos/armgcc/debug/CMakeFiles/CMakeTmp']
-  ignore line: [Building CXX object CMakeFiles/cmTC_9c3b4.dir/CMakeCXXCompilerABI.cpp.obj]
-  ignore line: [/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-g++    --specs=nosys.specs   -O3    -v -o CMakeFiles/cmTC_9c3b4.dir/CMakeCXXCompilerABI.cpp.obj -c /usr/share/cmake-3.16/Modules/CMakeCXXCompilerABI.cpp]
+  ignore line: [Building CXX object CMakeFiles/cmTC_57060.dir/CMakeCXXCompilerABI.cpp.obj]
+  ignore line: [/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-g++    --specs=nosys.specs   -O3    -v -o CMakeFiles/cmTC_57060.dir/CMakeCXXCompilerABI.cpp.obj -c /usr/share/cmake-3.16/Modules/CMakeCXXCompilerABI.cpp]
   ignore line: [Using built-in specs.]
   ignore line: [Reading specs from /home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/nosys.specs]
   ignore line: [rename spec link_gcc_c_sequence to nosys_link_gcc_c_sequence]
@@ -330,8 +330,8 @@ Parsed CXX implicit link information from above output:
   ignore line: [Configured with: /home/build/work/GCC-4-9-build/src/gcc/configure --target=arm-none-eabi --prefix=/home/build/work/GCC-4-9-build/install-native --libexecdir=/home/build/work/GCC-4-9-build/install-native/lib --infodir=/home/build/work/GCC-4-9-build/install-native/share/doc/gcc-arm-none-eabi/info --mandir=/home/build/work/GCC-4-9-build/install-native/share/doc/gcc-arm-none-eabi/man --htmldir=/home/build/work/GCC-4-9-build/install-native/share/doc/gcc-arm-none-eabi/html --pdfdir=/home/build/work/GCC-4-9-build/install-native/share/doc/gcc-arm-none-eabi/pdf --enable-languages=c,c++ --enable-plugins --disable-decimal-float --disable-libffi --disable-libgomp --disable-libmudflap --disable-libquadmath --disable-libssp --disable-libstdcxx-pch --disable-nls --disable-shared --disable-threads --disable-tls --with-gnu-as --with-gnu-ld --with-newlib --with-headers=yes --with-python-dir=share/gcc-arm-none-eabi --with-sysroot=/home/build/work/GCC-4-9-build/install-native/arm-none-eabi --build=i686-linux-gnu --host=i686-linux-gnu --with-gmp=/home/build/work/GCC-4-9-build/build-native/host-libs/usr --with-mpfr=/home/build/work/GCC-4-9-build/build-native/host-libs/usr --with-mpc=/home/build/work/GCC-4-9-build/build-native/host-libs/usr --with-isl=/home/build/work/GCC-4-9-build/build-native/host-libs/usr --with-cloog=/home/build/work/GCC-4-9-build/build-native/host-libs/usr --with-libelf=/home/build/work/GCC-4-9-build/build-native/host-libs/usr --with-host-libstdcxx='-static-libgcc -Wl,-Bstatic,-lstdc++,-Bdynamic -lm' --with-pkgversion='GNU Tools for ARM Embedded Processors' --with-multilib-list=armv6-m,armv7-m,armv7e-m,cortex-m7,armv7-r]
   ignore line: [Thread model: single]
   ignore line: [gcc version 4.9.3 20150529 (release) [ARM/embedded-4_9-branch revision 227977] (GNU Tools for ARM Embedded Processors) ]
-  ignore line: [COLLECT_GCC_OPTIONS='-specs=nosys.specs' '-O3' '-v' '-o' 'CMakeFiles/cmTC_9c3b4.dir/CMakeCXXCompilerABI.cpp.obj' '-c']
-  ignore line: [ /home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/cc1plus -quiet -v -iprefix /home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/ -isysroot /home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../arm-none-eabi -D__USES_INITFINI__ /usr/share/cmake-3.16/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpbase CMakeCXXCompilerABI.cpp -auxbase-strip CMakeFiles/cmTC_9c3b4.dir/CMakeCXXCompilerABI.cpp.obj -O3 -version -o /tmp/cc976o4B.s]
+  ignore line: [COLLECT_GCC_OPTIONS='-specs=nosys.specs' '-O3' '-v' '-o' 'CMakeFiles/cmTC_57060.dir/CMakeCXXCompilerABI.cpp.obj' '-c']
+  ignore line: [ /home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/cc1plus -quiet -v -iprefix /home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/ -isysroot /home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../arm-none-eabi -D__USES_INITFINI__ /usr/share/cmake-3.16/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpbase CMakeCXXCompilerABI.cpp -auxbase-strip CMakeFiles/cmTC_57060.dir/CMakeCXXCompilerABI.cpp.obj -O3 -version -o /tmp/ccuT2qua.s]
   ignore line: [GNU C++ (GNU Tools for ARM Embedded Processors) version 4.9.3 20150529 (release) [ARM/embedded-4_9-branch revision 227977] (arm-none-eabi)]
   ignore line: [	compiled by GNU C version 4.7.4  GMP version 4.3.2  MPFR version 2.4.2  MPC version 0.8.1]
   ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
@@ -356,15 +356,15 @@ Parsed CXX implicit link information from above output:
   ignore line: [	compiled by GNU C version 4.7.4  GMP version 4.3.2  MPFR version 2.4.2  MPC version 0.8.1]
   ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
   ignore line: [Compiler executable checksum: b2a48e419865560d4c520822e41296e7]
-  ignore line: [COLLECT_GCC_OPTIONS='-specs=nosys.specs' '-O3' '-v' '-o' 'CMakeFiles/cmTC_9c3b4.dir/CMakeCXXCompilerABI.cpp.obj' '-c']
-  ignore line: [ /home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/bin/as -v -meabi=5 -o CMakeFiles/cmTC_9c3b4.dir/CMakeCXXCompilerABI.cpp.obj /tmp/cc976o4B.s]
+  ignore line: [COLLECT_GCC_OPTIONS='-specs=nosys.specs' '-O3' '-v' '-o' 'CMakeFiles/cmTC_57060.dir/CMakeCXXCompilerABI.cpp.obj' '-c']
+  ignore line: [ /home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/bin/as -v -meabi=5 -o CMakeFiles/cmTC_57060.dir/CMakeCXXCompilerABI.cpp.obj /tmp/ccuT2qua.s]
   ignore line: [GNU assembler version 2.24.0 (arm-none-eabi) using BFD version (GNU Tools for ARM Embedded Processors) 2.24.0.20150921]
   ignore line: [COMPILER_PATH=/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/:/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/:/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/bin/]
   ignore line: [LIBRARY_PATH=/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/:/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/:/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/:/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../arm-none-eabi/lib/]
-  ignore line: [COLLECT_GCC_OPTIONS='-specs=nosys.specs' '-O3' '-v' '-o' 'CMakeFiles/cmTC_9c3b4.dir/CMakeCXXCompilerABI.cpp.obj' '-c']
-  ignore line: [Linking CXX executable cmTC_9c3b4]
-  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_9c3b4.dir/link.txt --verbose=1]
-  ignore line: [/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-g++  --specs=nosys.specs   -O3    -v CMakeFiles/cmTC_9c3b4.dir/CMakeCXXCompilerABI.cpp.obj  -o cmTC_9c3b4 ]
+  ignore line: [COLLECT_GCC_OPTIONS='-specs=nosys.specs' '-O3' '-v' '-o' 'CMakeFiles/cmTC_57060.dir/CMakeCXXCompilerABI.cpp.obj' '-c']
+  ignore line: [Linking CXX executable cmTC_57060]
+  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_57060.dir/link.txt --verbose=1]
+  ignore line: [/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-g++  --specs=nosys.specs   -O3    -v CMakeFiles/cmTC_57060.dir/CMakeCXXCompilerABI.cpp.obj  -o cmTC_57060 ]
   ignore line: [Using built-in specs.]
   ignore line: [Reading specs from /home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/nosys.specs]
   ignore line: [rename spec link_gcc_c_sequence to nosys_link_gcc_c_sequence]
@@ -376,13 +376,13 @@ Parsed CXX implicit link information from above output:
   ignore line: [gcc version 4.9.3 20150529 (release) [ARM/embedded-4_9-branch revision 227977] (GNU Tools for ARM Embedded Processors) ]
   ignore line: [COMPILER_PATH=/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/:/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/:/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/bin/]
   ignore line: [LIBRARY_PATH=/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/:/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/:/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/:/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../arm-none-eabi/lib/]
-  ignore line: [COLLECT_GCC_OPTIONS='-specs=nosys.specs' '-O3' '-v' '-o' 'cmTC_9c3b4']
-  link line: [ /home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/collect2 -plugin /home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/liblto_plugin.so -plugin-opt=/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/lto-wrapper -plugin-opt=-fresolution=/tmp/ccXSXVeA.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lnosys --sysroot=/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../arm-none-eabi -X -o cmTC_9c3b4 /home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/crti.o /home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/crtbegin.o /home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/crt0.o -L/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3 -L/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc -L/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib -L/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../arm-none-eabi/lib CMakeFiles/cmTC_9c3b4.dir/CMakeCXXCompilerABI.cpp.obj -lstdc++ -lm --start-group -lgcc -lc --end-group --start-group -lgcc -lc -lnosys --end-group /home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/crtend.o /home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/crtn.o]
+  ignore line: [COLLECT_GCC_OPTIONS='-specs=nosys.specs' '-O3' '-v' '-o' 'cmTC_57060']
+  link line: [ /home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/collect2 -plugin /home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/liblto_plugin.so -plugin-opt=/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/lto-wrapper -plugin-opt=-fresolution=/tmp/cciKNny9.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lnosys --sysroot=/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../arm-none-eabi -X -o cmTC_57060 /home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/crti.o /home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/crtbegin.o /home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/crt0.o -L/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3 -L/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc -L/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib -L/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../arm-none-eabi/lib CMakeFiles/cmTC_57060.dir/CMakeCXXCompilerABI.cpp.obj -lstdc++ -lm --start-group -lgcc -lc --end-group --start-group -lgcc -lc -lnosys --end-group /home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/crtend.o /home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/crtn.o]
     arg [/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/collect2] ==> ignore
     arg [-plugin] ==> ignore
     arg [/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/liblto_plugin.so] ==> ignore
     arg [-plugin-opt=/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/lto-wrapper] ==> ignore
-    arg [-plugin-opt=-fresolution=/tmp/ccXSXVeA.res] ==> ignore
+    arg [-plugin-opt=-fresolution=/tmp/cciKNny9.res] ==> ignore
     arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
     arg [-plugin-opt=-pass-through=-lc] ==> ignore
     arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
@@ -391,7 +391,7 @@ Parsed CXX implicit link information from above output:
     arg [--sysroot=/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../arm-none-eabi] ==> ignore
     arg [-X] ==> ignore
     arg [-o] ==> ignore
-    arg [cmTC_9c3b4] ==> ignore
+    arg [cmTC_57060] ==> ignore
     arg [/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/crti.o] ==> ignore
     arg [/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/crtbegin.o] ==> ignore
     arg [/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/crt0.o] ==> ignore
@@ -399,7 +399,7 @@ Parsed CXX implicit link information from above output:
     arg [-L/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc] ==> dir [/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc]
     arg [-L/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib] ==> dir [/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib]
     arg [-L/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../arm-none-eabi/lib] ==> dir [/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/../arm-none-eabi/lib]
-    arg [CMakeFiles/cmTC_9c3b4.dir/CMakeCXXCompilerABI.cpp.obj] ==> ignore
+    arg [CMakeFiles/cmTC_57060.dir/CMakeCXXCompilerABI.cpp.obj] ==> ignore
     arg [-lstdc++] ==> lib [stdc++]
     arg [-lm] ==> lib [m]
     arg [--start-group] ==> ignore
@@ -427,13 +427,13 @@ Parsed CXX implicit link information from above output:
 Detecting CXX [-std=c++14] compiler features compiled with the following output:
 Change Dir: /home/aselsan/Desktop/GPT_BACKUP/freertos-colibri-imx7/examples/imx7_colibri_m4/demo_apps/rpmsg/str_echo_freertos/armgcc/debug/CMakeFiles/CMakeTmp
 
-Run Build Command(s):/usr/bin/make cmTC_51b61/fast && /usr/bin/make -f CMakeFiles/cmTC_51b61.dir/build.make CMakeFiles/cmTC_51b61.dir/build
+Run Build Command(s):/usr/bin/make cmTC_5e347/fast && /usr/bin/make -f CMakeFiles/cmTC_5e347.dir/build.make CMakeFiles/cmTC_5e347.dir/build
 make[1]: Entering directory '/home/aselsan/Desktop/GPT_BACKUP/freertos-colibri-imx7/examples/imx7_colibri_m4/demo_apps/rpmsg/str_echo_freertos/armgcc/debug/CMakeFiles/CMakeTmp'
-Building CXX object CMakeFiles/cmTC_51b61.dir/feature_tests.cxx.obj
-/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-g++    --specs=nosys.specs   -O3    -std=c++14 -o CMakeFiles/cmTC_51b61.dir/feature_tests.cxx.obj -c /home/aselsan/Desktop/GPT_BACKUP/freertos-colibri-imx7/examples/imx7_colibri_m4/demo_apps/rpmsg/str_echo_freertos/armgcc/debug/CMakeFiles/feature_tests.cxx
-Linking CXX executable cmTC_51b61
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_51b61.dir/link.txt --verbose=1
-/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-g++  --specs=nosys.specs   -O3     CMakeFiles/cmTC_51b61.dir/feature_tests.cxx.obj  -o cmTC_51b61 
+Building CXX object CMakeFiles/cmTC_5e347.dir/feature_tests.cxx.obj
+/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-g++    --specs=nosys.specs   -O3    -std=c++14 -o CMakeFiles/cmTC_5e347.dir/feature_tests.cxx.obj -c /home/aselsan/Desktop/GPT_BACKUP/freertos-colibri-imx7/examples/imx7_colibri_m4/demo_apps/rpmsg/str_echo_freertos/armgcc/debug/CMakeFiles/feature_tests.cxx
+Linking CXX executable cmTC_5e347
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_5e347.dir/link.txt --verbose=1
+/home/aselsan/Desktop/IMX7/toolchain/gcc-arm-none-eabi-4_9-2015q3/bin/arm-none-eabi-g++  --specs=nosys.specs   -O3     CMakeFiles/cmTC_5e347.dir/feature_tests.cxx.obj  -o cmTC_5e347 
 make[1]: Leaving directory '/home/aselsan/Desktop/GPT_BACKUP/freertos-colibri-imx7/examples/imx7_colibri_m4/demo_apps/rpmsg/str_echo_freertos/armgcc/debug/CMakeFiles/CMakeTmp'
 
 

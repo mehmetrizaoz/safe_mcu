@@ -33,6 +33,16 @@
 #include "board.h"
 #include "gpio_imx.h"
 
+// gpio_config_t gpio_rotary_encoder_input_a = {
+//     "ENC_BTN",                          /* name */
+//     (volatile uint32_t *)(0x30330220),  /* muxReg */
+//     0,                                  /* muxConfig */
+//     (volatile uint32_t *)(0x30330320),  /* padReg */
+//     0,                                  /* padConfig */
+//     (volatile uint32_t *)(0x30210000),  /* base */
+//     31                                   /* pin */
+// };
+
 gpio_config_t gpio_rotary_encoder_input_a = {
     "ENC_BTN",                          /* name */
     (volatile uint32_t *)(0x303300b0),  /* muxReg */

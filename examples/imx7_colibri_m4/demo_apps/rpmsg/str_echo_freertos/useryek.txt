@@ -16,9 +16,15 @@ kartta
 sync
 reboot
 
+sdcard mount point
+/media/mmc...
+
 --uboot--
 load mmc 0 ${loadaddr} str_echo_freertos.elf && bootaux ${loadaddr}
-load mmc 0 ${loadaddr} i2c_polling_sensor_imx7d.elf && bootaux ${loadaddr}
+load mmc 0 ${loadaddr} gpt.elf && bootaux ${loadaddr}
+
+--test scripts
+/usr/local/bin/asel-speakertest
 
 boot
 root

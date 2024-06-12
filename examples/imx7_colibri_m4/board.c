@@ -36,6 +36,7 @@
 #include "wdog_imx.h"
 #include "pin_mux.h"
 #include "uart_imx.h"
+#include "uart_imx.h"
 
 /* Initialize clock. */
 void BOARD_ClockInit(void)
@@ -57,12 +58,12 @@ void BOARD_ClockInit(void)
     CCM_ControlGate(CCM, ccmCcgrGateWdog3, ccmClockNotNeeded);
 
     /* We need system PLL Div2 to run M4 core */
-    //CCM_ControlGate(CCM, ccmPllGateSys, ccmClockNeededRun);
-    //CCM_ControlGate(CCM, ccmPllGateSysDiv2, ccmClockNeededRun);
-
     CCM_SetRootMux(CCM, ccmRootM4, ccmRootmuxM4SysPllPfd2);
-    CCM_ControlGate( CCM, ccmPllGatePfd2, ccmClockNeededRun);
+    CCM_ControlGate( CCM, ccmPllGatePfd2, ccmClockNeededAll);
     CCM_ControlGate( CCM, ccmPllGatePfd2Div2, ccmClockNeededRun);
+    // CCM_SetRootMux(CCM, ccmRootM4, ccmRootmuxM4AudioPll);
+    // CCM_ControlGate( CCM, ccmPllGateAudio, ccmClockNeededAll);
+    // CCM_ControlGate( CCM, ccmPllGateAudioDiv1, ccmClockNeededRun);
 
     /* Enable clock gate for IP bridge and IO mux */
     CCM_ControlGate(CCM, ccmCcgrGateIpmux1, ccmClockNeededRun);
