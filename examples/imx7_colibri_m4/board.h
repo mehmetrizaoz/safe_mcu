@@ -58,9 +58,6 @@
 #define BOARD_WDOG_IRQ_NUM                    WDOG3_IRQn
 #define BOARD_WDOG_HANDLER                    WDOG3_Handler
 
-
-#define BOARD_SAI2_RDC_PDAP                   rdcPdapSai2
-
 /* SEMA4 information for this board */
 #define BOARD_SEMA4_RDC_PDAP                  rdcPdapSemaphoreHs
 #define BOARD_SEMA4_CCM_CCGR                  ccmCcgrGateSemaHs
@@ -75,6 +72,7 @@
 #define BOARD_GPTA_BASEADDR                   GPT3
 #define BOARD_GPTA_IRQ_NUM                    GPT3_IRQn
 #define BOARD_GPTA_HANDLER                    GPT3_Handler
+
 /* GPT instance B information for this board */
 #define BOARD_GPTB_RDC_PDAP                   rdcPdapGpt4
 #define BOARD_GPTB_CCM_ROOT                   ccmRootGpt4
@@ -92,7 +90,11 @@
 #define BOARD_GPIO_LED1_CONFIG                (&gpioLed_1)
 #define BOARD_GPIO_KEY_RDC_PDAP               rdcPdapGpio2
 #define BOARD_GPIO_KEY_CONFIG                 (&gpioKeyFunc1)
-
+#define BOARD_GPIO_7_11 (&gpio_7_11)
+#define BOARD_GPIO_6_21 (&gpio_6_21)
+#define BOARD_GPIO_5_11 (&gpio_5_11)
+#define BOARD_GPIO_1_14 (&gpio_1_14)
+#define BOARD_GPIO_1_15 (&gpio_1_15)
 #define BOARD_GPIO_ENCODER_INPUT_A                 (&gpio_rotary_encoder_input_a)
 #define BOARD_GPIO_ENCODER_INPUT_B                 (&gpio_rotary_encoder_input_b)
 #define BOARD_GPIO_ENCODER_READ_ENABLE             (&gpio_rotary_encoder_read_enable_output)
@@ -144,14 +146,17 @@
 #define BOARD_ECSPI_IRQ_NUM                   eCSPI3_IRQn
 #define BOARD_ECSPI_HANDLER                   eCSPI3_Handler
 
+//mehmet-----------------------------------------------------------
+// #define BOARD_GPTA_BASEADDR                   GPT3
+#define BOARD_SAI2_HANDLER                    SAI2_Handler
+#define BOARD_SAI2_RDC_PDAP                   rdcPdapSai2
+#define BOARD_SAI2_CCM_ROOT                   ccmRootSai2
+#define BOARD_SAI2_CCM_CCGR                   ccmCcgrGateSai2
+#define BOARD_SAI2_IRQ_NUM                    SAI2_IRQn
 
-#define BOARD_SAI2_CCM_ROOT             ccmRootSai2 //mehmet
-#define BOARD_SAI2_CCM_CCGR             ccmCcgrGateSai2
-#define BOARD_IPG_CCM_ROOT              ccmRootIpg
-
-#define BOARD_MCLK_CCM_ROOT             ccmRootMclk //mehmet
-
-
+// #define BOARD_IPG_CCM_ROOT                    ccmRootIpg
+#define BOARD_MCLK_CCM_ROOT                   ccmRootMclk
+//-----------------------------------------------------------
 
 /* Debug UART information for this board */
 //#define BOARD_DEBUG_UART_RDC_PDAP             rdcPdapUart2

@@ -21,7 +21,6 @@
 void Hw_Timer_Init(void)
 {
     RDC_SetPdapAccess(RDC, BOARD_GPTA_RDC_PDAP, 0xff, false, false);
-    PRINTF("555\r\n");
     CCM_UpdateRoot(CCM, BOARD_GPTA_CCM_ROOT, ccmRootmuxGptOsc24m, 0, 0);
     CCM_EnableRoot(CCM, BOARD_GPTA_CCM_ROOT);
     CCM_ControlGate(CCM, BOARD_GPTA_CCM_CCGR, ccmClockNeededRunWait);
@@ -29,9 +28,9 @@ void Hw_Timer_Init(void)
     uint32_t freqA;
     gpt_init_config_t config = {
         .freeRun     = false,
-        .waitEnable  = true,
-        .stopEnable  = true,
-        .dozeEnable  = true,
+        .waitEnable  = false,
+        .stopEnable  = false,
+        .dozeEnable  = false,
         .dbgEnable   = false,
         .enableMode  = true
     };
@@ -41,7 +40,7 @@ void Hw_Timer_Init(void)
     GPT_SetOscPrescaler(BOARD_GPTA_BASEADDR, 1);
     GPT_SetPrescaler(BOARD_GPTA_BASEADDR, 1);
 
-    freqA = 60;
+    freqA = 93;
     GPT_SetOutputCompareValue(BOARD_GPTA_BASEADDR, gptOutputCompareChannel1, freqA);
     NVIC_SetPriority(BOARD_GPTA_IRQ_NUM, 3);
     NVIC_EnableIRQ(BOARD_GPTA_IRQ_NUM);
@@ -49,18 +48,32 @@ void Hw_Timer_Init(void)
     GPT_Enable(BOARD_GPTA_BASEADDR);
 }
 
+
+// uint32_t arr[20] = {65536, 63796, 58764, 50972, 41248, 30624, 20228, 11162, 4390, 630, 280, 3379, 9597, 18275, 28491, 39160, 49151, 57403, 63041};
+
 void BOARD_GPTA_HANDLER(void)
 {
-    static uint32_t myCounter = 0;
-    static bool on = false;
-    GPIO_WritePinOutput(BOARD_GPIO_LEDCTRL_CONFIG->base, BOARD_GPIO_LEDCTRL_CONFIG->pin, gpioPinClear);
-    GPIO_WritePinOutput(BOARD_GPIO_LED1_CONFIG->base, BOARD_GPIO_LED1_CONFIG->pin, on ? gpioPinSet : gpioPinClear);
-    on = !on;
+    /*
+    static uint32_t index = 0;
+    // static uint32_t counter = 0
 
+    if(((I2S_Type *)I2S2_BASE)->TCSR & I2S_TCSR_FEF(1)){
+        ((I2S_Type *)I2S2_BASE)->TCSR |= I2S_TCSR_FEF(1);
+        // PRINTF("clear FEF\r\n");
+    }
 
-    ((I2S_Type *)I2S2_BASE)->TCR3 |= I2S_TCR3_TCE(1);
-    for(int i=0; i<32; i++)
-        ((I2S_Type *)I2S2_BASE)->TDR[0] = myCounter++;
+    // if(counter < 32000){
+        // counter++;
+        ((I2S_Type *)I2S2_BASE)->TCR3 |= I2S_TCR3_TCE(1);    
+        ((I2S_Type *)I2S2_BASE)->TDR[0] = arr[index];
+
+        if(index == 19)
+            index = 0;
+        else
+            index++;
+    // }
+    */
+    
 
     // PRINTF("%d\r\n", myCounter++);
     // CCM_ANALOG_PLL_AUDIO |= CCM_ANALOG_PLL_AUDIO_POWERDOWN_MASK;

@@ -29,8 +29,7 @@ int main(void){
     
 #if ENABLE_WDT == 1
     wdt_init();
-#endif
-    
+#endif    
     
     init_gpio();
     MU_Init(BOARD_MU_BASE_ADDR);

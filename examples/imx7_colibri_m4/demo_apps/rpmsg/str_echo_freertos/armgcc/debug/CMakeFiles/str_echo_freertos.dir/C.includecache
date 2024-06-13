@@ -78,6 +78,18 @@ assert.h
 device_imx.h
 ../../../../../../../platform/drivers/inc/device_imx.h
 
+../../../../../../../platform/drivers/inc/gpt.h
+stdint.h
+-
+stdbool.h
+-
+assert.h
+-
+device_imx.h
+../../../../../../../platform/drivers/inc/device_imx.h
+debug_console_imx.h
+../../../../../../../platform/drivers/inc/debug_console_imx.h
+
 ../../../../../../../platform/drivers/inc/rdc.h
 stdint.h
 -
@@ -91,6 +103,16 @@ debug_console_imx.h
 ../../../../../../../platform/drivers/inc/debug_console_imx.h
 
 ../../../../../../../platform/drivers/inc/rdc_defs_imx7d.h
+
+../../../../../../../platform/drivers/inc/uart_imx.h
+stdint.h
+-
+stdbool.h
+-
+assert.h
+-
+device_imx.h
+../../../../../../../platform/drivers/inc/device_imx.h
 
 ../../../../../../../platform/utilities/inc/debug_console_imx.h
 stdint.h
@@ -124,31 +146,21 @@ gpio_imx.h
 device_imx.h
 ../../../../../device_imx.h
 
-/home/aselsan/Desktop/GPT_BACKUP/freertos-colibri-imx7/examples/imx7_colibri_m4/demo_apps/rpmsg/str_echo_freertos/comm_skb.h
-
-/home/aselsan/Desktop/GPT_BACKUP/freertos-colibri-imx7/examples/imx7_colibri_m4/demo_apps/rpmsg/str_echo_freertos/gpio.c
-gpio.h
-/home/aselsan/Desktop/GPT_BACKUP/freertos-colibri-imx7/examples/imx7_colibri_m4/demo_apps/rpmsg/str_echo_freertos/gpio.h
-gpio_pins.h
-/home/aselsan/Desktop/GPT_BACKUP/freertos-colibri-imx7/examples/imx7_colibri_m4/demo_apps/rpmsg/str_echo_freertos/gpio_pins.h
-debug_console_imx.h
-/home/aselsan/Desktop/GPT_BACKUP/freertos-colibri-imx7/examples/imx7_colibri_m4/demo_apps/rpmsg/str_echo_freertos/debug_console_imx.h
-comm_skb.h
-/home/aselsan/Desktop/GPT_BACKUP/freertos-colibri-imx7/examples/imx7_colibri_m4/demo_apps/rpmsg/str_echo_freertos/comm_skb.h
-timer.h
-/home/aselsan/Desktop/GPT_BACKUP/freertos-colibri-imx7/examples/imx7_colibri_m4/demo_apps/rpmsg/str_echo_freertos/timer.h
-MCIMX7D_M4.h
-/home/aselsan/Desktop/GPT_BACKUP/freertos-colibri-imx7/examples/imx7_colibri_m4/demo_apps/rpmsg/str_echo_freertos/MCIMX7D_M4.h
-device_imx.h
-/home/aselsan/Desktop/GPT_BACKUP/freertos-colibri-imx7/examples/imx7_colibri_m4/demo_apps/rpmsg/str_echo_freertos/device_imx.h
-pin_mux.h
-/home/aselsan/Desktop/GPT_BACKUP/freertos-colibri-imx7/examples/imx7_colibri_m4/demo_apps/rpmsg/str_echo_freertos/pin_mux.h
-debug_console_imx.h
-/home/aselsan/Desktop/GPT_BACKUP/freertos-colibri-imx7/examples/imx7_colibri_m4/demo_apps/rpmsg/str_echo_freertos/debug_console_imx.h
-
-/home/aselsan/Desktop/GPT_BACKUP/freertos-colibri-imx7/examples/imx7_colibri_m4/demo_apps/rpmsg/str_echo_freertos/gpio.h
+/home/aselsan/Desktop/GPT_BACKUP/freertos-colibri-imx7/examples/imx7_colibri_m4/demo_apps/rpmsg/str_echo_freertos/hardware_init.c
 board.h
 /home/aselsan/Desktop/GPT_BACKUP/freertos-colibri-imx7/examples/imx7_colibri_m4/demo_apps/rpmsg/str_echo_freertos/board.h
-
-/home/aselsan/Desktop/GPT_BACKUP/freertos-colibri-imx7/examples/imx7_colibri_m4/demo_apps/rpmsg/str_echo_freertos/timer.h
+pin_mux.h
+/home/aselsan/Desktop/GPT_BACKUP/freertos-colibri-imx7/examples/imx7_colibri_m4/demo_apps/rpmsg/str_echo_freertos/pin_mux.h
+gpt.h
+/home/aselsan/Desktop/GPT_BACKUP/freertos-colibri-imx7/examples/imx7_colibri_m4/demo_apps/rpmsg/str_echo_freertos/gpt.h
+clock_freq.h
+/home/aselsan/Desktop/GPT_BACKUP/freertos-colibri-imx7/examples/imx7_colibri_m4/demo_apps/rpmsg/str_echo_freertos/clock_freq.h
+uart_imx.h
+/home/aselsan/Desktop/GPT_BACKUP/freertos-colibri-imx7/examples/imx7_colibri_m4/demo_apps/rpmsg/str_echo_freertos/uart_imx.h
+gpio_imx.h
+/home/aselsan/Desktop/GPT_BACKUP/freertos-colibri-imx7/examples/imx7_colibri_m4/demo_apps/rpmsg/str_echo_freertos/gpio_imx.h
+gpio_pins.h
+/home/aselsan/Desktop/GPT_BACKUP/freertos-colibri-imx7/examples/imx7_colibri_m4/demo_apps/rpmsg/str_echo_freertos/gpio_pins.h
+MCIMX7D_M4.h
+/home/aselsan/Desktop/GPT_BACKUP/freertos-colibri-imx7/examples/imx7_colibri_m4/demo_apps/rpmsg/str_echo_freertos/MCIMX7D_M4.h
 

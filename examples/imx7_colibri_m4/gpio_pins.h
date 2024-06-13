@@ -61,6 +61,11 @@ extern gpio_config_t gpio_rotary_encoder_button;
 extern gpio_config_t gpio_rotary_encoder_input_a;
 extern gpio_config_t gpio_rotary_encoder_input_b;
 extern gpio_config_t gpio_rotary_encoder_read_enable_output;
+extern gpio_config_t gpio_7_11;
+extern gpio_config_t gpio_6_21;
+extern gpio_config_t gpio_5_11;
+extern gpio_config_t gpio_1_14;
+extern gpio_config_t gpio_1_15;
 
 // extern gpio_config_t gpioSwitch1;
 // extern gpio_config_t gpioLed1;

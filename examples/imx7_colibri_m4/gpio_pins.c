@@ -33,15 +33,57 @@
 #include "board.h"
 #include "gpio_imx.h"
 
-// gpio_config_t gpio_rotary_encoder_input_a = {
-//     "ENC_BTN",                          /* name */
-//     (volatile uint32_t *)(0x30330220),  /* muxReg */
-//     0,                                  /* muxConfig */
-//     (volatile uint32_t *)(0x30330320),  /* padReg */
-//     0,                                  /* padConfig */
-//     (volatile uint32_t *)(0x30210000),  /* base */
-//     31                                   /* pin */
-// };
+gpio_config_t gpio_7_11 = { //pin 99 - speaker_sdn
+    "ENC_BTN",                          /* name */
+    (volatile uint32_t *)(0x30330258),  /* muxReg */
+    5,                                  /* muxConfig */
+    (volatile uint32_t *)(0x303304c8),  /* padReg */
+    0,                                  /* padConfig */
+    (volatile uint32_t *)(0x30260000),  /* base */
+    11                                   /* pin */
+};
+
+gpio_config_t gpio_6_21 = { //pin 32 - speaker_gain_en
+    "ENC_BTN",                          /* name */
+    (volatile uint32_t *)(0x30330224),  /* muxReg */
+    5,                                  /* muxConfig */
+    (volatile uint32_t *)(0x30330494),  /* padReg */
+    0,                                  /* padConfig */
+    (volatile uint32_t *)(0x30250000),  /* base */
+    21                                   /* pin */
+};
+
+gpio_config_t gpio_5_11 = { //pin 98 - speaker_gain_c
+    "ENC_BTN",                          /* name */
+    (volatile uint32_t *)(0x303301b4),  /* muxReg */
+    5,                                  /* muxConfig */
+    (volatile uint32_t *)(0x30330424),  /* padReg */
+    0,                                  /* padConfig */
+    (volatile uint32_t *)(0x30240000),  /* base */
+    11                                   /* pin */
+};
+
+gpio_config_t gpio_1_14 = { //pin 188 - speaker_gain_b
+    "ENC_BTN",                          /* name */
+    (volatile uint32_t *)(0x3033002c),  /* muxReg */
+    0,                                  /* muxConfig */
+    (volatile uint32_t *)(0x30330284),  /* padReg */
+    0,                                  /* padConfig */
+    (volatile uint32_t *)(0x30200000),  /* base */
+    14                                   /* pin */
+};
+
+gpio_config_t gpio_1_15 = { //pin 178 - speaker_gain_a
+    "ENC_BTN",                          /* name */
+    (volatile uint32_t *)(0x30330030),  /* muxReg */
+    0,                                  /* muxConfig */
+    (volatile uint32_t *)(0x30330288),  /* padReg */
+    0,                                  /* padConfig */
+    (volatile uint32_t *)(0x30200000),  /* base */
+    15                                   /* pin */
+};
+
+//-------------------------------------
 
 gpio_config_t gpio_rotary_encoder_input_a = {
     "ENC_BTN",                          /* name */

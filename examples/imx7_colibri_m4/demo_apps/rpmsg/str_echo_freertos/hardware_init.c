@@ -32,42 +32,46 @@ void hardware_init(void)
     // PRINTF("m4:%.4x\r\n", &(CCM_REG(ccmPllGatePfd2Div2)));
     // PRINTF("m4:%.4x\r\n", CCM_REG(ccmPllGatePfd2Div2));        
 
-    //----------------------------------------------------------------------------------
-    // RDC_SetPdapAccess(RDC, rdcPdapSai2, 0xFF, false, false);
-    // CCM_UpdateRoot(CCM, (uint32_t)(&CCM_TARGET_ROOT75), ccmRootmuxUartOsc24m, 0, 0);
-    // CCM_EnableRoot(CCM, (uint32_t)(&CCM_TARGET_ROOT75));       
-    // CCM_ControlGate(CCM, (uint32_t)(&CCM_CCGR141), ccmClockNeededRunWait);
-    
+    //----------------------------------------------------------------------------------    
     CCM_ANALOG_PLL_AUDIO = 0;    
     CCM_ANALOG_PLL_AUDIO |= CCM_ANALOG_PLL_AUDIO_POWERDOWN_MASK;
-    CCM_ANALOG_PLL_AUDIO |= CCM_ANALOG_PLL_AUDIO_DIV_SELECT(54);    
+    CCM_ANALOG_PLL_AUDIO |= CCM_ANALOG_PLL_AUDIO_DIV_SELECT(3);    
     CCM_ANALOG_PLL_AUDIO |= CCM_ANALOG_PLL_AUDIO_ENABLE_CLK_MASK;
     // CCM_ANALOG_PLL_AUDIO |= CCM_ANALOG_PLL_AUDIO_DOUBLE_CP_MASK;
     // CCM_ANALOG_PLL_AUDIO |= CCM_ANALOG_PLL_AUDIO_DOUBLE_LF_MASK;
     CCM_ANALOG_PLL_AUDIO |= CCM_ANALOG_PLL_AUDIO_TEST_DIV_SELECT(2);
     CCM_ANALOG_PLL_AUDIO |= CCM_ANALOG_PLL_AUDIO_POST_DIV_SEL(3);
-    CCM_ANALOG_PLL_AUDIO |= CCM_ANALOG_PLL_AUDIO_DITHER_ENABLE_MASK;
+    // CCM_ANALOG_PLL_AUDIO |= CCM_ANALOG_PLL_AUDIO_DITHER_ENABLE_MASK;
     CCM_ANALOG_PLL_AUDIO &= ~CCM_ANALOG_PLL_AUDIO_BYPASS_MASK;
     // CCM_ANALOG_PLL_AUDIO |= CCM_ANALOG_PLL_AUDIO_BYPASS_MASK;
     // CCM_ANALOG_PLL_AUDIO |= CCM_ANALOG_PLL_AUDIO_BYPASS_CLK_SRC(0);
     CCM_ANALOG_PLL_AUDIO_NUM = 0;
     CCM_ANALOG_PLL_AUDIO_SS = 0;
     CCM_ANALOG_PLL_AUDIO_DENOM = 0;
-    CCM_ANALOG_PLL_AUDIO_SS |= CCM_ANALOG_PLL_AUDIO_SS_STEP(100);
-    CCM_ANALOG_PLL_AUDIO_SS |= CCM_ANALOG_PLL_AUDIO_SS_STOP(100);
-    CCM_ANALOG_PLL_AUDIO_SS |= CCM_ANALOG_PLL_AUDIO_SS_ENABLE_MASK;
-    CCM_ANALOG_PLL_AUDIO_NUM |= CCM_ANALOG_PLL_AUDIO_NUM_A(100);
+    CCM_ANALOG_PLL_AUDIO_SS |= CCM_ANALOG_PLL_AUDIO_SS_STEP(1);
+    CCM_ANALOG_PLL_AUDIO_SS |= CCM_ANALOG_PLL_AUDIO_SS_STOP(0);
+    CCM_ANALOG_PLL_AUDIO_SS &= CCM_ANALOG_PLL_AUDIO_SS_ENABLE_MASK;
+    CCM_ANALOG_PLL_AUDIO_NUM |= CCM_ANALOG_PLL_AUDIO_NUM_A(96);
     CCM_ANALOG_PLL_AUDIO_DENOM |= CCM_ANALOG_PLL_AUDIO_DENOM_B(100);
+
     CCM_ANALOG_PLL_AUDIO &= ~CCM_ANALOG_PLL_AUDIO_POWERDOWN_MASK;
-    // PRINTF("CCM_ANALOG_PLL_AUDIO (%.4x) : ", &CCM_ANALOG_PLL_AUDIO);
-    // PRINTF("%.4x\r\n", CCM_ANALOG_PLL_AUDIO);
-    // PRINTF("CCM_ANALOG_PLL_AUDIO_DENOM (%.4x) : ", &CCM_ANALOG_PLL_AUDIO_DENOM);
-    // PRINTF("%.4x\r\n", CCM_ANALOG_PLL_AUDIO_DENOM);
-    // PRINTF("CCM_ANALOG_PLL_AUDIO_NUM (%.4x) : ", &CCM_ANALOG_PLL_AUDIO_NUM);
-    // PRINTF("%.4x\r\n", CCM_ANALOG_PLL_AUDIO_NUM);
-    // PRINTF("CCM_ANALOG_PLL_AUDIO_SS (%.4x) : ", &CCM_ANALOG_PLL_AUDIO_SS);
-    // PRINTF("%.4x\r\n", CCM_ANALOG_PLL_AUDIO_SS);
+    PRINTF("CCM_ANALOG_PLL_AUDIO (%.4x) : ", &CCM_ANALOG_PLL_AUDIO);
+    PRINTF("%.4x\r\n", CCM_ANALOG_PLL_AUDIO);
+    PRINTF("CCM_ANALOG_PLL_AUDIO_DENOM (%.4x) : ", &CCM_ANALOG_PLL_AUDIO_DENOM);
+    PRINTF("%.4x\r\n", CCM_ANALOG_PLL_AUDIO_DENOM);
+    PRINTF("CCM_ANALOG_PLL_AUDIO_NUM (%.4x) : ", &CCM_ANALOG_PLL_AUDIO_NUM);
+    PRINTF("%.4x\r\n", CCM_ANALOG_PLL_AUDIO_NUM);
+    PRINTF("CCM_ANALOG_PLL_AUDIO_SS (%.4x) : ", &CCM_ANALOG_PLL_AUDIO_SS);
+    PRINTF("%.4x\r\n", CCM_ANALOG_PLL_AUDIO_SS);
     PRINTF("audio pll freq: %d\r\n", CCM_ANALOG_GetAudioPllFreq(CCM_ANALOG_BASE_PTR));
+
+    RDC_SetPdapAccess(RDC, rdcPdapSai2, 0xFF, false, false);
+    CCM_UpdateRoot(CCM, (uint32_t)(&CCM_TARGET_ROOT75), 2, 0, 0);
+    CCM_EnableRoot(CCM, (uint32_t)(&CCM_TARGET_ROOT75));       
+    CCM_ControlGate(CCM, (uint32_t)(&CCM_CCGR141), ccmClockNeededRunWait);
+
+    // CCM_UpdateRoot(CCM, BOARD_MCLK_CCM_ROOT, 0, 0, 0);
+    // CCM_EnableRoot(CCM, BOARD_MCLK_CCM_ROOT);       
 
     IOMUXC_SW_MUX_CTL_PAD_SAI2_TX_BCLK = IOMUXC_SW_MUX_CTL_PAD_SAI2_TX_BCLK_MUX_MODE(0) |
                                             IOMUXC_SW_MUX_CTL_PAD_SAI2_TX_BCLK_SION_MASK;
@@ -87,10 +91,10 @@ void hardware_init(void)
                                             IOMUXC_SW_PAD_CTL_PAD_SAI2_TX_DATA_DSE(3) |
                                             IOMUXC_SW_PAD_CTL_PAD_SAI2_TX_DATA_HYS_MASK;
 
-    RDC_SetPdapAccess(RDC, BOARD_SAI2_RDC_PDAP, 0xFF, false, false);    
-    CCM_UpdateRoot(CCM, (uint32_t)(&CCM_TARGET_ROOT75), 2, 0, 0);
-    CCM_EnableRoot(CCM, (uint32_t)(&CCM_TARGET_ROOT75));    
-    CCM_ControlGate(CCM, (uint32_t)(&CCM_CCGR141), ccmClockNeededRunWait);
+    // RDC_SetPdapAccess(RDC, BOARD_SAI2_RDC_PDAP, 0xFF, false, false);    
+    // CCM_UpdateRoot(CCM, (uint32_t)(&CCM_TARGET_ROOT75), 2, 0, 0);
+    // CCM_EnableRoot(CCM, (uint32_t)(&CCM_TARGET_ROOT75));    
+    // CCM_ControlGate(CCM, (uint32_t)(&CCM_CCGR141), ccmClockNeededRunWait);
     //---------------------------------------------------------------------------------- 
     // PRINTF("uart6_urxd: %.8x\r\n", GPIO_DR_REG(((GPIO_Type *)0x30a80000)));
     // PRINTF("uart6_utxd: %.8x\r\n", GPIO_DR_REG(((GPIO_Type *)0x30a80040)));

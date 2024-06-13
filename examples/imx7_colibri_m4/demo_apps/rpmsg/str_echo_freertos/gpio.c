@@ -17,7 +17,48 @@ uint8_t rotary_encoder_event_for_a7 = 0;
 
 void init_gpio(void){   
     i2s_init(I2S2_BASE);
+//max98357a driver pins
+    gpio_init_config_t gpio_7_11_config = { //pin 99 - sd_mode
+        .pin = BOARD_GPIO_7_11->pin,
+        .direction = gpioDigitalOutput,
+        .interruptMode = gpioNoIntmode
+    };
+    GPIO_Init(BOARD_GPIO_7_11->base, &gpio_7_11_config);
+    GPIO_WritePinOutput(BOARD_GPIO_7_11->base, BOARD_GPIO_7_11->pin, gpioPinSet); //doğrulandı
 
+    gpio_init_config_t gpio_6_21_config = {//pin 32 - speaker_gain_en
+        .pin = BOARD_GPIO_6_21->pin,
+        .direction = gpioDigitalOutput,
+        .interruptMode = gpioNoIntmode
+    };
+    GPIO_Init(BOARD_GPIO_6_21->base, &gpio_7_11_config);  
+    GPIO_WritePinOutput(BOARD_GPIO_6_21->base, BOARD_GPIO_6_21->pin, gpioPinSet);
+
+    gpio_init_config_t gpio_5_11_config = {//pin 98 - speaker_gain_c
+        .pin = BOARD_GPIO_5_11->pin,
+        .direction = gpioDigitalOutput,
+        .interruptMode = gpioNoIntmode
+    };
+    GPIO_Init(BOARD_GPIO_5_11->base, &gpio_7_11_config);  
+    GPIO_WritePinOutput(BOARD_GPIO_5_11->base, BOARD_GPIO_5_11->pin, gpioPinClear);
+
+    gpio_init_config_t gpio_1_14_config = {//pin 188 - - speaker_gain_b
+        .pin = BOARD_GPIO_1_14->pin,
+        .direction = gpioDigitalOutput,
+        .interruptMode = gpioNoIntmode
+    };
+    GPIO_Init(BOARD_GPIO_1_14->base, &gpio_7_11_config);  
+    GPIO_WritePinOutput(BOARD_GPIO_1_14->base, BOARD_GPIO_1_14->pin, gpioPinClear);
+
+    gpio_init_config_t gpio_1_15_config = { //pin 178 - speaker_gain_a
+        .pin = BOARD_GPIO_1_15->pin,
+        .direction = gpioDigitalOutput,
+        .interruptMode = gpioNoIntmode
+    };
+    GPIO_Init(BOARD_GPIO_1_15->base, &gpio_7_11_config);
+    GPIO_WritePinOutput(BOARD_GPIO_1_15->base, BOARD_GPIO_1_15->pin, gpioPinClear);
+
+//-----------------
     gpio_init_config_t ledCtrlInitConfig = {
         .pin = BOARD_GPIO_LEDCTRL_CONFIG->pin,
         .direction = gpioDigitalOutput,
@@ -78,14 +119,19 @@ void init_gpio(void){
 
 void i2s_init(I2S_Type *base){
     base->TCSR = 0;
-    base->TCSR |= I2S_TCSR_SR_MASK;  //softwae reset
-    base->TCSR |= I2S_TCSR_TE(0);  //transmit disable
-    base->TCSR |= I2S_TCSR_STOPE(0); //transmitter disabled in stop mode
-    base->TCSR |= I2S_TCSR_DBGE(0);  //transmitter disabled in debug mode  
-    base->TCSR |= I2S_TCSR_BCE(1); //transmit bit clock enable
-    base->TCSR |= I2S_TCSR_FR(1);  //fifo reset    
-    base->TCSR &= ~I2S_TCSR_SR_MASK;  //
-    base->TCSR |= I2S_TCSR_WSIE(0); 
+    base->TCSR |= I2S_TCSR_SR_MASK; //softwae reset
+    base->TCSR |= I2S_TCSR_TE(0);   //transmit disable
+    base->TCSR |= I2S_TCSR_STOPE(0);//transmitter disabled in stop mode
+    base->TCSR |= I2S_TCSR_DBGE(0); //transmitter disabled in debug mode  
+    base->TCSR |= I2S_TCSR_BCE(1);  //transmit bit clock enable
+    base->TCSR |= I2S_TCSR_FR(1);   //fifo reset    
+    base->TCSR &= ~I2S_TCSR_SR_MASK;//
+    base->TCSR |= I2S_TCSR_WSF(1);
+    base->TCSR |= I2S_TCSR_SEF(1);
+    base->TCSR |= I2S_TCSR_FEF(1);
+    // base->TCSR |= I2S_TCSR_FWF(1);
+    // base->TCSR |= I2S_TCSR_FRF(1);
+    base->TCSR |= I2S_TCSR_WSIE(1); 
     base->TCSR |= I2S_TCSR_SEIE(0);
     base->TCSR |= I2S_TCSR_FEIE(0);
     base->TCSR |= I2S_TCSR_FWIE(0);
@@ -102,7 +148,7 @@ void i2s_init(I2S_Type *base){
     base->TCR2 |= I2S_TCR2_MSEL(0); //master clock 0-3
     base->TCR2 |= I2S_TCR2_BCP(1);  //rising edge bit clock polarity
     base->TCR2 |= I2S_TCR2_BCD(1);  //bit clock is generated in master mode   
-    base->TCR2 |= I2S_TCR2_DIV(110);//divide audio master clock to (0xff + 1) * 2
+    base->TCR2 |= I2S_TCR2_DIV(38);  //divide audio master clock to (n + 1) * 2
 
     base->TCR3 = 0;
     base->TCR3 |= I2S_TCR3_TCE(1);  //transmit data channel n is enabled
@@ -112,7 +158,7 @@ void i2s_init(I2S_Type *base){
     base->TCR4 |= I2S_TCR4_FRSZ(0); //number of words in each frame - 1
     base->TCR4 |= I2S_TCR4_SYWD(15);//length of the frame sync in number of bit clocks - 1
     base->TCR4 |= I2S_TCR4_MF(1);   //msb transmitted first
-    // base->TCR4 |= I2S_TCR4_FSE(0);  //
+    //base->TCR4 |= I2S_TCR4_FSE(0);  //
     base->TCR4 |= I2S_TCR4_FSP(0);  //frame sync is active high
     base->TCR4 |= I2S_TCR4_FSD(1);  //frame sync is generated in master mode    
         
@@ -120,18 +166,49 @@ void i2s_init(I2S_Type *base){
     base->TCR5 |= I2S_TCR5_WNW(31);  //number of bits in first word - 1
     base->TCR5 |= I2S_TCR5_W0W(31);  //number of bits in each word - 1
     base->TCR5 |= I2S_TCR5_FBT(0x1f);//sai first bit shifted, msb first
-
     
     base->TCSR |= I2S_TCSR_TE(1); //transmitter enable  
     base->TMR  = 0; //no masking
-    base->TCR3 |= I2S_TCR3_TCE(1);
+
+    NVIC_SetPriority(BOARD_SAI2_IRQ_NUM, 3);
+    NVIC_EnableIRQ(BOARD_SAI2_IRQ_NUM);
+
+    base->TCR3 |= I2S_TCR3_TCE(1);    
+}
+
+uint32_t arr[20] = {65536, 63796, 58764, 50972, 41248, 30624, 20228, 11162, 4390, 630, 280, 3379, 9597, 18275, 28491, 39160, 49151, 57403, 63041};
+
+void BOARD_SAI2_HANDLER(void){
+    static bool on = false;
+    
+    GPIO_WritePinOutput(BOARD_GPIO_LEDCTRL_CONFIG->base, BOARD_GPIO_LEDCTRL_CONFIG->pin, gpioPinClear);
+    GPIO_WritePinOutput(BOARD_GPIO_LED1_CONFIG->base, BOARD_GPIO_LED1_CONFIG->pin, on ? gpioPinSet : gpioPinClear);
+    on = !on;
+
+    static uint32_t index = 0;
+    // static uint32_t counter = 0
+    if(((I2S_Type *)I2S2_BASE)->TCSR & I2S_TCSR_FEF(1)){
+        ((I2S_Type *)I2S2_BASE)->TCSR |= I2S_TCSR_FEF(1);
+        // PRINTF("clear FEF\r\n");
+    }
+
+    // if(counter < 32000){
+        // counter++;
+        // ((I2S_Type *)I2S2_BASE)->TCR3 |= I2S_TCR3_TCE(1);    
+        ((I2S_Type *)I2S2_BASE)->TDR[0] = arr[index];
+
+        if(index == 19)
+            index = 0;
+        else
+            index++;
+    // }
+
+    ((I2S_Type *)I2S2_BASE)->TCSR |= I2S_TCSR_WSF(1);
 }
 
 void fill_sai(I2S_Type *base){    
     PRINTF("TFR  : %.4x\r\n", base->TFR[0]);
     PRINTF("TCSR : %.4x\r\n", base->TCSR);
-    base->TCSR |= I2S_TCSR_FEF(1);
-    base->TCSR |= I2S_TCSR_WSF(1);
 }
 
 void read_rotary_encoder(){
