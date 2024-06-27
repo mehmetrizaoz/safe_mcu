@@ -23,8 +23,13 @@ sdcard mount point
 load mmc 0 ${loadaddr} str_echo_freertos.elf && bootaux ${loadaddr}
 load mmc 0 ${loadaddr} gpt.elf && bootaux ${loadaddr}
 
+
+
 --test scripts
 /usr/local/bin/asel-speakertest
+speaker-test --device hw:1,0 --rate 48000 --channels 1 --format S16_LE --test wav -W /home/root/test-files -w output.wav  &
+
+
 
 boot
 root

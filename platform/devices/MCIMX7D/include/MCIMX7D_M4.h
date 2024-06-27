@@ -21402,6 +21402,7 @@ typedef struct {
 #define I2S_TCR4_FSP(x)                           (((uint32_t)(((uint32_t)(x))<<I2S_TCR4_FSP_SHIFT))&I2S_TCR4_FSP_MASK)
 #define I2S_TCR4_FSE_MASK                        0x8u
 #define I2S_TCR4_FSE_SHIFT                       3
+#define I2S_TCR4_FSE(x)                           (((uint32_t)(((uint32_t)(x))<<I2S_TCR4_FSE_SHIFT))&I2S_TCR4_FSE_MASK)
 #define I2S_TCR4_MF_MASK                         0x10u
 #define I2S_TCR4_MF_SHIFT                        4
 #define I2S_TCR4_MF(x)                           (((uint32_t)(((uint32_t)(x))<<I2S_TCR4_MF_SHIFT))&I2S_TCR4_MF_MASK)

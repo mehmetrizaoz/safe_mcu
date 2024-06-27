@@ -17,7 +17,8 @@ uint8_t rotary_encoder_event_for_a7 = 0;
 
 void init_gpio(void){   
     i2s_init(I2S2_BASE);
-//max98357a driver pins
+    
+    //max98357a driver pins
     gpio_init_config_t gpio_7_11_config = { //pin 99 - sd_mode
         .pin = BOARD_GPIO_7_11->pin,
         .direction = gpioDigitalOutput,
@@ -120,18 +121,18 @@ void init_gpio(void){
 void i2s_init(I2S_Type *base){
     base->TCSR = 0;
     base->TCSR |= I2S_TCSR_SR_MASK; //softwae reset
-    base->TCSR |= I2S_TCSR_TE(0);   //transmit disable
+    base->TCSR |= I2S_TCSR_TE(0); //transmit disable
     base->TCSR |= I2S_TCSR_STOPE(0);//transmitter disabled in stop mode
     base->TCSR |= I2S_TCSR_DBGE(0); //transmitter disabled in debug mode  
-    base->TCSR |= I2S_TCSR_BCE(1);  //transmit bit clock enable
-    base->TCSR |= I2S_TCSR_FR(1);   //fifo reset    
+    base->TCSR |= I2S_TCSR_BCE(1);//transmit bit clock enable
+    base->TCSR |= I2S_TCSR_FR(1); //fifo reset    
     base->TCSR &= ~I2S_TCSR_SR_MASK;//
     base->TCSR |= I2S_TCSR_WSF(1);
     base->TCSR |= I2S_TCSR_SEF(1);
     base->TCSR |= I2S_TCSR_FEF(1);
     // base->TCSR |= I2S_TCSR_FWF(1);
     // base->TCSR |= I2S_TCSR_FRF(1);
-    base->TCSR |= I2S_TCSR_WSIE(1); 
+    base->TCSR |= I2S_TCSR_WSIE(1);
     base->TCSR |= I2S_TCSR_SEIE(0);
     base->TCSR |= I2S_TCSR_FEIE(0);
     base->TCSR |= I2S_TCSR_FWIE(0);
@@ -147,12 +148,12 @@ void i2s_init(I2S_Type *base){
     base->TCR2 |= I2S_TCR2_BCI(0);  //no effect
     base->TCR2 |= I2S_TCR2_MSEL(0); //master clock 0-3
     base->TCR2 |= I2S_TCR2_BCP(1);  //rising edge bit clock polarity
-    base->TCR2 |= I2S_TCR2_BCD(1);  //bit clock is generated in master mode   
-    base->TCR2 |= I2S_TCR2_DIV(38);  //divide audio master clock to (n + 1) * 2
+    base->TCR2 |= I2S_TCR2_BCD(1);  //bit clock is generated in master mode
+    base->TCR2 |= I2S_TCR2_DIV(38); //divide audio master clock to (n + 1) * 2
 
     base->TCR3 = 0;
     base->TCR3 |= I2S_TCR3_TCE(1);  //transmit data channel n is enabled
-    base->TCR3 |= I2S_TCR3_WDFL(0); //which word sets the start of word flag - 1   
+    base->TCR3 |= I2S_TCR3_WDFL(0); //which word sets the start of word flag - 1
 
     base->TCR4 = 0;
     base->TCR4 |= I2S_TCR4_FRSZ(0); //number of words in each frame - 1
@@ -160,23 +161,51 @@ void i2s_init(I2S_Type *base){
     base->TCR4 |= I2S_TCR4_MF(1);   //msb transmitted first
     //base->TCR4 |= I2S_TCR4_FSE(0);  //
     base->TCR4 |= I2S_TCR4_FSP(0);  //frame sync is active high
-    base->TCR4 |= I2S_TCR4_FSD(1);  //frame sync is generated in master mode    
+    base->TCR4 |= I2S_TCR4_FSD(1);  //frame sync is generated in master mode
         
     base->TCR5 = 0;
     base->TCR5 |= I2S_TCR5_WNW(31);  //number of bits in first word - 1
     base->TCR5 |= I2S_TCR5_W0W(31);  //number of bits in each word - 1
     base->TCR5 |= I2S_TCR5_FBT(0x1f);//sai first bit shifted, msb first
     
-    base->TCSR |= I2S_TCSR_TE(1); //transmitter enable  
+    base->TCSR |= I2S_TCSR_TE(1); //transmitter enable
     base->TMR  = 0; //no masking
 
     NVIC_SetPriority(BOARD_SAI2_IRQ_NUM, 3);
     NVIC_EnableIRQ(BOARD_SAI2_IRQ_NUM);
 
-    base->TCR3 |= I2S_TCR3_TCE(1);    
+    base->TCR3 |= I2S_TCR3_TCE(1);
 }
 
-uint32_t arr[20] = {65536, 63796, 58764, 50972, 41248, 30624, 20228, 11162, 4390, 630, 280, 3379, 9597, 18275, 28491, 39160, 49151, 57403, 63041};
+uint32_t arr[] = {
+    0x0000,
+    0xef70,
+    0xe001, 
+    0xd2c0, 
+    0xc894, 
+    0xc22f,
+    0xc001, 
+    0xc22f, 
+    0xc894, 
+    0xd2c0, 
+    0xe001, 
+    0xef70, 
+    0x0000,
+    0x1090,
+    0x1fff, 
+    0x2d40, 
+    0x376c, 
+    0x3dd1, 
+    0x3fff, 
+    0x3dd1, 
+    0x376c, 
+    0x2d40,
+    0x1fff, 
+    0x1090
+};
+// uint32_t arr[] = {32768, 25996, 8481, -1254, -28378, -32487, -23170, -4277, 16384, 30273,
+//                   31651, 19948, 0,    -19948, -31651, -30273, -16384, 4277, 23170, 32487,
+//                   28378, 12540, -8481, -25996, -32768, -25996, -8481, 12540, 28378};
 
 void BOARD_SAI2_HANDLER(void){
     static bool on = false;
@@ -197,7 +226,7 @@ void BOARD_SAI2_HANDLER(void){
         // ((I2S_Type *)I2S2_BASE)->TCR3 |= I2S_TCR3_TCE(1);    
         ((I2S_Type *)I2S2_BASE)->TDR[0] = arr[index];
 
-        if(index == 19)
+        if(index == 23)
             index = 0;
         else
             index++;
